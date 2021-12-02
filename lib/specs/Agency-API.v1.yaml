@@ -1,0 +1,1652 @@
+openapi: "3.0.1"
+info:
+  title: "Agency API"
+  description: "Affinity labs api for Agency microservice"
+  version: "v2"
+  termsOfService: 'https://affinityafrica.com/legal/'
+  contact:
+    name: "Ayeba Amihere"
+    email: "ayeba.amihere@affinitylabs.com"
+servers:
+- url: "https://api.affinitylabstest.com/{basePath}"
+  variables:
+    basePath:
+      default: "/agency"
+tags:
+  - name: Agency
+  - name: Authentication
+  - name: Customers
+  - name: Tasks
+  - name: Statistics
+paths:
+  /withdrawals:
+    get:
+      tags:
+        - Customers
+      description: "Withdrawals endpoint"
+      operationId: "getWithdrawals"
+      responses:
+        "400":
+          description: "400 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "200":
+          description: "200 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoResponse"
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/withdrawals"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+    post:
+      tags:
+      - Agency
+      description: "Initiate withdrawal endpoint"
+      operationId: postWithdrawals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionRequest'
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/withdrawals"
+        responses:
+          default:
+            statusCode: "201"
+        passthroughBehavior: "when_no_match"
+  /withdrawals/otp:
+    post:
+      tags:
+      - Agency
+      description: Get withdrawal otp generation endpoint
+      operationId: postWithdrawalsOtp
+      parameters:
+      - name: ref
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/withdrawals/otp"
+        requestParameters:
+          integration.request.path.ref: method.request.path.ref
+        responses:
+          default:
+            statusCode: "201"
+        passthroughBehavior: "when_no_match"
+  /withdrawals/confirm:
+    post:
+      tags:
+      - Agency
+      description: "Confirm Withdrawal endpoint"
+      operationId: "postWithdrawalsConfirm"
+      parameters:
+      - name: otp
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ref
+        in: query
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "201":
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/withdrawals/confirm"
+        requestParameters:
+          integration.request.path.otp: method.request.path.otp
+          integration.request.path.ref: method.request.path.ref
+        responses:
+          default:
+            statusCode: "201"
+        passthroughBehavior: "when_no_match"
+        
+  /tasks:
+    get:
+      tags:
+        - Agency
+        - Tasks
+      description: "Get tasks endpoint"
+      operationId: "getTasks"
+      responses:
+        "400":
+          description: "400 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaskResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/tasks"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+    post:
+      tags:
+        - Agency
+        - Tasks
+      description: "Create task endpoint"
+      operationId: "postTasks"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskRequest'
+        required: true
+      responses:
+        "400":
+          description: "400 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "201":
+          description: "201 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoResponse"
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/tasks"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+    delete:
+      tags:
+      - Agency
+      - Tasks
+      description: "Delete task endpoint"
+      operationId: "deleteTasks"
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InfoResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "DELETE"
+        uri: "https://${stageVariables.albUrl}/agency/tasks"
+        requestParameters:
+          integration.request.path.id: method.request.path.id
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+  /refresh:
+    post:
+      tags:
+        - Authentication
+      description: "Refresh authentication token using either auth token/refresh token"
+      operationId: "postKeepAliveToken"
+      responses:
+        "400":
+          description: "400 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "200":
+          description: "200 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/refresh"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+  /referrals:
+    post:
+      tags:
+        - Customers
+      description: "Referrals endpoint"
+      operationId: "postReferrals"
+      parameters:
+      - name: p
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "201":
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusResponse"
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/referrals"
+        responses:
+          default:
+            statusCode: "201"
+        requestParameters:
+          integration.request.path.p: method.request.path.p
+        passthroughBehavior: "when_no_match"
+        
+  /notifications:
+    get:
+      tags:
+        - Agency
+      description: "Notifications endpoint"
+      operationId: "getNotifications"
+      responses:
+        "400":
+          description: "400 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotificationResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/notifications"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+    post:
+      tags:
+      - Agency
+      description: "Create a notification assigned to an agent"
+      operationId: postNotification
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationRequest'
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/notifications"
+        responses:
+          default:
+            statusCode: "201"
+        passthroughBehavior: "when_no_match"
+        
+  /devices:
+    post:
+      summary: ''
+      description: "Register devices here"
+      operationId: "postDevices"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeviceRequest"
+        required: true
+      responses:
+        "201":
+          description: "201 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeviceResponse"
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/devices"
+        responses:
+          default:
+            statusCode: "201"
+        passthroughBehavior: "when_no_match"
+        
+  /deposits:
+    get:
+      tags:
+        - Customers
+      description: "Deposits endpoint"
+      operationId: "getDeposits"
+      responses:
+        "400":
+          description: "400 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "200":
+          description: "200 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusResponse"
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/deposits"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+    post:
+      tags:
+      - Agency
+      description: Create new deposit endpoint
+      operationId: postDeposits
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionRequest'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/deposits"
+        responses:
+          default:
+            statusCode: "201"
+        passthroughBehavior: "when_no_match"
+        
+  /deposits/confirm:
+    post:
+      tags:
+      - Agency
+      description: "Confirm Deposit endpoint"
+      operationId: "postDepositsConfirm"
+      parameters:
+      - name: ref
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/deposits/confirm"
+        requestParameters:
+          integration.request.path.ref: method.request.path.ref
+        responses:
+          default:
+            statusCode: "201"
+        passthroughBehavior: "when_no_match"
+        
+  /auth:
+    post:
+      tags:
+        - Authentication
+      description: "Login with email and password"
+      operationId: "postAuthorize"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+        required: true
+      responses:
+        "400":
+          description: "400 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "200":
+          description: "200 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/auth"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+  /application:
+    get:
+      tags:
+      - Customers
+      description: "Retrieve the up-to-date customer application from cache."
+      operationId: getCustomerApplication
+      parameters:
+      - name: p
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApplication'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/application"
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.path.p: method.request.path.p
+        passthroughBehavior: "when_no_match"
+        
+    post:
+      tags:
+      - Customers
+      description: "Upload full customer application for onboarding."
+      operationId: postCustomerApplication
+      parameters:
+      - name: p
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerApplication'
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/application"
+        requestParameters:
+          integration.request.path.p: method.request.path.p
+        responses:
+          default:
+            statusCode: "201"
+        passthroughBehavior: "when_no_match"
+        
+    delete:
+      tags:
+      - Customers
+      description: "Remove a customer application from cache."
+      operationId: "deleteCustomerApplication"
+      parameters:
+      - name: p
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApplication'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "DELETE"
+        uri: "https://${stageVariables.albUrl}/agency/application"
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.path.p: method.request.path.p
+        passthroughBehavior: "when_no_match"
+        
+    patch:
+      tags:
+      - Customers
+      description: "Save for later functionality,for customer applications."
+      operationId: patchCustomerApplication
+      parameters:
+      - name: p
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerApplication'
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InfoResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "PATCH"
+        uri: "https://${stageVariables.albUrl}/agency/application"
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.path.p: method.request.path.p
+        passthroughBehavior: "when_no_match"
+        
+  /application/otp:
+    post:
+      tags:
+      - Customers
+      description: "Send/Resend otp to new customer for onboarding"
+      operationId: postCustomerOtp
+      parameters:
+      - name: p
+        in: query
+        required: true
+        schema:
+          type: "string"
+      - name: resend
+        in: query
+        required: false
+        schema:
+          type: "string"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OtpResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/application/otp"
+        responses:
+          default:
+            statusCode: "201"
+        requestParameters:
+          integration.request.path.p: method.request.path.p
+          integration.request.path.resend: method.request.path.resend
+        passthroughBehavior: "when_no_match"
+        
+  /settings:
+    get:
+      tags:
+        - Agency
+      description: "Get Settings endpoint"
+      operationId: "getSettings"
+      responses:
+        "400":
+          description: "400 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SettingModel'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/settings"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+    patch:
+      tags:
+      - Agency
+      description: Patch Settings endpoint
+      operationId: patchSettings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/SettingModel'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InfoResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "PATCH"
+        uri: "https://${stageVariables.albUrl}/agency/settings"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+  /transactions:
+    get:
+      tags:
+        - Agency
+      description: "Get details/statistics on transactions made so far"
+      operationId: "getTransactions"
+      responses:
+        "400":
+          description: "400 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/transactions"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+  /tasks/{taskId}:
+    get:
+      tags:
+        - Agency
+        - Tasks
+      description: "Task detail endpoint"
+      operationId: "getTaskDetail"
+      parameters:
+      - name: "taskId"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "200":
+          description: "A task detail (Name, Start date and End date)"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoResponse"
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/tasks/{taskId}"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+  /statistics:
+    get:
+      tags:
+        - Statistics
+      description: "Statistics endpoint"
+      operationId: "getStatistics"
+      responses:
+        "400":
+          description: "400 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "200":
+          description: "200 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatisticsResponse"
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/statistics"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+  /notifications/{id}:
+    get:
+      tags:
+      - Agency
+      description: "Notifications by id endpoint"
+      operationId: "getNotificationById"
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/notifications/{id}"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+  /home:
+    get:
+      tags:
+        - Agency
+      description: "Statistics, and other agent-related information"
+      operationId: "getAgentHome"
+      responses:
+        "400":
+          description: "400 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "200":
+          description: "200 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HomeResponse"
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/home"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+  /customers:
+    get:
+      tags:
+        - Customers
+      description: "Customers endpoint"
+      operationId: "getCustomers"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/customers"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+  /customers/{customerId}:
+    get:
+      tags:
+      - Customers
+      description: Customer Details endpoint
+      operationId: getCustomerDetails
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/customers"
+        requestParameters:
+          integration.request.path.customerId: method.request.path.customerId
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+  /customers/search:
+    get:
+      tags:
+      - Customers
+      description: Customer Details Search endpoint
+      operationId: getCustomerDetailsSearch
+      parameters:
+      - name: p
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/customers/search"
+        requestParameters:
+          integration.request.path.p: method.request.path.p
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+  /appstatus:
+    get:
+      tags:
+        - Customers
+      description: "Application status for all pending applications"
+      operationId: "getAppStatus"
+      responses:
+        "400":
+          description: "400 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApplicationStatusResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/appstatus"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+  /accounts:
+    get:
+      tags:
+        - Customers
+      description: "Account activity log endpoint"
+      operationId: "getAccounts"
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AccountResponse"
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/accounts"
+        requestParameters:
+          integration.request.path.id: method.request.path.id
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+components:
+  schemas:
+    TransactionRequest:
+      required:
+      - accountId
+      - amount
+      - currency
+      - customerPhoneNumber
+      type: object
+      properties:
+        accountId:
+          type: string
+        customerPhoneNumber:
+          type: string
+        referenceNumber:
+          type: string
+        currency:
+          type: string
+        amount:
+          type: number
+        transactionCategoryId:
+          type: string
+        beneficiaryId:
+          type: string
+        destinationTransactionId:
+          type: string
+        fee:
+          type: number
+        status:
+          type: string
+        note:
+          type: string
+        idempotencyKey:
+          type: string
+    StatusResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - CREATED
+          - PROCESSING
+          - FAILED
+          - CREATED_WITH_ERRORS
+        uri:
+          type: string
+          format: uri
+        detailMessage:
+          type: string
+        additionalError:
+          type: integer
+          format: int32
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+        title:
+          type: string
+        detail:
+          type: string
+        invalidParams:
+          type: object
+          additionalProperties:
+            type: string
+    TransactionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        accountNumber:
+          type: string
+        profileUrl:
+          type: string
+          format: url
+        transactionType:
+          type: string
+          enum:
+          - DEPOSIT
+          - WITHDRAWAL
+        assigned:
+          type: boolean
+        amount:
+          type: integer
+          format: int64
+    TaskRequest:
+      type: object
+      properties:
+        customerId:
+          type: string
+        description:
+          type: string
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+    InfoResponse:
+      type: object
+      properties:
+        info:
+          type: string
+        uri:
+          type: string
+          format: uri
+        detailMessage:
+          type: string
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+        refreshToken:
+          type: string
+        tokenExpire:
+          type: integer
+          format: int64
+        fullName:
+          type: string
+        agentId:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        profileImageUrl:
+          type: string
+    NotificationRequest:
+      required:
+      - channelId
+      - deviceId
+      - message
+      - subject
+      type: object
+      properties:
+        subject:
+          type: string
+        message:
+          type: string
+        deviceId:
+          type: string
+        channelId:
+          type: string
+          enum:
+          - com.affinitylabs.agency.PUSH
+          - com.affinitylabs.agency.LOGOUT
+          - com.affinitylabs.agency.HOME
+          - com.affinitylabs.agency.MESSAGE
+          - com.affinitylabs.agency.UPDATE
+        additionalInfo:
+          type: object
+          additionalProperties:
+            type: string
+    NotificationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        channel:
+          type: string
+        additionalInfo:
+          type: object
+          additionalProperties:
+            type: string
+        created:
+          type: string
+          format: date-time
+        read:
+          type: boolean
+    DeviceRequest:
+      type: object
+      properties:
+        fcmToken:
+          type: string
+        deviceFingerprint:
+          type: string
+        imei:
+          type: string
+        userId:
+          type: string
+    DeviceResponse:
+      type: object
+      properties:
+        fcmToken:
+          type: string
+        deviceFingerprint:
+          type: string
+        imei:
+          type: string
+        info:
+          type: string
+    LoginRequest:
+      required:
+      - deviceId
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        deviceId:
+          type: string
+    CustomerApplication:
+      type: object
+      properties:
+        clientInput:
+          type: string
+        otp:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+        title:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        otherNames:
+          type: string
+        gender:
+          type: string
+          enum:
+          - M
+          - F
+        dateOfBirth:
+          type: string
+          format: date
+        countryOfBirth:
+          type: string
+        nationality:
+          type: string
+        maritalStatus:
+          type: string
+          enum:
+          - SINGLE
+          - MARRIED
+          - DIVORCED
+          - WIDOWED
+        numberOfDependents:
+          type: integer
+          format: int32
+        phoneNumbers:
+          type: array
+          items:
+            type: string
+        email:
+          type: string
+        employmentStatus:
+          type: string
+          enum:
+          - EMPLOYED_FULL_TIME
+          - EMPLOYED_PART_TIME
+          - SELF_EMPLOYED
+          - STUDENT
+          - RETIRED
+          - UNEMPLOYED
+          - HOMEMAKER
+        employmentType:
+          type: string
+          enum:
+          - GOVERNMENT_EMPLOYEE
+          - INFORMAL_WORKER
+          - PRIVATE_SECTOR_EMPLOYEE
+          - REGISTERED_BUSINESS_OWNER
+          - CHARITY_NGO
+        occupation:
+          type: string
+        employerName:
+          type: string
+        employmentAddress:
+          type: string
+        positionHeld:
+          type: string
+          enum:
+          - OWNER
+          - EMPLOYEE
+          - MANAGEMENT
+          - BOARD_TRUSTEE
+        incomeSource:
+          type: string
+        appointmentDate:
+          type: string
+          format: date
+        spouseTitle:
+          type: string
+        spouseFirstName:
+          type: string
+        spouseLastName:
+          type: string
+        spouseOtherNames:
+          type: string
+        spousePhoneNumber:
+          type: array
+          items:
+            type: string
+        spouseOccupation:
+          type: string
+        spouseEmployerName:
+          type: string
+        spouseEmploymentAddress:
+          type: string
+        spouseNextOfKin:
+          type: boolean
+        nextOfKinTitle:
+          type: string
+        nextOfKinFirstName:
+          type: string
+        nextOfKinLastName:
+          type: string
+        nextOfKinOtherNames:
+          type: string
+        nextOfKinPhoneNumber:
+          type: array
+          items:
+            type: string
+        nextOfKinRelationship:
+          type: string
+        area:
+          type: string
+        residentialAddress:
+          type: string
+        city:
+          type: string
+        street:
+          type: string
+        postalAddress:
+          type: string
+        tinNumber:
+          type: string
+        acceptedTermsAndConditions:
+          type: boolean
+        phoneNumberVerified:
+          type: boolean
+        idDocuments:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApplicationDocument'
+    CustomerApplicationDocument:
+      type: object
+      properties:
+        id:
+          type: string
+        customerId:
+          type: string
+        documentKey:
+          type: string
+        documentUrl:
+          type: string
+          format: url
+        documentType:
+          type: string
+          enum:
+          - PASSPORT
+          - DRIVERS
+          - HEALTH_INSURANCE
+          - VOTERS
+          - OTHER
+          - SELFIE
+          - PROOF_OF_RESIDENCE
+        documentNumber:
+          type: string
+        validated:
+          type: boolean
+    OtpResponse:
+      type: object
+      properties:
+        timeSent:
+          type: string
+          format: date-time
+        nextAttemptMillis:
+          type: integer
+          format: int64
+    SettingModel:
+      type: object
+      properties:
+        key:
+          type: string
+          enum:
+          - SMS_NOTIFICATION
+          - PHONE_NOTIFICATION
+          - OTHER
+        value:
+          type: string
+    TaskResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        customerId:
+          type: string
+        description:
+          type: string
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+    StatisticsResponse:
+      type: object
+      properties:
+        cashAtHand:
+          type: integer
+          format: int32
+        customers:
+          type: integer
+          format: int32
+        transactions:
+          type: integer
+          format: int32
+        ecash:
+          type: integer
+          format: int32
+    CustomerResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        accountNumber:
+          type: string
+        customerId:
+          type: string
+        phoneNumber:
+          type: string
+        profileUrl:
+          type: string
+          format: url
+        assigned:
+          type: boolean
+    HomeResponse:
+      type: object
+      properties:
+        avatar:
+          type: string
+        cashAtHand:
+          type: integer
+          format: int64
+        ecash:
+          type: integer
+          format: int64
+        depositTotal:
+          type: integer
+          format: int64
+        notifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationResponse'
+        customers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerResponse'
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionResponse'
+    ApplicationStatusResponse:
+      type: object
+      properties:
+        key:
+          type: string
+        url:
+          type: string
+          format: url
+        invalidParams:
+          type: object
+          additionalProperties:
+            type: string
+        application:
+          $ref: '#/components/schemas/CustomerApplication'
+    AccountResponse:
+      type: object
+      properties:
+        accountNumber:
+          type: string
+        encodedAccountNumber:
+          type: string
+        accountType:
+          type: string
