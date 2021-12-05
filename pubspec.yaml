@@ -11,6 +11,9 @@ dependencies:
   flutter:
     sdk: flutter
   shell: ^2.0.0
+  get_it: ^7.2.0
+  injectable: ^1.5.0
+  http_interceptor: ^1.0.2
 
 dev_dependencies:
   flutter_test:
@@ -19,6 +22,7 @@ dev_dependencies:
   openapi_generator: ^3.3.0+1
   openapi_generator_annotations: ^3.3.0
   build_runner: ^2.1.5
+  injectable_generator: ^1.5.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
