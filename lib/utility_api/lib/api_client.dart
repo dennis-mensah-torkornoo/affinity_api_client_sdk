@@ -11,7 +11,9 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'https://api.affinitylabstest.com/agency'}) {
+  ApiClient({this.basePath = 'https://api.affinitylabstest.com/utility'}) {
+    // Setup authentications (key: authentication name, value: authentication).
+    _authentications[r'api_key'] = ApiKeyAuth('header', 'x-api-key');
   }
 
   final String basePath;
@@ -191,50 +193,42 @@ class ApiClient {
           }
           final valueString = '$value'.toLowerCase();
           return valueString == 'true' || valueString == '1';
-        case 'AccountResponse':
-          return AccountResponse.fromJson(value);
-        case 'ApplicationStatusResponse':
-          return ApplicationStatusResponse.fromJson(value);
-        case 'CustomerApplication':
-          return CustomerApplication.fromJson(value);
-        case 'CustomerApplicationDocument':
-          return CustomerApplicationDocument.fromJson(value);
-        case 'CustomerResponse':
-          return CustomerResponse.fromJson(value);
-        case 'DeviceRequest':
-          return DeviceRequest.fromJson(value);
-        case 'DeviceResponse':
-          return DeviceResponse.fromJson(value);
-        case 'ErrorResponse':
-          return ErrorResponse.fromJson(value);
-        case 'HomeResponse':
-          return HomeResponse.fromJson(value);
-        case 'InfoResponse':
-          return InfoResponse.fromJson(value);
-        case 'LoginRequest':
-          return LoginRequest.fromJson(value);
-        case 'LoginResponse':
-          return LoginResponse.fromJson(value);
-        case 'NotificationRequest':
-          return NotificationRequest.fromJson(value);
-        case 'NotificationResponse':
-          return NotificationResponse.fromJson(value);
-        case 'OtpResponse':
-          return OtpResponse.fromJson(value);
-        case 'SettingModel':
-          return SettingModel.fromJson(value);
-        case 'StatisticsResponse':
-          return StatisticsResponse.fromJson(value);
-        case 'StatusResponse':
-          return StatusResponse.fromJson(value);
-        case 'TaskRequest':
-          return TaskRequest.fromJson(value);
-        case 'TaskResponse':
-          return TaskResponse.fromJson(value);
-        case 'TransactionRequest':
-          return TransactionRequest.fromJson(value);
-        case 'TransactionResponse':
-          return TransactionResponse.fromJson(value);
+        case 'Bank':
+          return Bank.fromJson(value);
+        case 'BankImage':
+          return BankImage.fromJson(value);
+        case 'Error':
+          return Error.fromJson(value);
+        case 'Faq':
+          return Faq.fromJson(value);
+        case 'FaqCategory':
+          return FaqCategory.fromJson(value);
+        case 'Hub':
+          return Hub.fromJson(value);
+        case 'InlineObject1':
+          return InlineObject1.fromJson(value);
+        case 'InlineObject2':
+          return InlineObject2.fromJson(value);
+        case 'InlineObject3':
+          return InlineObject3.fromJson(value);
+        case 'InlineResponse200':
+          return InlineResponse200.fromJson(value);
+        case 'InlineResponse2001':
+          return InlineResponse2001.fromJson(value);
+        case 'InlineResponse2002':
+          return InlineResponse2002.fromJson(value);
+        case 'InlineResponse2003':
+          return InlineResponse2003.fromJson(value);
+        case 'InlineResponse2004':
+          return InlineResponse2004.fromJson(value);
+        case 'InlineResponse2005':
+          return InlineResponse2005.fromJson(value);
+        case 'InlineResponse500':
+          return InlineResponse500.fromJson(value);
+        case 'TransactionCategory':
+          return TransactionCategory.fromJson(value);
+        case 'UploadResponse':
+          return UploadResponse.fromJson(value);
         default:
           Match match;
           if (value is List && (match = _regList.firstMatch(targetType)) != null) {
