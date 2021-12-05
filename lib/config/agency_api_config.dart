@@ -4,7 +4,7 @@ import 'package:openapi_generator_annotations/openapi_generator_annotations.dart
   additionalProperties: AdditionalProperties(pubName: 'agency_api'),
   inputSpecFile: 'lib/specs/Agency-API.v1.yaml',
   generatorName: Generator.dart,
-  outputDirectory: 'lib/agency_api',
+  outputDirectory: 'agency_api',
   fetchDependencies: true,
   alwaysRun: true,
 )
