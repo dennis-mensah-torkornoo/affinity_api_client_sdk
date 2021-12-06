@@ -7,6 +7,7 @@ import 'package:affinity_api_client_sdk/agency_api/lib/api.dart'
         AuthenticationApi,
         DefaultApi,
         TasksApi,
+        CustomersApi,
         ApiClient;
 import 'package:affinity_api_client_sdk/utility_api/lib/api.dart' as utility_api ;
 import 'package:http_interceptor/http/http.dart';
@@ -31,5 +32,6 @@ class AgencyApiClient {
   AuthenticationApi get authenticationApi => AuthenticationApi(apiClient);
   DefaultApi get defaultApi => DefaultApi(apiClient);
   TasksApi get tasksApi => TasksApi(apiClient);
+  CustomersApi get customerApi => CustomersApi(apiClient);
   utility_api.DefaultApi get utilityApi => utility_api.DefaultApi(utilityApiClient);
 }
