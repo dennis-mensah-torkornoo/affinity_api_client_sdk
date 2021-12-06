@@ -516,7 +516,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransactionResponse'
+                $ref: '#/components/schemas/TransactionDetailResponse'
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -845,13 +845,11 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
         "200":
-          description: "OK"
+          description: OK
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/TransactionResponse'
+                $ref: '#/components/schemas/TransactionResponse'
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1157,7 +1155,7 @@ paths:
           default:
             statusCode: "200"
         passthroughBehavior: "when_no_match"
-        
+
 components:
   schemas:
     TransactionRequest:
@@ -1220,11 +1218,14 @@ components:
           type: string
         detail:
           type: string
+        time:
+          type: string
+          format: date-time
         invalidParams:
           type: object
           additionalProperties:
             type: string
-    TransactionResponse:
+    TransactionDetailResponse:
       type: object
       properties:
         id:
@@ -1530,6 +1531,8 @@ components:
           - PROOF_OF_RESIDENCE
         documentNumber:
           type: string
+        extraFieldsJSON:
+          type: string
         validated:
           type: boolean
     OtpResponse:
@@ -1552,6 +1555,16 @@ components:
           - OTHER
         value:
           type: string
+    TransactionResponse:
+      type: object
+      properties:
+        depositTotal:
+          type: integer
+          format: int64
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionDetailResponse'
     TaskResponse:
       type: object
       properties:
@@ -1626,7 +1639,7 @@ components:
         transactions:
           type: array
           items:
-            $ref: '#/components/schemas/TransactionResponse'
+            $ref: '#/components/schemas/TransactionDetailResponse'
     ApplicationStatusResponse:
       type: object
       properties:
