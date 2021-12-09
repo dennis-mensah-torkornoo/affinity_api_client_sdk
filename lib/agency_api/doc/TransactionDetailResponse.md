@@ -1,4 +1,4 @@
-# agency_api.model.CustomerApplicationDocument
+# agency_api.model.TransactionDetailResponse
 
 ## Load the model package
 ```dart
@@ -9,13 +9,12 @@ import 'package:agency_api/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
-**customerId** | **String** |  | [optional] 
-**documentKey** | **String** |  | [optional] 
-**documentUrl** | **String** |  | [optional] 
-**documentType** | **String** |  | [optional] 
-**documentNumber** | **String** |  | [optional] 
-**extraFieldsJSON** | **String** |  | [optional] 
-**validated** | **bool** |  | [optional] 
+**name** | **String** |  | [optional] 
+**accountNumber** | **String** |  | [optional] 
+**profileUrl** | **String** |  | [optional] 
+**transactionType** | **String** |  | [optional] 
+**assigned** | **bool** |  | [optional] 
+**amount** | **int** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

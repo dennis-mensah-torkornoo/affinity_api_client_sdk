@@ -73,13 +73,6 @@ void main() {
       // TODO
     });
 
-    // Withdrawals endpoint
-    //
-    //Future<InfoResponse> getWithdrawals() async
-    test('test getWithdrawals', () async {
-      // TODO
-    });
-
     // Save for later functionality,for customer applications.
     //
     //Future<InfoResponse> patchCustomerApplication(String p, CustomerApplication customerApplication) async

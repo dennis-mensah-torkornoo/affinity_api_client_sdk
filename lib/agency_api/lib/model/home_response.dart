@@ -34,7 +34,7 @@ class HomeResponse {
 
   List<CustomerResponse> customers;
 
-  List<TransactionResponse> transactions;
+  List<TransactionDetailResponse> transactions;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is HomeResponse &&
@@ -99,7 +99,7 @@ class HomeResponse {
         depositTotal: mapValueOfType<int>(json, r'depositTotal'),
         notifications: NotificationResponse.listFromJson(json[r'notifications']),
         customers: CustomerResponse.listFromJson(json[r'customers']),
-        transactions: TransactionResponse.listFromJson(json[r'transactions']),
+        transactions: TransactionDetailResponse.listFromJson(json[r'transactions']),
       );
     }
     return null;

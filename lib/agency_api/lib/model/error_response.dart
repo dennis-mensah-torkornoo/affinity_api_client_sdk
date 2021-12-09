@@ -16,6 +16,7 @@ class ErrorResponse {
     this.status,
     this.title,
     this.detail,
+    this.time,
     this.invalidParams = const {},
   });
 
@@ -25,6 +26,8 @@ class ErrorResponse {
 
   String detail;
 
+  DateTime time;
+
   Map<String, String> invalidParams;
 
   @override
@@ -32,6 +35,7 @@ class ErrorResponse {
      other.status == status &&
      other.title == title &&
      other.detail == detail &&
+     other.time == time &&
      other.invalidParams == invalidParams;
 
   @override
@@ -40,10 +44,11 @@ class ErrorResponse {
     (status == null ? 0 : status.hashCode) +
     (title == null ? 0 : title.hashCode) +
     (detail == null ? 0 : detail.hashCode) +
+    (time == null ? 0 : time.hashCode) +
     (invalidParams == null ? 0 : invalidParams.hashCode);
 
   @override
-  String toString() => 'ErrorResponse[status=$status, title=$title, detail=$detail, invalidParams=$invalidParams]';
+  String toString() => 'ErrorResponse[status=$status, title=$title, detail=$detail, time=$time, invalidParams=$invalidParams]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -55,6 +60,9 @@ class ErrorResponse {
     }
     if (detail != null) {
       json[r'detail'] = detail;
+    }
+    if (time != null) {
+      json[r'time'] = time.toUtc().toIso8601String();
     }
     if (invalidParams != null) {
       json[r'invalidParams'] = invalidParams;
@@ -72,6 +80,7 @@ class ErrorResponse {
         status: mapValueOfType<int>(json, r'status'),
         title: mapValueOfType<String>(json, r'title'),
         detail: mapValueOfType<String>(json, r'detail'),
+        time: mapDateTime(json, r'time', ''),
         invalidParams: mapCastOfType<String, String>(json, r'invalidParams'),
       );
     }

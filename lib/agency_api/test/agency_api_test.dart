@@ -68,8 +68,15 @@ void main() {
 
     // Get details/statistics on transactions made so far
     //
-    //Future<List<TransactionResponse>> getTransactions() async
+    //Future<TransactionResponse> getTransactions() async
     test('test getTransactions', () async {
+      // TODO
+    });
+
+    // Get all withdrawals endpoint
+    //
+    //Future<List<TransactionDetailResponse>> getWithdrawals() async
+    test('test getWithdrawals', () async {
       // TODO
     });
 
@@ -89,7 +96,7 @@ void main() {
 
     // Confirm Deposit endpoint
     //
-    //Future<TransactionResponse> postDepositsConfirm(String ref) async
+    //Future<TransactionDetailResponse> postDepositsConfirm(String ref) async
     test('test postDepositsConfirm', () async {
       // TODO
     });

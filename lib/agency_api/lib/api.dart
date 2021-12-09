@@ -54,6 +54,7 @@ part 'model/statistics_response.dart';
 part 'model/status_response.dart';
 part 'model/task_request.dart';
 part 'model/task_response.dart';
+part 'model/transaction_detail_response.dart';
 part 'model/transaction_request.dart';
 part 'model/transaction_response.dart';
 

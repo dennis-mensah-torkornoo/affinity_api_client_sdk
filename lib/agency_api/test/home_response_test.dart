@@ -46,7 +46,7 @@ void main() {
       // TODO
     });
 
-    // List<TransactionResponse> transactions (default value: const [])
+    // List<TransactionDetailResponse> transactions (default value: const [])
     test('to test the property `transactions`', () async {
       // TODO
     });

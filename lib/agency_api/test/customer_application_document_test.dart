@@ -46,6 +46,11 @@ void main() {
       // TODO
     });
 
+    // String extraFieldsJSON
+    test('to test the property `extraFieldsJSON`', () async {
+      // TODO
+    });
+
     // bool validated
     test('to test the property `validated`', () async {
       // TODO

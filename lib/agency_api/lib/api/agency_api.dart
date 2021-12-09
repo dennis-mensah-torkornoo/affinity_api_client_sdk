@@ -421,7 +421,7 @@ class AgencyApi {
   }
 
   /// Get details/statistics on transactions made so far
-  Future<List<TransactionResponse>> getTransactions() async {
+  Future<TransactionResponse> getTransactions() async {
     final response = await getTransactionsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -430,13 +430,59 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionResponse',) as TransactionResponse;
+    
+    }
+    return Future<TransactionResponse>.value();
+  }
+
+  /// Get all withdrawals endpoint
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getWithdrawalsWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/withdrawals';
+
+    // ignore: prefer_final_locals
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const authNames = <String>[];
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Get all withdrawals endpoint
+  Future<List<TransactionDetailResponse>> getWithdrawals() async {
+    final response = await getWithdrawalsWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<TransactionResponse>') as List)
-        .cast<TransactionResponse>()
+      return (await apiClient.deserializeAsync(responseBody, 'List<TransactionDetailResponse>') as List)
+        .cast<TransactionDetailResponse>()
         .toList(growable: false);
 
     }
-    return Future<List<TransactionResponse>>.value();
+    return Future<List<TransactionDetailResponse>>.value();
   }
 
   /// Patch Settings endpoint
@@ -603,7 +649,7 @@ class AgencyApi {
   /// Parameters:
   ///
   /// * [String] ref (required):
-  Future<TransactionResponse> postDepositsConfirm(String ref,) async {
+  Future<TransactionDetailResponse> postDepositsConfirm(String ref,) async {
     final response = await postDepositsConfirmWithHttpInfo(ref,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -612,10 +658,10 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionResponse',) as TransactionResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionDetailResponse',) as TransactionDetailResponse;
     
     }
-    return Future<TransactionResponse>.value();
+    return Future<TransactionDetailResponse>.value();
   }
 
   /// Create a notification assigned to an agent

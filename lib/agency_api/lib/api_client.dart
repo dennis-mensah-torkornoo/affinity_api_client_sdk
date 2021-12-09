@@ -231,6 +231,8 @@ class ApiClient {
           return TaskRequest.fromJson(value);
         case 'TaskResponse':
           return TaskResponse.fromJson(value);
+        case 'TransactionDetailResponse':
+          return TransactionDetailResponse.fromJson(value);
         case 'TransactionRequest':
           return TransactionRequest.fromJson(value);
         case 'TransactionResponse':

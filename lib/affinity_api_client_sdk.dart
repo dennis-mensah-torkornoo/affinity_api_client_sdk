@@ -9,7 +9,8 @@ import 'package:affinity_api_client_sdk/agency_api/lib/api.dart'
         TasksApi,
         CustomersApi,
         ApiClient;
-import 'package:affinity_api_client_sdk/utility_api/lib/api.dart' as utility_api ;
+import 'package:affinity_api_client_sdk/utility_api/lib/api.dart'
+    as utility_api;
 import 'package:http_interceptor/http/http.dart';
 import 'package:http_interceptor/http_interceptor.dart';
 
@@ -22,7 +23,8 @@ class AgencyApiClient {
     apiClient = ApiClient(basePath: 'https://api.affinitylabstest.com/agency')
       ..client = InterceptedClient.build(
           interceptors: interceptors ?? [], retryPolicy: retryPolicy);
-    utilityApiClient = utility_api.ApiClient(basePath: 'https://api.affinitylabstest.com/utility')
+    utilityApiClient = utility_api.ApiClient(
+        basePath: 'https://api.affinitylabstest.com/utility')
       ..client = InterceptedClient.build(
           interceptors: interceptors ?? [], retryPolicy: retryPolicy);
   }
@@ -33,5 +35,6 @@ class AgencyApiClient {
   DefaultApi get defaultApi => DefaultApi(apiClient);
   TasksApi get tasksApi => TasksApi(apiClient);
   CustomersApi get customerApi => CustomersApi(apiClient);
-  utility_api.DefaultApi get utilityApi => utility_api.DefaultApi(utilityApiClient);
+  utility_api.DefaultApi get utilityApi =>
+      utility_api.DefaultApi(utilityApiClient);
 }

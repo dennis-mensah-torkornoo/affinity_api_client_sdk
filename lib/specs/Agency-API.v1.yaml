@@ -22,22 +22,24 @@ paths:
   /withdrawals:
     get:
       tags:
-        - Customers
-      description: "Withdrawals endpoint"
-      operationId: "getWithdrawals"
+      - Agency
+      description: Get all withdrawals endpoint
+      operationId: getWithdrawals
       responses:
         "400":
-          description: "400 response"
+          description: Bad Request
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: '#/components/schemas/ErrorResponse'
         "200":
-          description: "200 response"
+          description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InfoResponse"
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionDetailResponse'
       x-amazon-apigateway-integration:
         type: "http_proxy"
         

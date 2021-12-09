@@ -66,6 +66,7 @@ Class | Method | HTTP request | Description
 *AgencyApi* | [**getTaskDetail**](doc//AgencyApi.md#gettaskdetail) | **GET** /tasks/{taskId} | 
 *AgencyApi* | [**getTasks**](doc//AgencyApi.md#gettasks) | **GET** /tasks | 
 *AgencyApi* | [**getTransactions**](doc//AgencyApi.md#gettransactions) | **GET** /transactions | 
+*AgencyApi* | [**getWithdrawals**](doc//AgencyApi.md#getwithdrawals) | **GET** /withdrawals | 
 *AgencyApi* | [**patchSettings**](doc//AgencyApi.md#patchsettings) | **PATCH** /settings | 
 *AgencyApi* | [**postDeposits**](doc//AgencyApi.md#postdeposits) | **POST** /deposits | 
 *AgencyApi* | [**postDepositsConfirm**](doc//AgencyApi.md#postdepositsconfirm) | **POST** /deposits/confirm | 
@@ -84,7 +85,6 @@ Class | Method | HTTP request | Description
 *CustomersApi* | [**getCustomerDetailsSearch**](doc//CustomersApi.md#getcustomerdetailssearch) | **GET** /customers/search | 
 *CustomersApi* | [**getCustomers**](doc//CustomersApi.md#getcustomers) | **GET** /customers | 
 *CustomersApi* | [**getDeposits**](doc//CustomersApi.md#getdeposits) | **GET** /deposits | 
-*CustomersApi* | [**getWithdrawals**](doc//CustomersApi.md#getwithdrawals) | **GET** /withdrawals | 
 *CustomersApi* | [**patchCustomerApplication**](doc//CustomersApi.md#patchcustomerapplication) | **PATCH** /application | 
 *CustomersApi* | [**postCustomerApplication**](doc//CustomersApi.md#postcustomerapplication) | **POST** /application | 
 *CustomersApi* | [**postCustomerOtp**](doc//CustomersApi.md#postcustomerotp) | **POST** /application/otp | 
@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
  - [StatusResponse](doc//StatusResponse.md)
  - [TaskRequest](doc//TaskRequest.md)
  - [TaskResponse](doc//TaskResponse.md)
+ - [TransactionDetailResponse](doc//TransactionDetailResponse.md)
  - [TransactionRequest](doc//TransactionRequest.md)
  - [TransactionResponse](doc//TransactionResponse.md)
 

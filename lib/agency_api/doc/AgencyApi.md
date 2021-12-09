@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**getTaskDetail**](AgencyApi.md#gettaskdetail) | **GET** /tasks/{taskId} | 
 [**getTasks**](AgencyApi.md#gettasks) | **GET** /tasks | 
 [**getTransactions**](AgencyApi.md#gettransactions) | **GET** /transactions | 
+[**getWithdrawals**](AgencyApi.md#getwithdrawals) | **GET** /withdrawals | 
 [**patchSettings**](AgencyApi.md#patchsettings) | **PATCH** /settings | 
 [**postDeposits**](AgencyApi.md#postdeposits) | **POST** /deposits | 
 [**postDepositsConfirm**](AgencyApi.md#postdepositsconfirm) | **POST** /deposits/confirm | 
@@ -313,7 +314,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTransactions**
-> List<TransactionResponse> getTransactions()
+> TransactionResponse getTransactions()
 
 
 
@@ -338,7 +339,46 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<TransactionResponse>**](TransactionResponse.md)
+[**TransactionResponse**](TransactionResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getWithdrawals**
+> List<TransactionDetailResponse> getWithdrawals()
+
+
+
+Get all withdrawals endpoint
+
+### Example
+```dart
+import 'package:agency_api/api.dart';
+
+final api_instance = AgencyApi();
+
+try {
+    final result = api_instance.getWithdrawals();
+    print(result);
+} catch (e) {
+    print('Exception when calling AgencyApi->getWithdrawals: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List<TransactionDetailResponse>**](TransactionDetailResponse.md)
 
 ### Authorization
 
@@ -438,7 +478,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postDepositsConfirm**
-> TransactionResponse postDepositsConfirm(ref)
+> TransactionDetailResponse postDepositsConfirm(ref)
 
 
 
@@ -467,7 +507,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransactionResponse**](TransactionResponse.md)
+[**TransactionDetailResponse**](TransactionDetailResponse.md)
 
 ### Authorization
 

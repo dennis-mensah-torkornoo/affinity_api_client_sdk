@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **depositTotal** | **int** |  | [optional] 
 **notifications** | [**List<NotificationResponse>**](NotificationResponse.md) |  | [optional] [default to const []]
 **customers** | [**List<CustomerResponse>**](CustomerResponse.md) |  | [optional] [default to const []]
-**transactions** | [**List<TransactionResponse>**](TransactionResponse.md) |  | [optional] [default to const []]
+**transactions** | [**List<TransactionDetailResponse>**](TransactionDetailResponse.md) |  | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -19,6 +19,7 @@ class CustomerApplicationDocument {
     this.documentUrl,
     this.documentType,
     this.documentNumber,
+    this.extraFieldsJSON,
     this.validated,
   });
 
@@ -34,6 +35,8 @@ class CustomerApplicationDocument {
 
   String documentNumber;
 
+  String extraFieldsJSON;
+
   bool validated;
 
   @override
@@ -44,6 +47,7 @@ class CustomerApplicationDocument {
      other.documentUrl == documentUrl &&
      other.documentType == documentType &&
      other.documentNumber == documentNumber &&
+     other.extraFieldsJSON == extraFieldsJSON &&
      other.validated == validated;
 
   @override
@@ -55,10 +59,11 @@ class CustomerApplicationDocument {
     (documentUrl == null ? 0 : documentUrl.hashCode) +
     (documentType == null ? 0 : documentType.hashCode) +
     (documentNumber == null ? 0 : documentNumber.hashCode) +
+    (extraFieldsJSON == null ? 0 : extraFieldsJSON.hashCode) +
     (validated == null ? 0 : validated.hashCode);
 
   @override
-  String toString() => 'CustomerApplicationDocument[id=$id, customerId=$customerId, documentKey=$documentKey, documentUrl=$documentUrl, documentType=$documentType, documentNumber=$documentNumber, validated=$validated]';
+  String toString() => 'CustomerApplicationDocument[id=$id, customerId=$customerId, documentKey=$documentKey, documentUrl=$documentUrl, documentType=$documentType, documentNumber=$documentNumber, extraFieldsJSON=$extraFieldsJSON, validated=$validated]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -80,6 +85,9 @@ class CustomerApplicationDocument {
     if (documentNumber != null) {
       json[r'documentNumber'] = documentNumber;
     }
+    if (extraFieldsJSON != null) {
+      json[r'extraFieldsJSON'] = extraFieldsJSON;
+    }
     if (validated != null) {
       json[r'validated'] = validated;
     }
@@ -99,6 +107,7 @@ class CustomerApplicationDocument {
         documentUrl: mapValueOfType<String>(json, r'documentUrl'),
         documentType: CustomerApplicationDocumentDocumentTypeEnum.fromJson(json[r'documentType']),
         documentNumber: mapValueOfType<String>(json, r'documentNumber'),
+        extraFieldsJSON: mapValueOfType<String>(json, r'extraFieldsJSON'),
         validated: mapValueOfType<bool>(json, r'validated'),
       );
     }

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **status** | **int** |  | [optional] 
 **title** | **String** |  | [optional] 
 **detail** | **String** |  | [optional] 
+**time** | [**DateTime**](DateTime.md) |  | [optional] 
 **invalidParams** | **Map<String, String>** |  | [optional] [default to const {}]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

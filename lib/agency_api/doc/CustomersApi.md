@@ -17,7 +17,6 @@ Method | HTTP request | Description
 [**getCustomerDetailsSearch**](CustomersApi.md#getcustomerdetailssearch) | **GET** /customers/search | 
 [**getCustomers**](CustomersApi.md#getcustomers) | **GET** /customers | 
 [**getDeposits**](CustomersApi.md#getdeposits) | **GET** /deposits | 
-[**getWithdrawals**](CustomersApi.md#getwithdrawals) | **GET** /withdrawals | 
 [**patchCustomerApplication**](CustomersApi.md#patchcustomerapplication) | **PATCH** /application | 
 [**postCustomerApplication**](CustomersApi.md#postcustomerapplication) | **POST** /application | 
 [**postCustomerOtp**](CustomersApi.md#postcustomerotp) | **POST** /application/otp | 
@@ -344,45 +343,6 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**StatusResponse**](StatusResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getWithdrawals**
-> InfoResponse getWithdrawals()
-
-
-
-Withdrawals endpoint
-
-### Example
-```dart
-import 'package:agency_api/api.dart';
-
-final api_instance = CustomersApi();
-
-try {
-    final result = api_instance.getWithdrawals();
-    print(result);
-} catch (e) {
-    print('Exception when calling CustomersApi->getWithdrawals: $e\n');
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**InfoResponse**](InfoResponse.md)
 
 ### Authorization
 

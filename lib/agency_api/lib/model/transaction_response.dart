@@ -13,75 +13,35 @@ part of openapi.api;
 class TransactionResponse {
   /// Returns a new [TransactionResponse] instance.
   TransactionResponse({
-    this.id,
-    this.name,
-    this.accountNumber,
-    this.profileUrl,
-    this.transactionType,
-    this.assigned,
-    this.amount,
+    this.depositTotal,
+    this.transactions = const [],
   });
 
-  String id;
+  int depositTotal;
 
-  String name;
-
-  String accountNumber;
-
-  String profileUrl;
-
-  TransactionResponseTransactionTypeEnum transactionType;
-
-  bool assigned;
-
-  int amount;
+  List<TransactionDetailResponse> transactions;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TransactionResponse &&
-     other.id == id &&
-     other.name == name &&
-     other.accountNumber == accountNumber &&
-     other.profileUrl == profileUrl &&
-     other.transactionType == transactionType &&
-     other.assigned == assigned &&
-     other.amount == amount;
+     other.depositTotal == depositTotal &&
+     other.transactions == transactions;
 
   @override
   int get hashCode =>
   // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id.hashCode) +
-    (name == null ? 0 : name.hashCode) +
-    (accountNumber == null ? 0 : accountNumber.hashCode) +
-    (profileUrl == null ? 0 : profileUrl.hashCode) +
-    (transactionType == null ? 0 : transactionType.hashCode) +
-    (assigned == null ? 0 : assigned.hashCode) +
-    (amount == null ? 0 : amount.hashCode);
+    (depositTotal == null ? 0 : depositTotal.hashCode) +
+    (transactions == null ? 0 : transactions.hashCode);
 
   @override
-  String toString() => 'TransactionResponse[id=$id, name=$name, accountNumber=$accountNumber, profileUrl=$profileUrl, transactionType=$transactionType, assigned=$assigned, amount=$amount]';
+  String toString() => 'TransactionResponse[depositTotal=$depositTotal, transactions=$transactions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (id != null) {
-      json[r'id'] = id;
+    if (depositTotal != null) {
+      json[r'depositTotal'] = depositTotal;
     }
-    if (name != null) {
-      json[r'name'] = name;
-    }
-    if (accountNumber != null) {
-      json[r'accountNumber'] = accountNumber;
-    }
-    if (profileUrl != null) {
-      json[r'profileUrl'] = profileUrl;
-    }
-    if (transactionType != null) {
-      json[r'transactionType'] = transactionType;
-    }
-    if (assigned != null) {
-      json[r'assigned'] = assigned;
-    }
-    if (amount != null) {
-      json[r'amount'] = amount;
+    if (transactions != null) {
+      json[r'transactions'] = transactions;
     }
     return json;
   }
@@ -93,13 +53,8 @@ class TransactionResponse {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return TransactionResponse(
-        id: mapValueOfType<String>(json, r'id'),
-        name: mapValueOfType<String>(json, r'name'),
-        accountNumber: mapValueOfType<String>(json, r'accountNumber'),
-        profileUrl: mapValueOfType<String>(json, r'profileUrl'),
-        transactionType: TransactionResponseTransactionTypeEnum.fromJson(json[r'transactionType']),
-        assigned: mapValueOfType<bool>(json, r'assigned'),
-        amount: mapValueOfType<int>(json, r'amount'),
+        depositTotal: mapValueOfType<int>(json, r'depositTotal'),
+        transactions: TransactionDetailResponse.listFromJson(json[r'transactions']),
       );
     }
     return null;
@@ -137,71 +92,4 @@ class TransactionResponse {
     return map;
   }
 }
-
-
-class TransactionResponseTransactionTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const TransactionResponseTransactionTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value ?? '';
-
-  String toJson() => value;
-
-  static const DEPOSIT = TransactionResponseTransactionTypeEnum._(r'DEPOSIT');
-  static const WITHDRAWAL = TransactionResponseTransactionTypeEnum._(r'WITHDRAWAL');
-
-  /// List of all possible values in this [enum][TransactionResponseTransactionTypeEnum].
-  static const values = <TransactionResponseTransactionTypeEnum>[
-    DEPOSIT,
-    WITHDRAWAL,
-  ];
-
-  static TransactionResponseTransactionTypeEnum fromJson(dynamic value) =>
-    TransactionResponseTransactionTypeEnumTypeTransformer().decode(value);
-
-  static List<TransactionResponseTransactionTypeEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(TransactionResponseTransactionTypeEnum.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <TransactionResponseTransactionTypeEnum>[];
-}
-
-/// Transformation class that can [encode] an instance of [TransactionResponseTransactionTypeEnum] to String,
-/// and [decode] dynamic data back to [TransactionResponseTransactionTypeEnum].
-class TransactionResponseTransactionTypeEnumTypeTransformer {
-  factory TransactionResponseTransactionTypeEnumTypeTransformer() => _instance ??= const TransactionResponseTransactionTypeEnumTypeTransformer._();
-
-  const TransactionResponseTransactionTypeEnumTypeTransformer._();
-
-  String encode(TransactionResponseTransactionTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a TransactionResponseTransactionTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  TransactionResponseTransactionTypeEnum decode(dynamic data, {bool allowNull}) {
-    if (data != null) {
-      switch (data.toString()) {
-        case r'DEPOSIT': return TransactionResponseTransactionTypeEnum.DEPOSIT;
-        case r'WITHDRAWAL': return TransactionResponseTransactionTypeEnum.WITHDRAWAL;
-        default:
-          if (allowNull == false) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [TransactionResponseTransactionTypeEnumTypeTransformer] instance.
-  static TransactionResponseTransactionTypeEnumTypeTransformer _instance;
-}
-
 

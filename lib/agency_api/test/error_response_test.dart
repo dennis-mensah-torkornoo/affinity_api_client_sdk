@@ -31,6 +31,11 @@ void main() {
       // TODO
     });
 
+    // DateTime time
+    test('to test the property `time`', () async {
+      // TODO
+    });
+
     // Map<String, String> invalidParams (default value: const {})
     test('to test the property `invalidParams`', () async {
       // TODO

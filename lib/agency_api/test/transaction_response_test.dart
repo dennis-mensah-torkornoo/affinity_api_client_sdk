@@ -16,38 +16,13 @@ void main() {
   final instance = TransactionResponse();
 
   group('test TransactionResponse', () {
-    // String id
-    test('to test the property `id`', () async {
+    // int depositTotal
+    test('to test the property `depositTotal`', () async {
       // TODO
     });
 
-    // String name
-    test('to test the property `name`', () async {
-      // TODO
-    });
-
-    // String accountNumber
-    test('to test the property `accountNumber`', () async {
-      // TODO
-    });
-
-    // String profileUrl
-    test('to test the property `profileUrl`', () async {
-      // TODO
-    });
-
-    // String transactionType
-    test('to test the property `transactionType`', () async {
-      // TODO
-    });
-
-    // bool assigned
-    test('to test the property `assigned`', () async {
-      // TODO
-    });
-
-    // int amount
-    test('to test the property `amount`', () async {
+    // List<TransactionDetailResponse> transactions (default value: const [])
+    test('to test the property `transactions`', () async {
       // TODO
     });
 
