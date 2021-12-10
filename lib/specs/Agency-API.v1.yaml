@@ -1160,6 +1160,29 @@ paths:
 
 components:
   schemas:
+    Intermediary:
+      type: object
+      properties:
+        idNumber:
+          type: string
+        idType:
+          type: string
+          enum:
+          - voters
+          - voter
+          - passport
+          - driver_license
+          - driver_licence
+          - national_id
+          - nhis
+          - ssnit
+          - tin
+          - other
+          - drivers
+        phoneNumber:
+          type: string
+        fullName:
+          type: string
     TransactionRequest:
       required:
       - accountId
@@ -1178,20 +1201,14 @@ components:
           type: string
         amount:
           type: number
-        transactionCategoryId:
-          type: string
-        beneficiaryId:
-          type: string
-        destinationTransactionId:
-          type: string
         fee:
           type: number
-        status:
-          type: string
         note:
           type: string
         idempotencyKey:
           type: string
+        intermediary:
+          $ref: '#/components/schemas/Intermediary'
     StatusResponse:
       type: object
       properties:

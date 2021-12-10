@@ -109,6 +109,7 @@ Class | Method | HTTP request | Description
  - [ErrorResponse](doc//ErrorResponse.md)
  - [HomeResponse](doc//HomeResponse.md)
  - [InfoResponse](doc//InfoResponse.md)
+ - [Intermediary](doc//Intermediary.md)
  - [LoginRequest](doc//LoginRequest.md)
  - [LoginResponse](doc//LoginResponse.md)
  - [NotificationRequest](doc//NotificationRequest.md)

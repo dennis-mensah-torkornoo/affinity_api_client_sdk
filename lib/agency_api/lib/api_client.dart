@@ -211,6 +211,8 @@ class ApiClient {
           return HomeResponse.fromJson(value);
         case 'InfoResponse':
           return InfoResponse.fromJson(value);
+        case 'Intermediary':
+          return Intermediary.fromJson(value);
         case 'LoginRequest':
           return LoginRequest.fromJson(value);
         case 'LoginResponse':

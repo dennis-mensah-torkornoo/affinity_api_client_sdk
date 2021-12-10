@@ -18,13 +18,10 @@ class TransactionRequest {
     this.referenceNumber,
     @required this.currency,
     @required this.amount,
-    this.transactionCategoryId,
-    this.beneficiaryId,
-    this.destinationTransactionId,
     this.fee,
-    this.status,
     this.note,
     this.idempotencyKey,
+    this.intermediary,
   });
 
   String accountId;
@@ -37,19 +34,13 @@ class TransactionRequest {
 
   num amount;
 
-  String transactionCategoryId;
-
-  String beneficiaryId;
-
-  String destinationTransactionId;
-
   num fee;
-
-  String status;
 
   String note;
 
   String idempotencyKey;
+
+  Intermediary intermediary;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TransactionRequest &&
@@ -58,13 +49,10 @@ class TransactionRequest {
      other.referenceNumber == referenceNumber &&
      other.currency == currency &&
      other.amount == amount &&
-     other.transactionCategoryId == transactionCategoryId &&
-     other.beneficiaryId == beneficiaryId &&
-     other.destinationTransactionId == destinationTransactionId &&
      other.fee == fee &&
-     other.status == status &&
      other.note == note &&
-     other.idempotencyKey == idempotencyKey;
+     other.idempotencyKey == idempotencyKey &&
+     other.intermediary == intermediary;
 
   @override
   int get hashCode =>
@@ -74,16 +62,13 @@ class TransactionRequest {
     (referenceNumber == null ? 0 : referenceNumber.hashCode) +
     (currency == null ? 0 : currency.hashCode) +
     (amount == null ? 0 : amount.hashCode) +
-    (transactionCategoryId == null ? 0 : transactionCategoryId.hashCode) +
-    (beneficiaryId == null ? 0 : beneficiaryId.hashCode) +
-    (destinationTransactionId == null ? 0 : destinationTransactionId.hashCode) +
     (fee == null ? 0 : fee.hashCode) +
-    (status == null ? 0 : status.hashCode) +
     (note == null ? 0 : note.hashCode) +
-    (idempotencyKey == null ? 0 : idempotencyKey.hashCode);
+    (idempotencyKey == null ? 0 : idempotencyKey.hashCode) +
+    (intermediary == null ? 0 : intermediary.hashCode);
 
   @override
-  String toString() => 'TransactionRequest[accountId=$accountId, customerPhoneNumber=$customerPhoneNumber, referenceNumber=$referenceNumber, currency=$currency, amount=$amount, transactionCategoryId=$transactionCategoryId, beneficiaryId=$beneficiaryId, destinationTransactionId=$destinationTransactionId, fee=$fee, status=$status, note=$note, idempotencyKey=$idempotencyKey]';
+  String toString() => 'TransactionRequest[accountId=$accountId, customerPhoneNumber=$customerPhoneNumber, referenceNumber=$referenceNumber, currency=$currency, amount=$amount, fee=$fee, note=$note, idempotencyKey=$idempotencyKey, intermediary=$intermediary]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -94,26 +79,17 @@ class TransactionRequest {
     }
       json[r'currency'] = currency;
       json[r'amount'] = amount;
-    if (transactionCategoryId != null) {
-      json[r'transactionCategoryId'] = transactionCategoryId;
-    }
-    if (beneficiaryId != null) {
-      json[r'beneficiaryId'] = beneficiaryId;
-    }
-    if (destinationTransactionId != null) {
-      json[r'destinationTransactionId'] = destinationTransactionId;
-    }
     if (fee != null) {
       json[r'fee'] = fee;
-    }
-    if (status != null) {
-      json[r'status'] = status;
     }
     if (note != null) {
       json[r'note'] = note;
     }
     if (idempotencyKey != null) {
       json[r'idempotencyKey'] = idempotencyKey;
+    }
+    if (intermediary != null) {
+      json[r'intermediary'] = intermediary;
     }
     return json;
   }
@@ -132,15 +108,12 @@ class TransactionRequest {
         amount: json[r'amount'] == null
           ? null
           : num.parse(json[r'amount'].toString()),
-        transactionCategoryId: mapValueOfType<String>(json, r'transactionCategoryId'),
-        beneficiaryId: mapValueOfType<String>(json, r'beneficiaryId'),
-        destinationTransactionId: mapValueOfType<String>(json, r'destinationTransactionId'),
         fee: json[r'fee'] == null
           ? null
           : num.parse(json[r'fee'].toString()),
-        status: mapValueOfType<String>(json, r'status'),
         note: mapValueOfType<String>(json, r'note'),
         idempotencyKey: mapValueOfType<String>(json, r'idempotencyKey'),
+        intermediary: Intermediary.fromJson(json[r'intermediary']),
       );
     }
     return null;

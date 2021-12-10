@@ -13,13 +13,10 @@ Name | Type | Description | Notes
 **referenceNumber** | **String** |  | [optional] 
 **currency** | **String** |  | 
 **amount** | **num** |  | 
-**transactionCategoryId** | **String** |  | [optional] 
-**beneficiaryId** | **String** |  | [optional] 
-**destinationTransactionId** | **String** |  | [optional] 
 **fee** | **num** |  | [optional] 
-**status** | **String** |  | [optional] 
 **note** | **String** |  | [optional] 
 **idempotencyKey** | **String** |  | [optional] 
+**intermediary** | [**Intermediary**](Intermediary.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
