@@ -41,28 +41,8 @@ void main() {
       // TODO
     });
 
-    // String transactionCategoryId
-    test('to test the property `transactionCategoryId`', () async {
-      // TODO
-    });
-
-    // String beneficiaryId
-    test('to test the property `beneficiaryId`', () async {
-      // TODO
-    });
-
-    // String destinationTransactionId
-    test('to test the property `destinationTransactionId`', () async {
-      // TODO
-    });
-
     // num fee
     test('to test the property `fee`', () async {
-      // TODO
-    });
-
-    // String status
-    test('to test the property `status`', () async {
       // TODO
     });
 
@@ -73,6 +53,11 @@ void main() {
 
     // String idempotencyKey
     test('to test the property `idempotencyKey`', () async {
+      // TODO
+    });
+
+    // Intermediary intermediary
+    test('to test the property `intermediary`', () async {
       // TODO
     });
 

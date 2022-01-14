@@ -22,7 +22,7 @@ class NotificationResponse {
     this.read,
   });
 
-  String id;
+  int id;
 
   String title;
 
@@ -93,7 +93,7 @@ class NotificationResponse {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return NotificationResponse(
-        id: mapValueOfType<String>(json, r'id'),
+        id: mapValueOfType<int>(json, r'id'),
         title: mapValueOfType<String>(json, r'title'),
         description: mapValueOfType<String>(json, r'description'),
         channel: mapValueOfType<String>(json, r'channel'),
