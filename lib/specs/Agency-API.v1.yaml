@@ -1545,7 +1545,8 @@ components:
           - PASSPORT
           - DRIVERS
           - HEALTH_INSURANCE
-          - VOTERS
+          - VOTERS_OLD
+          - VOTERS_NEW
           - OTHER
           - SELFIE
           - PROOF_OF_RESIDENCE

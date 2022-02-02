@@ -163,7 +163,8 @@ class CustomerApplicationDocumentDocumentTypeEnum {
   static const PASSPORT = CustomerApplicationDocumentDocumentTypeEnum._(r'PASSPORT');
   static const DRIVERS = CustomerApplicationDocumentDocumentTypeEnum._(r'DRIVERS');
   static const HEALTH_INSURANCE = CustomerApplicationDocumentDocumentTypeEnum._(r'HEALTH_INSURANCE');
-  static const VOTERS = CustomerApplicationDocumentDocumentTypeEnum._(r'VOTERS');
+  static const VOTERS_OLD = CustomerApplicationDocumentDocumentTypeEnum._(r'VOTERS_OLD');
+  static const VOTERS_NEW = CustomerApplicationDocumentDocumentTypeEnum._(r'VOTERS_NEW');
   static const OTHER = CustomerApplicationDocumentDocumentTypeEnum._(r'OTHER');
   static const SELFIE = CustomerApplicationDocumentDocumentTypeEnum._(r'SELFIE');
   static const PROOF_OF_RESIDENCE = CustomerApplicationDocumentDocumentTypeEnum._(r'PROOF_OF_RESIDENCE');
@@ -173,7 +174,8 @@ class CustomerApplicationDocumentDocumentTypeEnum {
     PASSPORT,
     DRIVERS,
     HEALTH_INSURANCE,
-    VOTERS,
+    VOTERS_OLD,
+    VOTERS_NEW,
     OTHER,
     SELFIE,
     PROOF_OF_RESIDENCE,
@@ -211,7 +213,8 @@ class CustomerApplicationDocumentDocumentTypeEnumTypeTransformer {
         case r'PASSPORT': return CustomerApplicationDocumentDocumentTypeEnum.PASSPORT;
         case r'DRIVERS': return CustomerApplicationDocumentDocumentTypeEnum.DRIVERS;
         case r'HEALTH_INSURANCE': return CustomerApplicationDocumentDocumentTypeEnum.HEALTH_INSURANCE;
-        case r'VOTERS': return CustomerApplicationDocumentDocumentTypeEnum.VOTERS;
+        case r'VOTERS_OLD': return CustomerApplicationDocumentDocumentTypeEnum.VOTERS_OLD;
+        case r'VOTERS_NEW': return CustomerApplicationDocumentDocumentTypeEnum.VOTERS_NEW;
         case r'OTHER': return CustomerApplicationDocumentDocumentTypeEnum.OTHER;
         case r'SELFIE': return CustomerApplicationDocumentDocumentTypeEnum.SELFIE;
         case r'PROOF_OF_RESIDENCE': return CustomerApplicationDocumentDocumentTypeEnum.PROOF_OF_RESIDENCE;
