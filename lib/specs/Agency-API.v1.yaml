@@ -1039,7 +1039,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerResponse'
+                $ref: '#/components/schemas/CustomerDetailsResponse'
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1075,7 +1075,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerResponse'
+                $ref: '#/components/schemas/CustomerDetailsResponse'
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1661,6 +1661,45 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TransactionDetailResponse'
+    CustomerDetailsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        accountNumber:
+          type: string
+        customerId:
+          type: string
+        phoneNumber:
+          type: string
+        profileUrl:
+          type: string
+          format: url
+        assigned:
+          type: boolean
+        residentialAddress:
+          type: string
+        gps:
+          type: string
+        accountCreated:
+          type: string
+        birthDate:
+          type: string
+          format: date
+        depositAmount:
+          type: integer
+          format: int32
+        depositTimes:
+          type: array
+          items:
+            type: string
+            format: date-time
+        others:
+          type: object
+          additionalProperties:
+            type: object
     ApplicationStatusResponse:
       type: object
       properties:

@@ -38,6 +38,7 @@ part 'model/account_response.dart';
 part 'model/application_status_response.dart';
 part 'model/customer_application.dart';
 part 'model/customer_application_document.dart';
+part 'model/customer_details_response.dart';
 part 'model/customer_response.dart';
 part 'model/device_request.dart';
 part 'model/device_response.dart';

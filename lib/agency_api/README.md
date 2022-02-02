@@ -103,6 +103,7 @@ Class | Method | HTTP request | Description
  - [ApplicationStatusResponse](doc//ApplicationStatusResponse.md)
  - [CustomerApplication](doc//CustomerApplication.md)
  - [CustomerApplicationDocument](doc//CustomerApplicationDocument.md)
+ - [CustomerDetailsResponse](doc//CustomerDetailsResponse.md)
  - [CustomerResponse](doc//CustomerResponse.md)
  - [DeviceRequest](doc//DeviceRequest.md)
  - [DeviceResponse](doc//DeviceResponse.md)

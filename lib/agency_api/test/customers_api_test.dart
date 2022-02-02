@@ -47,14 +47,14 @@ void main() {
 
     // Customer Details endpoint
     //
-    //Future<CustomerResponse> getCustomerDetails(String customerId) async
+    //Future<CustomerDetailsResponse> getCustomerDetails(String customerId) async
     test('test getCustomerDetails', () async {
       // TODO
     });
 
     // Customer Details Search endpoint
     //
-    //Future<CustomerResponse> getCustomerDetailsSearch(String p) async
+    //Future<CustomerDetailsResponse> getCustomerDetailsSearch(String p) async
     test('test getCustomerDetailsSearch', () async {
       // TODO
     });

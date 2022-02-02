@@ -192,7 +192,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCustomerDetails**
-> CustomerResponse getCustomerDetails(customerId)
+> CustomerDetailsResponse getCustomerDetails(customerId)
 
 
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CustomerResponse**](CustomerResponse.md)
+[**CustomerDetailsResponse**](CustomerDetailsResponse.md)
 
 ### Authorization
 
@@ -235,7 +235,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCustomerDetailsSearch**
-> CustomerResponse getCustomerDetailsSearch(p)
+> CustomerDetailsResponse getCustomerDetailsSearch(p)
 
 
 
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CustomerResponse**](CustomerResponse.md)
+[**CustomerDetailsResponse**](CustomerDetailsResponse.md)
 
 ### Authorization
 

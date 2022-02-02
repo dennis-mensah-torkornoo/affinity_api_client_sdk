@@ -296,7 +296,7 @@ class CustomersApi {
   /// Parameters:
   ///
   /// * [String] customerId (required):
-  Future<CustomerResponse> getCustomerDetails(String customerId,) async {
+  Future<CustomerDetailsResponse> getCustomerDetails(String customerId,) async {
     final response = await getCustomerDetailsWithHttpInfo(customerId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -305,10 +305,10 @@ class CustomersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CustomerResponse',) as CustomerResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CustomerDetailsResponse',) as CustomerDetailsResponse;
     
     }
-    return Future<CustomerResponse>.value();
+    return Future<CustomerDetailsResponse>.value();
   }
 
   /// Customer Details Search endpoint
@@ -357,7 +357,7 @@ class CustomersApi {
   /// Parameters:
   ///
   /// * [String] p (required):
-  Future<CustomerResponse> getCustomerDetailsSearch(String p,) async {
+  Future<CustomerDetailsResponse> getCustomerDetailsSearch(String p,) async {
     final response = await getCustomerDetailsSearchWithHttpInfo(p,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -366,10 +366,10 @@ class CustomersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CustomerResponse',) as CustomerResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CustomerDetailsResponse',) as CustomerDetailsResponse;
     
     }
-    return Future<CustomerResponse>.value();
+    return Future<CustomerDetailsResponse>.value();
   }
 
   /// Customers endpoint

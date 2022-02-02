@@ -199,6 +199,8 @@ class ApiClient {
           return CustomerApplication.fromJson(value);
         case 'CustomerApplicationDocument':
           return CustomerApplicationDocument.fromJson(value);
+        case 'CustomerDetailsResponse':
+          return CustomerDetailsResponse.fromJson(value);
         case 'CustomerResponse':
           return CustomerResponse.fromJson(value);
         case 'DeviceRequest':
