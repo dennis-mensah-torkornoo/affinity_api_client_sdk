@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **depositAmount** | **int** |  | [optional] 
 **depositTimes** | [**List<DateTime>**](DateTime.md) |  | [optional] [default to const []]
 **others** | [**Map<String, Object>**](Object.md) |  | [optional] [default to const {}]
+**accounts** | [**List<AccountResponse>**](AccountResponse.md) |  | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

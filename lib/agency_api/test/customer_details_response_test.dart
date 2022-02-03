@@ -86,6 +86,11 @@ void main() {
       // TODO
     });
 
+    // List<AccountResponse> accounts (default value: const [])
+    test('to test the property `accounts`', () async {
+      // TODO
+    });
+
 
   });
 

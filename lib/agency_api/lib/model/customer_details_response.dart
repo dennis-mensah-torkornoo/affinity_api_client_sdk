@@ -27,6 +27,7 @@ class CustomerDetailsResponse {
     this.depositAmount,
     this.depositTimes = const [],
     this.others = const {},
+    this.accounts = const [],
   });
 
   String id;
@@ -57,6 +58,8 @@ class CustomerDetailsResponse {
 
   Map<String, Object> others;
 
+  List<AccountResponse> accounts;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CustomerDetailsResponse &&
      other.id == id &&
@@ -72,7 +75,8 @@ class CustomerDetailsResponse {
      other.birthDate == birthDate &&
      other.depositAmount == depositAmount &&
      other.depositTimes == depositTimes &&
-     other.others == others;
+     other.others == others &&
+     other.accounts == accounts;
 
   @override
   int get hashCode =>
@@ -90,10 +94,11 @@ class CustomerDetailsResponse {
     (birthDate == null ? 0 : birthDate.hashCode) +
     (depositAmount == null ? 0 : depositAmount.hashCode) +
     (depositTimes == null ? 0 : depositTimes.hashCode) +
-    (others == null ? 0 : others.hashCode);
+    (others == null ? 0 : others.hashCode) +
+    (accounts == null ? 0 : accounts.hashCode);
 
   @override
-  String toString() => 'CustomerDetailsResponse[id=$id, name=$name, accountNumber=$accountNumber, customerId=$customerId, phoneNumber=$phoneNumber, profileUrl=$profileUrl, assigned=$assigned, residentialAddress=$residentialAddress, gps=$gps, accountCreated=$accountCreated, birthDate=$birthDate, depositAmount=$depositAmount, depositTimes=$depositTimes, others=$others]';
+  String toString() => 'CustomerDetailsResponse[id=$id, name=$name, accountNumber=$accountNumber, customerId=$customerId, phoneNumber=$phoneNumber, profileUrl=$profileUrl, assigned=$assigned, residentialAddress=$residentialAddress, gps=$gps, accountCreated=$accountCreated, birthDate=$birthDate, depositAmount=$depositAmount, depositTimes=$depositTimes, others=$others, accounts=$accounts]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -139,6 +144,9 @@ class CustomerDetailsResponse {
     if (others != null) {
       json[r'others'] = others;
     }
+    if (accounts != null) {
+      json[r'accounts'] = accounts;
+    }
     return json;
   }
 
@@ -161,8 +169,9 @@ class CustomerDetailsResponse {
         accountCreated: mapValueOfType<String>(json, r'accountCreated'),
         birthDate: mapDateTime(json, r'birthDate', ''),
         depositAmount: mapValueOfType<int>(json, r'depositAmount'),
-        depositTimes: DateTime.listFromJson(json[r'depositTimes']),
+        // depositTimes: DateTime.listFromJson(json[r'depositTimes']),
         others: mapValueOfType<Map<String, Object>>(json, r'others'),
+        accounts: AccountResponse.listFromJson(json[r'accounts']),
       );
     }
     return null;
