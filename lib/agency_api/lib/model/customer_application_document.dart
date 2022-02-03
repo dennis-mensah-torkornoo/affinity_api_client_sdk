@@ -15,8 +15,8 @@ class CustomerApplicationDocument {
   CustomerApplicationDocument({
     this.id,
     this.customerId,
-    this.documentKey,
-    this.documentUrl,
+    this.documentKeys = const [],
+    this.documentUrls = const [],
     this.documentType,
     this.documentNumber,
     this.extraFieldsJSON,
@@ -27,9 +27,9 @@ class CustomerApplicationDocument {
 
   String customerId;
 
-  String documentKey;
+  List<String> documentKeys;
 
-  String documentUrl;
+  List<String> documentUrls;
 
   CustomerApplicationDocumentDocumentTypeEnum documentType;
 
@@ -43,8 +43,8 @@ class CustomerApplicationDocument {
   bool operator ==(Object other) => identical(this, other) || other is CustomerApplicationDocument &&
      other.id == id &&
      other.customerId == customerId &&
-     other.documentKey == documentKey &&
-     other.documentUrl == documentUrl &&
+     other.documentKeys == documentKeys &&
+     other.documentUrls == documentUrls &&
      other.documentType == documentType &&
      other.documentNumber == documentNumber &&
      other.extraFieldsJSON == extraFieldsJSON &&
@@ -55,15 +55,15 @@ class CustomerApplicationDocument {
   // ignore: unnecessary_parenthesis
     (id == null ? 0 : id.hashCode) +
     (customerId == null ? 0 : customerId.hashCode) +
-    (documentKey == null ? 0 : documentKey.hashCode) +
-    (documentUrl == null ? 0 : documentUrl.hashCode) +
+    (documentKeys == null ? 0 : documentKeys.hashCode) +
+    (documentUrls == null ? 0 : documentUrls.hashCode) +
     (documentType == null ? 0 : documentType.hashCode) +
     (documentNumber == null ? 0 : documentNumber.hashCode) +
     (extraFieldsJSON == null ? 0 : extraFieldsJSON.hashCode) +
     (validated == null ? 0 : validated.hashCode);
 
   @override
-  String toString() => 'CustomerApplicationDocument[id=$id, customerId=$customerId, documentKey=$documentKey, documentUrl=$documentUrl, documentType=$documentType, documentNumber=$documentNumber, extraFieldsJSON=$extraFieldsJSON, validated=$validated]';
+  String toString() => 'CustomerApplicationDocument[id=$id, customerId=$customerId, documentKeys=$documentKeys, documentUrls=$documentUrls, documentType=$documentType, documentNumber=$documentNumber, extraFieldsJSON=$extraFieldsJSON, validated=$validated]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -73,11 +73,11 @@ class CustomerApplicationDocument {
     if (customerId != null) {
       json[r'customerId'] = customerId;
     }
-    if (documentKey != null) {
-      json[r'documentKey'] = documentKey;
+    if (documentKeys != null) {
+      json[r'documentKeys'] = documentKeys;
     }
-    if (documentUrl != null) {
-      json[r'documentUrl'] = documentUrl;
+    if (documentUrls != null) {
+      json[r'documentUrls'] = documentUrls;
     }
     if (documentType != null) {
       json[r'documentType'] = documentType;
@@ -103,8 +103,12 @@ class CustomerApplicationDocument {
       return CustomerApplicationDocument(
         id: mapValueOfType<String>(json, r'id'),
         customerId: mapValueOfType<String>(json, r'customerId'),
-        documentKey: mapValueOfType<String>(json, r'documentKey'),
-        documentUrl: mapValueOfType<String>(json, r'documentUrl'),
+        documentKeys: json[r'documentKeys'] is List
+          ? (json[r'documentKeys'] as List).cast<String>()
+          : null,
+        documentUrls: json[r'documentUrls'] is List
+          ? (json[r'documentUrls'] as List).cast<String>()
+          : null,
         documentType: CustomerApplicationDocumentDocumentTypeEnum.fromJson(json[r'documentType']),
         documentNumber: mapValueOfType<String>(json, r'documentNumber'),
         extraFieldsJSON: mapValueOfType<String>(json, r'extraFieldsJSON'),

@@ -26,13 +26,13 @@ void main() {
       // TODO
     });
 
-    // String documentKey
-    test('to test the property `documentKey`', () async {
+    // List<String> documentKeys (default value: const [])
+    test('to test the property `documentKeys`', () async {
       // TODO
     });
 
-    // String documentUrl
-    test('to test the property `documentUrl`', () async {
+    // List<String> documentUrls (default value: const [])
+    test('to test the property `documentUrls`', () async {
       // TODO
     });
 

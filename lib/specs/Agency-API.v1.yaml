@@ -1534,11 +1534,15 @@ components:
           type: string
         customerId:
           type: string
-        documentKey:
-          type: string
-        documentUrl:
-          type: string
-          format: url
+        documentKeys:
+          type: array
+          items:
+            type: string
+        documentUrls:
+          type: array
+          items:
+            type: string
+            format: url
         documentType:
           type: string
           enum:

@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
 **customerId** | **String** |  | [optional] 
-**documentKey** | **String** |  | [optional] 
-**documentUrl** | **String** |  | [optional] 
+**documentKeys** | **List<String>** |  | [optional] [default to const []]
+**documentUrls** | **List<String>** |  | [optional] [default to const []]
 **documentType** | **String** |  | [optional] 
 **documentNumber** | **String** |  | [optional] 
 **extraFieldsJSON** | **String** |  | [optional] 
