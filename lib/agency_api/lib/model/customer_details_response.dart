@@ -169,7 +169,7 @@ class CustomerDetailsResponse {
         accountCreated: mapValueOfType<String>(json, r'accountCreated'),
         birthDate: mapDateTime(json, r'birthDate', ''),
         depositAmount: mapValueOfType<int>(json, r'depositAmount'),
-        // depositTimes: DateTime.listFromJson(json[r'depositTimes']),
+        depositTimes: List.from(json[r'depositTimes']).map((e) => DateTime.parse(e)),  //DateTime.listFromJson(json[r'depositTimes']),
         others: mapValueOfType<Map<String, Object>>(json, r'others'),
         accounts: AccountResponse.listFromJson(json[r'accounts']),
       );
