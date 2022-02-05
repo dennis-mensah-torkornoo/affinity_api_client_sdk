@@ -11,11 +11,11 @@
 import 'package:agency_api/api.dart';
 import 'package:test/test.dart';
 
-// tests for Intermediary
+// tests for IntermediaryModel
 void main() {
-  final instance = Intermediary();
+  final instance = IntermediaryModel();
 
-  group('test Intermediary', () {
+  group('test IntermediaryModel', () {
     // String idNumber
     test('to test the property `idNumber`', () async {
       // TODO

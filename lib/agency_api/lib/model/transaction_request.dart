@@ -40,7 +40,7 @@ class TransactionRequest {
 
   String idempotencyKey;
 
-  Intermediary intermediary;
+  IntermediaryModel intermediary;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TransactionRequest &&
@@ -113,7 +113,7 @@ class TransactionRequest {
           : num.parse(json[r'fee'].toString()),
         note: mapValueOfType<String>(json, r'note'),
         idempotencyKey: mapValueOfType<String>(json, r'idempotencyKey'),
-        intermediary: Intermediary.fromJson(json[r'intermediary']),
+        intermediary: IntermediaryModel.fromJson(json[r'intermediary']),
       );
     }
     return null;

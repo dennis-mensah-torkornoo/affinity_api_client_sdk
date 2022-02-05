@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**getTransactions**](AgencyApi.md#gettransactions) | **GET** /transactions | 
 [**getWithdrawals**](AgencyApi.md#getwithdrawals) | **GET** /withdrawals | 
 [**patchSettings**](AgencyApi.md#patchsettings) | **PATCH** /settings | 
+[**postAccounts**](AgencyApi.md#postaccounts) | **POST** /accounts | 
 [**postDeposits**](AgencyApi.md#postdeposits) | **POST** /deposits | 
 [**postDepositsConfirm**](AgencyApi.md#postdepositsconfirm) | **POST** /deposits/confirm | 
 [**postNotification**](AgencyApi.md#postnotification) | **POST** /notifications | 
@@ -434,6 +435,51 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **postAccounts**
+> List<AccountResponse> postAccounts(id, type)
+
+
+
+Create account for customer endpoint
+
+### Example
+```dart
+import 'package:agency_api/api.dart';
+
+final api_instance = AgencyApi();
+final id = id_example; // String | 
+final type = type_example; // String | 
+
+try {
+    final result = api_instance.postAccounts(id, type);
+    print(result);
+} catch (e) {
+    print('Exception when calling AgencyApi->postAccounts: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+ **type** | **String**|  | 
+
+### Return type
+
+[**List<AccountResponse>**](AccountResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **postDeposits**
 > StatusResponse postDeposits(transactionRequest)
 
@@ -650,7 +696,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postWithdrawalsConfirm**
-> TransactionResponse postWithdrawalsConfirm(otp, ref)
+> TransactionDetailResponse postWithdrawalsConfirm(otp, ref)
 
 
 
@@ -681,7 +727,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransactionResponse**](TransactionResponse.md)
+[**TransactionDetailResponse**](TransactionDetailResponse.md)
 
 ### Authorization
 

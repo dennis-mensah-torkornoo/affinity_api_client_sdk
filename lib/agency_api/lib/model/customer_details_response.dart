@@ -48,7 +48,7 @@ class CustomerDetailsResponse {
 
   String gps;
 
-  String accountCreated;
+  DateTime accountCreated;
 
   DateTime birthDate;
 
@@ -130,7 +130,7 @@ class CustomerDetailsResponse {
       json[r'gps'] = gps;
     }
     if (accountCreated != null) {
-      json[r'accountCreated'] = accountCreated;
+      json[r'accountCreated'] = _dateFormatter.format(accountCreated.toUtc());
     }
     if (birthDate != null) {
       json[r'birthDate'] = _dateFormatter.format(birthDate.toUtc());
@@ -166,10 +166,10 @@ class CustomerDetailsResponse {
         assigned: mapValueOfType<bool>(json, r'assigned'),
         residentialAddress: mapValueOfType<String>(json, r'residentialAddress'),
         gps: mapValueOfType<String>(json, r'gps'),
-        accountCreated: mapValueOfType<String>(json, r'accountCreated'),
+        accountCreated: mapDateTime(json, r'accountCreated', ''),
         birthDate: mapDateTime(json, r'birthDate', ''),
         depositAmount: mapValueOfType<int>(json, r'depositAmount'),
-        depositTimes: (json[r'depositTimes'] as List).map((e) => DateTime.parse(e)), //DateTime.listFromJson(json[r'depositTimes']),
+        depositTimes: List.from(json[r'depositTimes']).map((e) => DateTime.parse(e)).toList(), //DateTime.listFromJson(json[r'depositTimes']),
         others: mapValueOfType<Map<String, Object>>(json, r'others'),
         accounts: AccountResponse.listFromJson(json[r'accounts']),
       );

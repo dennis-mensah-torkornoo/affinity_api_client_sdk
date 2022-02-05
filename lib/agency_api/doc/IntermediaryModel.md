@@ -1,4 +1,4 @@
-# agency_api.model.Intermediary
+# agency_api.model.IntermediaryModel
 
 ## Load the model package
 ```dart

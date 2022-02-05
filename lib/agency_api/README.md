@@ -68,6 +68,7 @@ Class | Method | HTTP request | Description
 *AgencyApi* | [**getTransactions**](doc//AgencyApi.md#gettransactions) | **GET** /transactions | 
 *AgencyApi* | [**getWithdrawals**](doc//AgencyApi.md#getwithdrawals) | **GET** /withdrawals | 
 *AgencyApi* | [**patchSettings**](doc//AgencyApi.md#patchsettings) | **PATCH** /settings | 
+*AgencyApi* | [**postAccounts**](doc//AgencyApi.md#postaccounts) | **POST** /accounts | 
 *AgencyApi* | [**postDeposits**](doc//AgencyApi.md#postdeposits) | **POST** /deposits | 
 *AgencyApi* | [**postDepositsConfirm**](doc//AgencyApi.md#postdepositsconfirm) | **POST** /deposits/confirm | 
 *AgencyApi* | [**postNotification**](doc//AgencyApi.md#postnotification) | **POST** /notifications | 
@@ -110,7 +111,7 @@ Class | Method | HTTP request | Description
  - [ErrorResponse](doc//ErrorResponse.md)
  - [HomeResponse](doc//HomeResponse.md)
  - [InfoResponse](doc//InfoResponse.md)
- - [Intermediary](doc//Intermediary.md)
+ - [IntermediaryModel](doc//IntermediaryModel.md)
  - [LoginRequest](doc//LoginRequest.md)
  - [LoginResponse](doc//LoginResponse.md)
  - [NotificationRequest](doc//NotificationRequest.md)

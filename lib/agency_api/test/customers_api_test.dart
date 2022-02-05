@@ -68,7 +68,7 @@ void main() {
 
     // Deposits endpoint
     //
-    //Future<StatusResponse> getDeposits() async
+    //Future<List<TransactionDetailResponse>> getDeposits() async
     test('test getDeposits', () async {
       // TODO
     });

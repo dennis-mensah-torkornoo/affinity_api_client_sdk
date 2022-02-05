@@ -61,7 +61,7 @@ void main() {
       // TODO
     });
 
-    // String accountCreated
+    // DateTime accountCreated
     test('to test the property `accountCreated`', () async {
       // TODO
     });

@@ -20,6 +20,7 @@ class TransactionDetailResponse {
     this.transactionType,
     this.assigned,
     this.amount,
+    this.created,
   });
 
   String id;
@@ -36,6 +37,8 @@ class TransactionDetailResponse {
 
   int amount;
 
+  DateTime created;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is TransactionDetailResponse &&
      other.id == id &&
@@ -44,7 +47,8 @@ class TransactionDetailResponse {
      other.profileUrl == profileUrl &&
      other.transactionType == transactionType &&
      other.assigned == assigned &&
-     other.amount == amount;
+     other.amount == amount &&
+     other.created == created;
 
   @override
   int get hashCode =>
@@ -55,10 +59,11 @@ class TransactionDetailResponse {
     (profileUrl == null ? 0 : profileUrl.hashCode) +
     (transactionType == null ? 0 : transactionType.hashCode) +
     (assigned == null ? 0 : assigned.hashCode) +
-    (amount == null ? 0 : amount.hashCode);
+    (amount == null ? 0 : amount.hashCode) +
+    (created == null ? 0 : created.hashCode);
 
   @override
-  String toString() => 'TransactionDetailResponse[id=$id, name=$name, accountNumber=$accountNumber, profileUrl=$profileUrl, transactionType=$transactionType, assigned=$assigned, amount=$amount]';
+  String toString() => 'TransactionDetailResponse[id=$id, name=$name, accountNumber=$accountNumber, profileUrl=$profileUrl, transactionType=$transactionType, assigned=$assigned, amount=$amount, created=$created]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -83,6 +88,9 @@ class TransactionDetailResponse {
     if (amount != null) {
       json[r'amount'] = amount;
     }
+    if (created != null) {
+      json[r'created'] = created.toUtc().toIso8601String();
+    }
     return json;
   }
 
@@ -100,6 +108,7 @@ class TransactionDetailResponse {
         transactionType: TransactionDetailResponseTransactionTypeEnum.fromJson(json[r'transactionType']),
         assigned: mapValueOfType<bool>(json, r'assigned'),
         amount: mapValueOfType<int>(json, r'amount'),
+        created: mapDateTime(json, r'created', ''),
       );
     }
     return null;

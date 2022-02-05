@@ -87,6 +87,13 @@ void main() {
       // TODO
     });
 
+    // Create account for customer endpoint
+    //
+    //Future<List<AccountResponse>> postAccounts(String id, String type) async
+    test('test postAccounts', () async {
+      // TODO
+    });
+
     // Create new deposit endpoint
     //
     //Future<StatusResponse> postDeposits(TransactionRequest transactionRequest) async
@@ -124,7 +131,7 @@ void main() {
 
     // Confirm Withdrawal endpoint
     //
-    //Future<TransactionResponse> postWithdrawalsConfirm(String otp, String ref) async
+    //Future<TransactionDetailResponse> postWithdrawalsConfirm(String otp, String ref) async
     test('test postWithdrawalsConfirm', () async {
       // TODO
     });

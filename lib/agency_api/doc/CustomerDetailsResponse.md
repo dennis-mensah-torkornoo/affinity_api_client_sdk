@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **assigned** | **bool** |  | [optional] 
 **residentialAddress** | **String** |  | [optional] 
 **gps** | **String** |  | [optional] 
-**accountCreated** | **String** |  | [optional] 
+**accountCreated** | [**DateTime**](DateTime.md) |  | [optional] 
 **birthDate** | [**DateTime**](DateTime.md) |  | [optional] 
 **depositAmount** | **int** |  | [optional] 
 **depositTimes** | [**List<DateTime>**](DateTime.md) |  | [optional] [default to const []]

@@ -544,6 +544,78 @@ class AgencyApi {
     return Future<InfoResponse>.value();
   }
 
+  /// Create account for customer endpoint
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///
+  /// * [String] type (required):
+  Future<Response> postAccountsWithHttpInfo(String id, String type,) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (type == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: type');
+    }
+
+    // ignore: prefer_const_declarations
+    final path = r'/accounts';
+
+    // ignore: prefer_final_locals
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'id', id));
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'type', type));
+
+    const authNames = <String>[];
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Create account for customer endpoint
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///
+  /// * [String] type (required):
+  Future<List<AccountResponse>> postAccounts(String id, String type,) async {
+    final response = await postAccountsWithHttpInfo(id, type,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<AccountResponse>') as List)
+        .cast<AccountResponse>()
+        .toList(growable: false);
+
+    }
+    return Future<List<AccountResponse>>.value();
+  }
+
   /// Create new deposit endpoint
   ///
   /// Note: This method returns the HTTP [Response].
@@ -895,7 +967,7 @@ class AgencyApi {
   /// * [String] otp (required):
   ///
   /// * [String] ref (required):
-  Future<TransactionResponse> postWithdrawalsConfirm(String otp, String ref,) async {
+  Future<TransactionDetailResponse> postWithdrawalsConfirm(String otp, String ref,) async {
     final response = await postWithdrawalsConfirmWithHttpInfo(otp, ref,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -904,10 +976,10 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionResponse',) as TransactionResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionDetailResponse',) as TransactionDetailResponse;
     
     }
-    return Future<TransactionResponse>.value();
+    return Future<TransactionDetailResponse>.value();
   }
 
   /// Get withdrawal otp generation endpoint

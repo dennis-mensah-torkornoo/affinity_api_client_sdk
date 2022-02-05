@@ -452,7 +452,7 @@ class CustomersApi {
   }
 
   /// Deposits endpoint
-  Future<StatusResponse> getDeposits() async {
+  Future<List<TransactionDetailResponse>> getDeposits() async {
     final response = await getDepositsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -461,10 +461,13 @@ class CustomersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StatusResponse',) as StatusResponse;
-    
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<TransactionDetailResponse>') as List)
+        .cast<TransactionDetailResponse>()
+        .toList(growable: false);
+
     }
-    return Future<StatusResponse>.value();
+    return Future<List<TransactionDetailResponse>>.value();
   }
 
   /// Save for later functionality,for customer applications.

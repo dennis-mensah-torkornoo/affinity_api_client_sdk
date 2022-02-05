@@ -148,7 +148,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransactionResponse'
+                $ref: '#/components/schemas/TransactionDetailResponse'
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -449,7 +449,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/StatusResponse"
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionDetailResponse'
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -765,7 +767,90 @@ paths:
           integration.request.path.p: method.request.path.p
           integration.request.path.resend: method.request.path.resend
         passthroughBehavior: "when_no_match"
-        
+  /accounts:
+    get:
+      tags:
+        - Customers
+      description: "Account activity log endpoint"
+      operationId: "getAccounts"
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AccountResponse"
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/accounts"
+        requestParameters:
+          integration.request.path.id: method.request.path.id
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+    post:
+      tags:
+      - Agency
+      description: Create account for customer endpoint
+      operationId: postAccounts
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - GROWTH
+          - MOBI
+          - FUTURE
+          - DAILY
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccountResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/accounts"
+        requestParameters:
+          integration.request.path.id: method.request.path.id
+          integration.request.path.type: method.request.path.type
+        responses:
+          default:
+            statusCode: "201"
+        passthroughBehavior: "when_no_match"
   /settings:
     get:
       tags:
@@ -1118,49 +1203,10 @@ paths:
           default:
             statusCode: "200"
         passthroughBehavior: "when_no_match"
-        
-  /accounts:
-    get:
-      tags:
-        - Customers
-      description: "Account activity log endpoint"
-      operationId: "getAccounts"
-      parameters:
-      - name: id
-        in: query
-        required: true
-        schema:
-          type: "string"
-      responses:
-        "400":
-          description: "Bad Request"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "200":
-          description: "OK"
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/AccountResponse"
-      x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/accounts"
-        requestParameters:
-          integration.request.path.id: method.request.path.id
-        responses:
-          default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
 
 components:
   schemas:
-    Intermediary:
+    IntermediaryModel:
       type: object
       properties:
         idNumber:
@@ -1179,6 +1225,7 @@ components:
           - tin
           - other
           - drivers
+          - voters_old
         phoneNumber:
           type: string
         fullName:
@@ -1208,7 +1255,24 @@ components:
         idempotencyKey:
           type: string
         intermediary:
-          $ref: '#/components/schemas/Intermediary'
+          $ref: '#/components/schemas/IntermediaryModel'
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+        title:
+          type: string
+        detail:
+          type: string
+        time:
+          type: string
+          format: date-time
+        invalidParams:
+          type: object
+          additionalProperties:
+            type: string
     StatusResponse:
       type: object
       properties:
@@ -1227,23 +1291,6 @@ components:
         additionalError:
           type: integer
           format: int32
-    ErrorResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          format: int32
-        title:
-          type: string
-        detail:
-          type: string
-        time:
-          type: string
-          format: date-time
-        invalidParams:
-          type: object
-          additionalProperties:
-            type: string
     TransactionDetailResponse:
       type: object
       properties:
@@ -1266,6 +1313,9 @@ components:
         amount:
           type: integer
           format: int64
+        created:
+          type: string
+          format: date-time
     TaskRequest:
       type: object
       properties:
@@ -1569,6 +1619,15 @@ components:
         nextAttemptMillis:
           type: integer
           format: int64
+    AccountResponse:
+      type: object
+      properties:
+        accountNumber:
+          type: string
+        encodedAccountNumber:
+          type: string
+        accountType:
+          type: string
     SettingModel:
       type: object
       properties:
@@ -1689,6 +1748,7 @@ components:
           type: string
         accountCreated:
           type: string
+          format: date
         birthDate:
           type: string
           format: date
@@ -1722,12 +1782,3 @@ components:
             type: string
         application:
           $ref: '#/components/schemas/CustomerApplication'
-    AccountResponse:
-      type: object
-      properties:
-        accountNumber:
-          type: string
-        encodedAccountNumber:
-          type: string
-        accountType:
-          type: string

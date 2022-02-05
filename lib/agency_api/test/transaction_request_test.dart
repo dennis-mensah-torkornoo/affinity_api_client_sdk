@@ -56,7 +56,7 @@ void main() {
       // TODO
     });
 
-    // Intermediary intermediary
+    // IntermediaryModel intermediary
     test('to test the property `intermediary`', () async {
       // TODO
     });

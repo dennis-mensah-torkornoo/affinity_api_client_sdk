@@ -18,7 +18,7 @@ doc/DeviceResponse.md
 doc/ErrorResponse.md
 doc/HomeResponse.md
 doc/InfoResponse.md
-doc/Intermediary.md
+doc/IntermediaryModel.md
 doc/LoginRequest.md
 doc/LoginResponse.md
 doc/NotificationRequest.md
@@ -61,7 +61,7 @@ lib/model/device_response.dart
 lib/model/error_response.dart
 lib/model/home_response.dart
 lib/model/info_response.dart
-lib/model/intermediary.dart
+lib/model/intermediary_model.dart
 lib/model/login_request.dart
 lib/model/login_response.dart
 lib/model/notification_request.dart
@@ -91,7 +91,7 @@ test/device_response_test.dart
 test/error_response_test.dart
 test/home_response_test.dart
 test/info_response_test.dart
-test/intermediary_test.dart
+test/intermediary_model_test.dart
 test/login_request_test.dart
 test/login_response_test.dart
 test/notification_request_test.dart

@@ -45,7 +45,7 @@ part 'model/device_response.dart';
 part 'model/error_response.dart';
 part 'model/home_response.dart';
 part 'model/info_response.dart';
-part 'model/intermediary.dart';
+part 'model/intermediary_model.dart';
 part 'model/login_request.dart';
 part 'model/login_response.dart';
 part 'model/notification_request.dart';
