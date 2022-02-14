@@ -21,6 +21,11 @@ void main() {
       // TODO
     });
 
+    // int agentId
+    test('to test the property `agentId`', () async {
+      // TODO
+    });
+
     // List<TransactionDetailResponse> transactions (default value: const [])
     test('to test the property `transactions`', () async {
       // TODO

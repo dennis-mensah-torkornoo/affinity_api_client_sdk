@@ -1129,7 +1129,7 @@ paths:
         type: "http_proxy"
         
         httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/customers"
+        uri: "https://${stageVariables.albUrl}/agency/customers/{customerId}"
         requestParameters:
           integration.request.path.customerId: method.request.path.customerId
         responses:
@@ -1645,6 +1645,9 @@ components:
         depositTotal:
           type: integer
           format: int64
+        agentId:
+          type: integer
+          format: int64
         transactions:
           type: array
           items:
@@ -1670,7 +1673,7 @@ components:
       properties:
         cashAtHand:
           type: integer
-          format: int32
+          format: int64
         customers:
           type: integer
           format: int32
@@ -1679,7 +1682,7 @@ components:
           format: int32
         ecash:
           type: integer
-          format: int32
+          format: int64
     CustomerResponse:
       type: object
       properties:

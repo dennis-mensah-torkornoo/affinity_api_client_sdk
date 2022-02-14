@@ -9,6 +9,7 @@ import 'package:agency_api/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **depositTotal** | **int** |  | [optional] 
+**agentId** | **int** |  | [optional] 
 **transactions** | [**List<TransactionDetailResponse>**](TransactionDetailResponse.md) |  | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
