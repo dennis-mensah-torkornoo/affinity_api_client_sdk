@@ -31,7 +31,7 @@ class AgencyApiClient {
 
   AgencyApi get agencyApi => AgencyApi(apiClient);
   StatisticsApi get statisticsApi => StatisticsApi(apiClient);
-  AuthenticationApi get authenticationApi => AuthenticationApi(apiClient);
+  // AuthenticationApi get authenticationApi => AuthenticationApi(apiClient);
   DefaultApi get defaultApi => DefaultApi(apiClient);
   TasksApi get tasksApi => TasksApi(apiClient);
   CustomersApi get customerApi => CustomersApi(apiClient);
