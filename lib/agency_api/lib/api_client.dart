@@ -12,6 +12,8 @@ part of openapi.api;
 
 class ApiClient {
   ApiClient({this.basePath = 'https://api.affinitylabstest.com//agency'}) {
+    // Setup authentications (key: authentication name, value: authentication).
+    _authentications[r'agent-authorizer'] = ApiKeyAuth('header', 'Authorization');
   }
 
   final String basePath;
@@ -199,10 +201,14 @@ class ApiClient {
           return CustomerApplication.fromJson(value);
         case 'CustomerApplicationDocument':
           return CustomerApplicationDocument.fromJson(value);
+        case 'CustomerDepositSchedule':
+          return CustomerDepositSchedule.fromJson(value);
         case 'CustomerDetailsResponse':
           return CustomerDetailsResponse.fromJson(value);
         case 'CustomerResponse':
           return CustomerResponse.fromJson(value);
+        case 'DepositScheduleRequest':
+          return DepositScheduleRequest.fromJson(value);
         case 'DeviceRequest':
           return DeviceRequest.fromJson(value);
         case 'DeviceResponse':
@@ -215,10 +221,6 @@ class ApiClient {
           return InfoResponse.fromJson(value);
         case 'IntermediaryModel':
           return IntermediaryModel.fromJson(value);
-        case 'LoginRequest':
-          return LoginRequest.fromJson(value);
-        case 'LoginResponse':
-          return LoginResponse.fromJson(value);
         case 'NotificationRequest':
           return NotificationRequest.fromJson(value);
         case 'NotificationResponse':

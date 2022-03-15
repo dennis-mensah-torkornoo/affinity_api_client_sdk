@@ -30,7 +30,7 @@ class StatisticsApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 

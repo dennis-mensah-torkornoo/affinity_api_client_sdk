@@ -101,5 +101,12 @@ void main() {
       // TODO
     });
 
+    // Customer Deposit Schedule PUT endpoint
+    //
+    //Future<List<CustomerDepositSchedule>> putDepositTimesResponse(String customerId, List<DepositScheduleRequest> depositScheduleRequest) async
+    test('test putDepositTimesResponse', () async {
+      // TODO
+    });
+
   });
 }

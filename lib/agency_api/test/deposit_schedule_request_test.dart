@@ -11,23 +11,23 @@
 import 'package:agency_api/api.dart';
 import 'package:test/test.dart';
 
-// tests for LoginRequest
+// tests for DepositScheduleRequest
 void main() {
-  final instance = LoginRequest();
+  final instance = DepositScheduleRequest();
 
-  group('test LoginRequest', () {
-    // String email
-    test('to test the property `email`', () async {
+  group('test DepositScheduleRequest', () {
+    // String customerId
+    test('to test the property `customerId`', () async {
       // TODO
     });
 
-    // String password
-    test('to test the property `password`', () async {
+    // int scheduledAmount
+    test('to test the property `scheduledAmount`', () async {
       // TODO
     });
 
-    // String deviceId
-    test('to test the property `deviceId`', () async {
+    // DateTime scheduledDate
+    test('to test the property `scheduledDate`', () async {
       // TODO
     });
 

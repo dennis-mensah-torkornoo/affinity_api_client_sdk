@@ -22,6 +22,10 @@ Statistics endpoint
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = StatisticsApi();
 
@@ -42,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 

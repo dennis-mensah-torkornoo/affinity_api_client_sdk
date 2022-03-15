@@ -41,7 +41,7 @@ class AgencyApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'id', id));
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -91,7 +91,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -147,7 +147,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -197,7 +197,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -246,7 +246,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -305,7 +305,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -355,7 +355,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -404,7 +404,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -450,7 +450,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -508,7 +508,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>['application/json'];
 
 
@@ -575,7 +575,7 @@ class AgencyApi {
       queryParams.addAll(_convertParametersForCollectionFormat('', 'id', id));
       queryParams.addAll(_convertParametersForCollectionFormat('', 'type', type));
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -639,7 +639,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>['application/json'];
 
 
@@ -700,7 +700,7 @@ class AgencyApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'ref', ref));
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -759,7 +759,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>['application/json'];
 
 
@@ -818,7 +818,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>['application/json'];
 
 
@@ -877,7 +877,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>['application/json'];
 
 
@@ -944,7 +944,7 @@ class AgencyApi {
       queryParams.addAll(_convertParametersForCollectionFormat('', 'otp', otp));
       queryParams.addAll(_convertParametersForCollectionFormat('', 'ref', ref));
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -1007,7 +1007,7 @@ class AgencyApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'ref', ref));
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 

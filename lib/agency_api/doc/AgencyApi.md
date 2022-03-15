@@ -39,6 +39,10 @@ Delete task endpoint
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 final id = id_example; // String | 
@@ -63,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 
@@ -82,6 +86,10 @@ Statistics, and other agent-related information
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 
@@ -102,7 +110,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 
@@ -121,6 +129,10 @@ Notifications by id endpoint
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 final id = id_example; // String | 
@@ -145,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 
@@ -164,6 +176,10 @@ Notifications endpoint
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 
@@ -184,7 +200,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 
@@ -203,6 +219,10 @@ Get Settings endpoint
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 
@@ -223,7 +243,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 
@@ -242,6 +262,10 @@ Task detail endpoint
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 final taskId = taskId_example; // String | 
@@ -266,7 +290,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 
@@ -285,6 +309,10 @@ Get tasks endpoint
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 
@@ -305,7 +333,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 
@@ -324,6 +352,10 @@ Get details/statistics on transactions made so far
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 
@@ -344,7 +376,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 
@@ -363,6 +395,10 @@ Get all withdrawals endpoint
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 
@@ -383,7 +419,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 
@@ -402,6 +438,10 @@ Patch Settings endpoint
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 final settingModel = [List<SettingModel>()]; // List<SettingModel> | 
@@ -426,7 +466,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 
@@ -445,6 +485,10 @@ Create account for customer endpoint
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 final id = id_example; // String | 
@@ -471,7 +515,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 
@@ -490,6 +534,10 @@ Create new deposit endpoint
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 final transactionRequest = TransactionRequest(); // TransactionRequest | 
@@ -514,7 +562,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 
@@ -533,6 +581,10 @@ Confirm Deposit endpoint
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 final ref = ref_example; // String | 
@@ -557,7 +609,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 
@@ -576,6 +628,10 @@ Create a notification assigned to an agent
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 final notificationRequest = NotificationRequest(); // NotificationRequest | 
@@ -600,7 +656,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 
@@ -619,6 +675,10 @@ Create task endpoint
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 final taskRequest = TaskRequest(); // TaskRequest | 
@@ -643,7 +703,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 
@@ -662,6 +722,10 @@ Initiate withdrawal endpoint
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 final transactionRequest = TransactionRequest(); // TransactionRequest | 
@@ -686,7 +750,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 
@@ -705,6 +769,10 @@ Confirm Withdrawal endpoint
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 final otp = otp_example; // String | 
@@ -731,7 +799,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 
@@ -750,6 +818,10 @@ Get withdrawal otp generation endpoint
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 final ref = ref_example; // String | 
@@ -774,7 +846,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[agent-authorizer](../README.md#agent-authorizer)
 
 ### HTTP request headers
 

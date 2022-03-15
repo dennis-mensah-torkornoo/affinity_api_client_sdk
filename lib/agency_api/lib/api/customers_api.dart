@@ -41,7 +41,7 @@ class CustomersApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'p', p));
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -102,7 +102,7 @@ class CustomersApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'id', id));
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -155,7 +155,7 @@ class CustomersApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -215,7 +215,7 @@ class CustomersApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'p', p));
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -275,7 +275,7 @@ class CustomersApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -336,7 +336,7 @@ class CustomersApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'p', p));
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -386,7 +386,7 @@ class CustomersApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -435,7 +435,7 @@ class CustomersApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -500,7 +500,7 @@ class CustomersApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'p', p));
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>['application/json'];
 
 
@@ -568,7 +568,7 @@ class CustomersApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'p', p));
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>['application/json'];
 
 
@@ -636,7 +636,7 @@ class CustomersApi {
       queryParams.addAll(_convertParametersForCollectionFormat('', 'resend', resend));
     }
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -699,7 +699,7 @@ class CustomersApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'p', p));
 
-    const authNames = <String>[];
+    const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
 
 
@@ -733,5 +733,75 @@ class CustomersApi {
     
     }
     return Future<StatusResponse>.value();
+  }
+
+  /// Customer Deposit Schedule PUT endpoint
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] customerId (required):
+  ///
+  /// * [List<DepositScheduleRequest>] depositScheduleRequest (required):
+  Future<Response> putDepositTimesResponseWithHttpInfo(String customerId, List<DepositScheduleRequest> depositScheduleRequest,) async {
+    // Verify required params are set.
+    if (customerId == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: customerId');
+    }
+    if (depositScheduleRequest == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: depositScheduleRequest');
+    }
+
+    // ignore: prefer_const_declarations
+    final path = r'/customers/{customerId}/times'
+      .replaceAll('{customerId}', customerId);
+
+    // ignore: prefer_final_locals
+    Object postBody = depositScheduleRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const authNames = <String>['agent-authorizer'];
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Customer Deposit Schedule PUT endpoint
+  ///
+  /// Parameters:
+  ///
+  /// * [String] customerId (required):
+  ///
+  /// * [List<DepositScheduleRequest>] depositScheduleRequest (required):
+  Future<List<CustomerDepositSchedule>> putDepositTimesResponse(String customerId, List<DepositScheduleRequest> depositScheduleRequest,) async {
+    final response = await putDepositTimesResponseWithHttpInfo(customerId, depositScheduleRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<CustomerDepositSchedule>') as List)
+        .cast<CustomerDepositSchedule>()
+        .toList(growable: false);
+
+    }
+    return Future<List<CustomerDepositSchedule>>.value();
   }
 }

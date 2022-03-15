@@ -39,6 +39,10 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```dart
 import 'package:agency_api/api.dart';
 
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 final id = id_example; // String | 
@@ -76,8 +80,6 @@ Class | Method | HTTP request | Description
 *AgencyApi* | [**postWithdrawals**](doc//AgencyApi.md#postwithdrawals) | **POST** /withdrawals | 
 *AgencyApi* | [**postWithdrawalsConfirm**](doc//AgencyApi.md#postwithdrawalsconfirm) | **POST** /withdrawals/confirm | 
 *AgencyApi* | [**postWithdrawalsOtp**](doc//AgencyApi.md#postwithdrawalsotp) | **POST** /withdrawals/otp | 
-*AuthenticationApi* | [**postAuthorize**](doc//AuthenticationApi.md#postauthorize) | **POST** /auth | 
-*AuthenticationApi* | [**postKeepAliveToken**](doc//AuthenticationApi.md#postkeepalivetoken) | **POST** /refresh | 
 *CustomersApi* | [**deleteCustomerApplication**](doc//CustomersApi.md#deletecustomerapplication) | **DELETE** /application | 
 *CustomersApi* | [**getAccounts**](doc//CustomersApi.md#getaccounts) | **GET** /accounts | 
 *CustomersApi* | [**getAppStatus**](doc//CustomersApi.md#getappstatus) | **GET** /appstatus | 
@@ -90,8 +92,15 @@ Class | Method | HTTP request | Description
 *CustomersApi* | [**postCustomerApplication**](doc//CustomersApi.md#postcustomerapplication) | **POST** /application | 
 *CustomersApi* | [**postCustomerOtp**](doc//CustomersApi.md#postcustomerotp) | **POST** /application/otp | 
 *CustomersApi* | [**postReferrals**](doc//CustomersApi.md#postreferrals) | **POST** /referrals | 
+*CustomersApi* | [**putDepositTimesResponse**](doc//CustomersApi.md#putdeposittimesresponse) | **PUT** /customers/{customerId}/times | 
 *DefaultApi* | [**postDevices**](doc//DefaultApi.md#postdevices) | **POST** /devices | 
 *StatisticsApi* | [**getStatistics**](doc//StatisticsApi.md#getstatistics) | **GET** /statistics | 
+*SupervisorApi* | [**getCallover**](doc//SupervisorApi.md#getcallover) | **GET** /supervisor/callover | 
+*SupervisorApi* | [**getEndOfDay**](doc//SupervisorApi.md#getendofday) | **GET** /supervisor/end-of-day | 
+*SupervisorApi* | [**getEndOfDayWithAgent**](doc//SupervisorApi.md#getendofdaywithagent) | **GET** /supervisor/end-of-day/{agentId} | 
+*SupervisorApi* | [**postEndOfDayWithAgent**](doc//SupervisorApi.md#postendofdaywithagent) | **POST** /supervisor/end-of-day/{agentId} | 
+*SupervisorApi* | [**postEndOfDayWithTransactionId**](doc//SupervisorApi.md#postendofdaywithtransactionid) | **POST** /supervisor/end-of-day | 
+*SupervisorApi* | [**postMarkEndOfDayWithTransactionId**](doc//SupervisorApi.md#postmarkendofdaywithtransactionid) | **POST** /supervisor/end-of-day/flag | 
 *TasksApi* | [**deleteTasks**](doc//TasksApi.md#deletetasks) | **DELETE** /tasks | 
 *TasksApi* | [**getTaskDetail**](doc//TasksApi.md#gettaskdetail) | **GET** /tasks/{taskId} | 
 *TasksApi* | [**getTasks**](doc//TasksApi.md#gettasks) | **GET** /tasks | 
@@ -104,16 +113,16 @@ Class | Method | HTTP request | Description
  - [ApplicationStatusResponse](doc//ApplicationStatusResponse.md)
  - [CustomerApplication](doc//CustomerApplication.md)
  - [CustomerApplicationDocument](doc//CustomerApplicationDocument.md)
+ - [CustomerDepositSchedule](doc//CustomerDepositSchedule.md)
  - [CustomerDetailsResponse](doc//CustomerDetailsResponse.md)
  - [CustomerResponse](doc//CustomerResponse.md)
+ - [DepositScheduleRequest](doc//DepositScheduleRequest.md)
  - [DeviceRequest](doc//DeviceRequest.md)
  - [DeviceResponse](doc//DeviceResponse.md)
  - [ErrorResponse](doc//ErrorResponse.md)
  - [HomeResponse](doc//HomeResponse.md)
  - [InfoResponse](doc//InfoResponse.md)
  - [IntermediaryModel](doc//IntermediaryModel.md)
- - [LoginRequest](doc//LoginRequest.md)
- - [LoginResponse](doc//LoginResponse.md)
  - [NotificationRequest](doc//NotificationRequest.md)
  - [NotificationResponse](doc//NotificationResponse.md)
  - [OtpResponse](doc//OtpResponse.md)
@@ -129,7 +138,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Authorization
 
- All endpoints do not require authorization.
+
+## agent-authorizer
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
 
 
 ## Author
