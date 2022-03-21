@@ -6,6 +6,7 @@ analysis_options.yaml
 doc/AccountResponse.md
 doc/AgencyApi.md
 doc/ApplicationStatusResponse.md
+doc/AuthenticationApi.md
 doc/CustomerApplication.md
 doc/CustomerApplicationDocument.md
 doc/CustomerDepositSchedule.md
@@ -37,6 +38,7 @@ doc/TransactionResponse.md
 git_push.sh
 lib/api.dart
 lib/api/agency_api.dart
+lib/api/authentication_api.dart
 lib/api/customers_api.dart
 lib/api/default_api.dart
 lib/api/statistics_api.dart
@@ -79,6 +81,7 @@ pubspec.yaml
 test/account_response_test.dart
 test/agency_api_test.dart
 test/application_status_response_test.dart
+test/authentication_api_test.dart
 test/customer_application_document_test.dart
 test/customer_application_test.dart
 test/customer_deposit_schedule_test.dart

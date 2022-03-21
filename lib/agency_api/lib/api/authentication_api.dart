@@ -11,26 +11,26 @@
 part of openapi.api;
 
 
-class DefaultApi {
-  DefaultApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
+class AuthenticationApi {
+  AuthenticationApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
-  /// Register devices here
+  /// Link your device to an agent here
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [DeviceRequest] deviceRequest (required):
-  Future<Response> postDevicesWithHttpInfo(DeviceRequest deviceRequest,) async {
+  Future<Response> postLinkUserToDeviceWithHttpInfo(DeviceRequest deviceRequest,) async {
     // Verify required params are set.
     if (deviceRequest == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: deviceRequest');
     }
 
     // ignore: prefer_const_declarations
-    final path = r'/devices';
+    final path = r'/devices/link';
 
     // ignore: prefer_final_locals
     Object postBody = deviceRequest;
@@ -39,7 +39,7 @@ class DefaultApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>['application/json'];
 
 
@@ -55,13 +55,13 @@ class DefaultApi {
     );
   }
 
-  /// Register devices here
+  /// Link your device to an agent here
   ///
   /// Parameters:
   ///
   /// * [DeviceRequest] deviceRequest (required):
-  Future<DeviceResponse> postDevices(DeviceRequest deviceRequest,) async {
-    final response = await postDevicesWithHttpInfo(deviceRequest,);
+  Future<DeviceResponse> postLinkUserToDevice(DeviceRequest deviceRequest,) async {
+    final response = await postLinkUserToDeviceWithHttpInfo(deviceRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

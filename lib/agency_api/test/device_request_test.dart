@@ -31,8 +31,8 @@ void main() {
       // TODO
     });
 
-    // String userId
-    test('to test the property `userId`', () async {
+    // String agentId
+    test('to test the property `agentId`', () async {
       // TODO
     });
 

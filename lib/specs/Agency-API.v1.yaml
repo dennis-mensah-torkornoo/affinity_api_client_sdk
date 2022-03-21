@@ -698,6 +698,11 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DeviceResponse"
+      security:
+      - agent-authorizer:
+        - "agency/read"
+        - "agency/write"
+        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -707,7 +712,40 @@ paths:
           default:
             statusCode: "201"
         passthroughBehavior: "when_no_match"
+  /devices/link:
+    post:
+      tags:
+      - Authentication
+      description: Link your device to an agent here
+      operationId: postLinkUserToDevice
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceRequest'
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
         
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/devices/link"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
   /deposits:
     get:
       tags:
@@ -1816,7 +1854,7 @@ components:
           type: string
         imei:
           type: string
-        userId:
+        agentId:
           type: string
     DeviceResponse:
       type: object

@@ -28,6 +28,7 @@ part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
 part 'api/agency_api.dart';
+part 'api/authentication_api.dart';
 part 'api/customers_api.dart';
 part 'api/default_api.dart';
 part 'api/statistics_api.dart';

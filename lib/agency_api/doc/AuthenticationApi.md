@@ -1,4 +1,4 @@
-# agency_api.api.DefaultApi
+# agency_api.api.AuthenticationApi
 
 ## Load the API package
 ```dart
@@ -9,32 +9,28 @@ All URIs are relative to *https://api.affinitylabstest.com//agency*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**postDevices**](DefaultApi.md#postdevices) | **POST** /devices | 
+[**postLinkUserToDevice**](AuthenticationApi.md#postlinkusertodevice) | **POST** /devices/link | 
 
 
-# **postDevices**
-> DeviceResponse postDevices(deviceRequest)
+# **postLinkUserToDevice**
+> DeviceResponse postLinkUserToDevice(deviceRequest)
 
 
 
-Register devices here
+Link your device to an agent here
 
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
-// TODO Configure API key authorization: agent-authorizer
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
-final api_instance = DefaultApi();
+final api_instance = AuthenticationApi();
 final deviceRequest = DeviceRequest(); // DeviceRequest | 
 
 try {
-    final result = api_instance.postDevices(deviceRequest);
+    final result = api_instance.postLinkUserToDevice(deviceRequest);
     print(result);
 } catch (e) {
-    print('Exception when calling DefaultApi->postDevices: $e\n');
+    print('Exception when calling AuthenticationApi->postLinkUserToDevice: $e\n');
 }
 ```
 
@@ -50,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[agent-authorizer](../README.md#agent-authorizer)
+No authorization required
 
 ### HTTP request headers
 

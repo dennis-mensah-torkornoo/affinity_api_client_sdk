@@ -80,6 +80,7 @@ Class | Method | HTTP request | Description
 *AgencyApi* | [**postWithdrawals**](doc//AgencyApi.md#postwithdrawals) | **POST** /withdrawals | 
 *AgencyApi* | [**postWithdrawalsConfirm**](doc//AgencyApi.md#postwithdrawalsconfirm) | **POST** /withdrawals/confirm | 
 *AgencyApi* | [**postWithdrawalsOtp**](doc//AgencyApi.md#postwithdrawalsotp) | **POST** /withdrawals/otp | 
+*AuthenticationApi* | [**postLinkUserToDevice**](doc//AuthenticationApi.md#postlinkusertodevice) | **POST** /devices/link | 
 *CustomersApi* | [**deleteCustomerApplication**](doc//CustomersApi.md#deletecustomerapplication) | **DELETE** /application | 
 *CustomersApi* | [**getAccounts**](doc//CustomersApi.md#getaccounts) | **GET** /accounts | 
 *CustomersApi* | [**getAppStatus**](doc//CustomersApi.md#getappstatus) | **GET** /appstatus | 

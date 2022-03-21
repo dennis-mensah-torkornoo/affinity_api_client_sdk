@@ -16,7 +16,7 @@ class DeviceRequest {
     this.fcmToken,
     this.deviceFingerprint,
     this.imei,
-    this.userId,
+    this.agentId,
   });
 
   String fcmToken;
@@ -25,14 +25,14 @@ class DeviceRequest {
 
   String imei;
 
-  String userId;
+  String agentId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DeviceRequest &&
      other.fcmToken == fcmToken &&
      other.deviceFingerprint == deviceFingerprint &&
      other.imei == imei &&
-     other.userId == userId;
+     other.agentId == agentId;
 
   @override
   int get hashCode =>
@@ -40,10 +40,10 @@ class DeviceRequest {
     (fcmToken == null ? 0 : fcmToken.hashCode) +
     (deviceFingerprint == null ? 0 : deviceFingerprint.hashCode) +
     (imei == null ? 0 : imei.hashCode) +
-    (userId == null ? 0 : userId.hashCode);
+    (agentId == null ? 0 : agentId.hashCode);
 
   @override
-  String toString() => 'DeviceRequest[fcmToken=$fcmToken, deviceFingerprint=$deviceFingerprint, imei=$imei, userId=$userId]';
+  String toString() => 'DeviceRequest[fcmToken=$fcmToken, deviceFingerprint=$deviceFingerprint, imei=$imei, agentId=$agentId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -56,8 +56,8 @@ class DeviceRequest {
     if (imei != null) {
       json[r'imei'] = imei;
     }
-    if (userId != null) {
-      json[r'userId'] = userId;
+    if (agentId != null) {
+      json[r'agentId'] = agentId;
     }
     return json;
   }
@@ -72,7 +72,7 @@ class DeviceRequest {
         fcmToken: mapValueOfType<String>(json, r'fcmToken'),
         deviceFingerprint: mapValueOfType<String>(json, r'deviceFingerprint'),
         imei: mapValueOfType<String>(json, r'imei'),
-        userId: mapValueOfType<String>(json, r'userId'),
+        agentId: mapValueOfType<String>(json, r'agentId'),
       );
     }
     return null;
