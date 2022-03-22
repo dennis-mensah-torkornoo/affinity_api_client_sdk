@@ -123,6 +123,52 @@ class AgencyApi {
     return Future<HomeResponse>.value();
   }
 
+  /// Cash at hand breakdown and other stats
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getCashAtHandWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/cash-at-hand';
+
+    // ignore: prefer_final_locals
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const authNames = <String>['agent-authorizer'];
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Cash at hand breakdown and other stats
+  Future<CashAtHandResponse> getCashAtHand() async {
+    final response = await getCashAtHandWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CashAtHandResponse',) as CashAtHandResponse;
+    
+    }
+    return Future<CashAtHandResponse>.value();
+  }
+
   /// Notifications by id endpoint
   ///
   /// Note: This method returns the HTTP [Response].

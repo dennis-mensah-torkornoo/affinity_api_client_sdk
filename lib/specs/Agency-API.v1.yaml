@@ -1367,39 +1367,6 @@ paths:
           default:
             statusCode: "200"
         passthroughBehavior: "when_no_match"
-  /statistics:
-    get:
-      tags:
-        - Statistics
-      description: "Statistics endpoint"
-      operationId: "getStatistics"
-      responses:
-        "400":
-          description: "400 response"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "200":
-          description: "200 response"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StatisticsResponse"
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
-      x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/statistics"
-        responses:
-          default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
         
   /notifications/{id}:
     get:
@@ -1588,7 +1555,39 @@ paths:
           default:
             statusCode: "200"
         passthroughBehavior: "when_no_match"
+  /cash-at-hand:
+    get:
+      tags:
+      - Agency
+      description: Cash at hand breakdown and other stats
+      operationId: getCashAtHand
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CashAtHandResponse'
+      security:
+      - agent-authorizer:
+        - "agency/read"
+        - "agency/write"
+        - "openid"
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
         
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/cash-at-hand"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
   /appstatus:
     get:
       tags:
@@ -2197,6 +2196,35 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AccountResponse'
+    CashAtHandResponse:
+      type: object
+      properties:
+        cashAtHand:
+          type: integer
+          format: int64
+        raisedSoFar:
+          type: integer
+          format: int64
+        target:
+          type: integer
+          format: int64
+        customers:
+          type: integer
+          format: int32
+        customersInactive:
+          type: integer
+          format: int32
+        accountsOpened:
+          type: integer
+          format: int32
+        commissionStatsInfo:
+          type: string
+        commissionAccounts:
+          type: integer
+          format: int64
+        commissionDeposit:
+          type: integer
+          format: int64
     ApplicationStatusResponse:
       type: object
       properties:

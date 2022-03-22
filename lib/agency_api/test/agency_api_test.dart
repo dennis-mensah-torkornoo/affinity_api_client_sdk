@@ -31,6 +31,13 @@ void main() {
       // TODO
     });
 
+    // Cash at hand breakdown and other stats
+    //
+    //Future<CashAtHandResponse> getCashAtHand() async
+    test('test getCashAtHand', () async {
+      // TODO
+    });
+
     // Notifications by id endpoint
     //
     //Future<NotificationResponse> getNotificationById(String id) async

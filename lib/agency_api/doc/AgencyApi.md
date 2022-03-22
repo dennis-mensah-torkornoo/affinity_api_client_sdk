@@ -11,6 +11,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteTasks**](AgencyApi.md#deletetasks) | **DELETE** /tasks | 
 [**getAgentHome**](AgencyApi.md#getagenthome) | **GET** /home | 
+[**getCashAtHand**](AgencyApi.md#getcashathand) | **GET** /cash-at-hand | 
 [**getNotificationById**](AgencyApi.md#getnotificationbyid) | **GET** /notifications/{id} | 
 [**getNotifications**](AgencyApi.md#getnotifications) | **GET** /notifications | 
 [**getSettings**](AgencyApi.md#getsettings) | **GET** /settings | 
@@ -107,6 +108,49 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**HomeResponse**](HomeResponse.md)
+
+### Authorization
+
+[agent-authorizer](../README.md#agent-authorizer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCashAtHand**
+> CashAtHandResponse getCashAtHand()
+
+
+
+Cash at hand breakdown and other stats
+
+### Example
+```dart
+import 'package:agency_api/api.dart';
+// TODO Configure API key authorization: agent-authorizer
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
+
+final api_instance = AgencyApi();
+
+try {
+    final result = api_instance.getCashAtHand();
+    print(result);
+} catch (e) {
+    print('Exception when calling AgencyApi->getCashAtHand: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**CashAtHandResponse**](CashAtHandResponse.md)
 
 ### Authorization
 

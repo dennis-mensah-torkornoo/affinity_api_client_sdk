@@ -7,6 +7,7 @@ doc/AccountResponse.md
 doc/AgencyApi.md
 doc/ApplicationStatusResponse.md
 doc/AuthenticationApi.md
+doc/CashAtHandResponse.md
 doc/CustomerApplication.md
 doc/CustomerApplicationDocument.md
 doc/CustomerDepositSchedule.md
@@ -25,7 +26,6 @@ doc/NotificationRequest.md
 doc/NotificationResponse.md
 doc/OtpResponse.md
 doc/SettingModel.md
-doc/StatisticsApi.md
 doc/StatisticsResponse.md
 doc/StatusResponse.md
 doc/SupervisorApi.md
@@ -41,7 +41,6 @@ lib/api/agency_api.dart
 lib/api/authentication_api.dart
 lib/api/customers_api.dart
 lib/api/default_api.dart
-lib/api/statistics_api.dart
 lib/api/supervisor_api.dart
 lib/api/tasks_api.dart
 lib/api_client.dart
@@ -54,6 +53,7 @@ lib/auth/http_bearer_auth.dart
 lib/auth/oauth.dart
 lib/model/account_response.dart
 lib/model/application_status_response.dart
+lib/model/cash_at_hand_response.dart
 lib/model/customer_application.dart
 lib/model/customer_application_document.dart
 lib/model/customer_deposit_schedule.dart
@@ -82,6 +82,7 @@ test/account_response_test.dart
 test/agency_api_test.dart
 test/application_status_response_test.dart
 test/authentication_api_test.dart
+test/cash_at_hand_response_test.dart
 test/customer_application_document_test.dart
 test/customer_application_test.dart
 test/customer_deposit_schedule_test.dart
@@ -100,7 +101,6 @@ test/notification_request_test.dart
 test/notification_response_test.dart
 test/otp_response_test.dart
 test/setting_model_test.dart
-test/statistics_api_test.dart
 test/statistics_response_test.dart
 test/status_response_test.dart
 test/supervisor_api_test.dart

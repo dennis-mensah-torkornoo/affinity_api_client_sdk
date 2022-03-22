@@ -197,6 +197,8 @@ class ApiClient {
           return AccountResponse.fromJson(value);
         case 'ApplicationStatusResponse':
           return ApplicationStatusResponse.fromJson(value);
+        case 'CashAtHandResponse':
+          return CashAtHandResponse.fromJson(value);
         case 'CustomerApplication':
           return CustomerApplication.fromJson(value);
         case 'CustomerApplicationDocument':

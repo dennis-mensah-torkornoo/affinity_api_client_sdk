@@ -31,12 +31,12 @@ part 'api/agency_api.dart';
 part 'api/authentication_api.dart';
 part 'api/customers_api.dart';
 part 'api/default_api.dart';
-part 'api/statistics_api.dart';
 part 'api/supervisor_api.dart';
 part 'api/tasks_api.dart';
 
 part 'model/account_response.dart';
 part 'model/application_status_response.dart';
+part 'model/cash_at_hand_response.dart';
 part 'model/customer_application.dart';
 part 'model/customer_application_document.dart';
 part 'model/customer_deposit_schedule.dart';

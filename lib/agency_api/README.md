@@ -64,6 +64,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AgencyApi* | [**deleteTasks**](doc//AgencyApi.md#deletetasks) | **DELETE** /tasks | 
 *AgencyApi* | [**getAgentHome**](doc//AgencyApi.md#getagenthome) | **GET** /home | 
+*AgencyApi* | [**getCashAtHand**](doc//AgencyApi.md#getcashathand) | **GET** /cash-at-hand | 
 *AgencyApi* | [**getNotificationById**](doc//AgencyApi.md#getnotificationbyid) | **GET** /notifications/{id} | 
 *AgencyApi* | [**getNotifications**](doc//AgencyApi.md#getnotifications) | **GET** /notifications | 
 *AgencyApi* | [**getSettings**](doc//AgencyApi.md#getsettings) | **GET** /settings | 
@@ -95,7 +96,6 @@ Class | Method | HTTP request | Description
 *CustomersApi* | [**postReferrals**](doc//CustomersApi.md#postreferrals) | **POST** /referrals | 
 *CustomersApi* | [**putDepositTimesResponse**](doc//CustomersApi.md#putdeposittimesresponse) | **PUT** /customers/{customerId}/times | 
 *DefaultApi* | [**postDevices**](doc//DefaultApi.md#postdevices) | **POST** /devices | 
-*StatisticsApi* | [**getStatistics**](doc//StatisticsApi.md#getstatistics) | **GET** /statistics | 
 *SupervisorApi* | [**getCallover**](doc//SupervisorApi.md#getcallover) | **GET** /supervisor/callover | 
 *SupervisorApi* | [**getEndOfDay**](doc//SupervisorApi.md#getendofday) | **GET** /supervisor/end-of-day | 
 *SupervisorApi* | [**getEndOfDayWithAgent**](doc//SupervisorApi.md#getendofdaywithagent) | **GET** /supervisor/end-of-day/{agentId} | 
@@ -112,6 +112,7 @@ Class | Method | HTTP request | Description
 
  - [AccountResponse](doc//AccountResponse.md)
  - [ApplicationStatusResponse](doc//ApplicationStatusResponse.md)
+ - [CashAtHandResponse](doc//CashAtHandResponse.md)
  - [CustomerApplication](doc//CustomerApplication.md)
  - [CustomerApplicationDocument](doc//CustomerApplicationDocument.md)
  - [CustomerDepositSchedule](doc//CustomerDepositSchedule.md)
