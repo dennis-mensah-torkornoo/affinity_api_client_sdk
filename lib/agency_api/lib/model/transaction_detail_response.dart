@@ -162,11 +162,13 @@ class TransactionDetailResponseTransactionTypeEnum {
 
   static const DEPOSIT = TransactionDetailResponseTransactionTypeEnum._(r'DEPOSIT');
   static const WITHDRAWAL = TransactionDetailResponseTransactionTypeEnum._(r'WITHDRAWAL');
+  static const PENDING_DEPOSIT = TransactionDetailResponseTransactionTypeEnum._(r'PENDING_DEPOSIT');
 
   /// List of all possible values in this [enum][TransactionDetailResponseTransactionTypeEnum].
   static const values = <TransactionDetailResponseTransactionTypeEnum>[
     DEPOSIT,
     WITHDRAWAL,
+    PENDING_DEPOSIT,
   ];
 
   static TransactionDetailResponseTransactionTypeEnum fromJson(dynamic value) =>
@@ -200,6 +202,7 @@ class TransactionDetailResponseTransactionTypeEnumTypeTransformer {
       switch (data.toString()) {
         case r'DEPOSIT': return TransactionDetailResponseTransactionTypeEnum.DEPOSIT;
         case r'WITHDRAWAL': return TransactionDetailResponseTransactionTypeEnum.WITHDRAWAL;
+        case r'PENDING_DEPOSIT': return TransactionDetailResponseTransactionTypeEnum.PENDING_DEPOSIT;
         default:
           if (allowNull == false) {
             throw ArgumentError('Unknown enum value to decode: $data');
