@@ -424,7 +424,16 @@ class CustomersApi {
   /// Deposits endpoint
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> getDepositsWithHttpInfo() async {
+  ///
+  /// Parameters:
+  ///
+  /// * [Pageable] pageable (required):
+  Future<Response> getDepositsWithHttpInfo(Pageable pageable,) async {
+    // Verify required params are set.
+    if (pageable == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: pageable');
+    }
+
     // ignore: prefer_const_declarations
     final path = r'/deposits';
 
@@ -434,6 +443,8 @@ class CustomersApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'pageable', pageable));
 
     const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
@@ -452,8 +463,12 @@ class CustomersApi {
   }
 
   /// Deposits endpoint
-  Future<List<TransactionDetailResponse>> getDeposits() async {
-    final response = await getDepositsWithHttpInfo();
+  ///
+  /// Parameters:
+  ///
+  /// * [Pageable] pageable (required):
+  Future<List<TransactionDetailResponse>> getDeposits(Pageable pageable,) async {
+    final response = await getDepositsWithHttpInfo(pageable,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -733,6 +748,65 @@ class CustomersApi {
     
     }
     return Future<StatusResponse>.value();
+  }
+
+  /// Update with customer external id endpoint
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [UpdateCustomerIdRequest] updateCustomerIdRequest (required):
+  Future<Response> postUpdateWithConsumerAppCustomerIdWithHttpInfo(UpdateCustomerIdRequest updateCustomerIdRequest,) async {
+    // Verify required params are set.
+    if (updateCustomerIdRequest == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: updateCustomerIdRequest');
+    }
+
+    // ignore: prefer_const_declarations
+    final path = r'/customers/update';
+
+    // ignore: prefer_final_locals
+    Object postBody = updateCustomerIdRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const authNames = <String>[];
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Update with customer external id endpoint
+  ///
+  /// Parameters:
+  ///
+  /// * [UpdateCustomerIdRequest] updateCustomerIdRequest (required):
+  Future<InfoResponse> postUpdateWithConsumerAppCustomerId(UpdateCustomerIdRequest updateCustomerIdRequest,) async {
+    final response = await postUpdateWithConsumerAppCustomerIdWithHttpInfo(updateCustomerIdRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InfoResponse',) as InfoResponse;
+    
+    }
+    return Future<InfoResponse>.value();
   }
 
   /// Customer Deposit Schedule PUT endpoint

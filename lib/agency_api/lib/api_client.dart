@@ -229,6 +229,8 @@ class ApiClient {
           return NotificationResponse.fromJson(value);
         case 'OtpResponse':
           return OtpResponse.fromJson(value);
+        case 'Pageable':
+          return Pageable.fromJson(value);
         case 'SettingModel':
           return SettingModel.fromJson(value);
         case 'StatisticsResponse':
@@ -245,6 +247,8 @@ class ApiClient {
           return TransactionRequest.fromJson(value);
         case 'TransactionResponse':
           return TransactionResponse.fromJson(value);
+        case 'UpdateCustomerIdRequest':
+          return UpdateCustomerIdRequest.fromJson(value);
         default:
           Match match;
           if (value is List && (match = _regList.firstMatch(targetType)) != null) {

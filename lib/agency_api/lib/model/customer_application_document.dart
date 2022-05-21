@@ -21,6 +21,8 @@ class CustomerApplicationDocument {
     this.documentNumber,
     this.extraFieldsJSON,
     this.validated,
+    this.dateOfIssue,
+    this.dateOfExpiry,
   });
 
   String id;
@@ -39,6 +41,10 @@ class CustomerApplicationDocument {
 
   bool validated;
 
+  DateTime dateOfIssue;
+
+  DateTime dateOfExpiry;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CustomerApplicationDocument &&
      other.id == id &&
@@ -48,7 +54,9 @@ class CustomerApplicationDocument {
      other.documentType == documentType &&
      other.documentNumber == documentNumber &&
      other.extraFieldsJSON == extraFieldsJSON &&
-     other.validated == validated;
+     other.validated == validated &&
+     other.dateOfIssue == dateOfIssue &&
+     other.dateOfExpiry == dateOfExpiry;
 
   @override
   int get hashCode =>
@@ -60,10 +68,12 @@ class CustomerApplicationDocument {
     (documentType == null ? 0 : documentType.hashCode) +
     (documentNumber == null ? 0 : documentNumber.hashCode) +
     (extraFieldsJSON == null ? 0 : extraFieldsJSON.hashCode) +
-    (validated == null ? 0 : validated.hashCode);
+    (validated == null ? 0 : validated.hashCode) +
+    (dateOfIssue == null ? 0 : dateOfIssue.hashCode) +
+    (dateOfExpiry == null ? 0 : dateOfExpiry.hashCode);
 
   @override
-  String toString() => 'CustomerApplicationDocument[id=$id, customerId=$customerId, documentKeys=$documentKeys, documentUrls=$documentUrls, documentType=$documentType, documentNumber=$documentNumber, extraFieldsJSON=$extraFieldsJSON, validated=$validated]';
+  String toString() => 'CustomerApplicationDocument[id=$id, customerId=$customerId, documentKeys=$documentKeys, documentUrls=$documentUrls, documentType=$documentType, documentNumber=$documentNumber, extraFieldsJSON=$extraFieldsJSON, validated=$validated, dateOfIssue=$dateOfIssue, dateOfExpiry=$dateOfExpiry]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -91,6 +101,12 @@ class CustomerApplicationDocument {
     if (validated != null) {
       json[r'validated'] = validated;
     }
+    if (dateOfIssue != null) {
+      json[r'dateOfIssue'] = _dateFormatter.format(dateOfIssue.toUtc());
+    }
+    if (dateOfExpiry != null) {
+      json[r'dateOfExpiry'] = _dateFormatter.format(dateOfExpiry.toUtc());
+    }
     return json;
   }
 
@@ -113,6 +129,8 @@ class CustomerApplicationDocument {
         documentNumber: mapValueOfType<String>(json, r'documentNumber'),
         extraFieldsJSON: mapValueOfType<String>(json, r'extraFieldsJSON'),
         validated: mapValueOfType<bool>(json, r'validated'),
+        dateOfIssue: mapDateTime(json, r'dateOfIssue', ''),
+        dateOfExpiry: mapDateTime(json, r'dateOfExpiry', ''),
       );
     }
     return null;
@@ -166,7 +184,8 @@ class CustomerApplicationDocumentDocumentTypeEnum {
 
   static const PASSPORT = CustomerApplicationDocumentDocumentTypeEnum._(r'PASSPORT');
   static const DRIVERS = CustomerApplicationDocumentDocumentTypeEnum._(r'DRIVERS');
-  static const HEALTH_INSURANCE = CustomerApplicationDocumentDocumentTypeEnum._(r'HEALTH_INSURANCE');
+  static const NHIS = CustomerApplicationDocumentDocumentTypeEnum._(r'NHIS');
+  static const NATIONAL_ID = CustomerApplicationDocumentDocumentTypeEnum._(r'NATIONAL_ID');
   static const VOTERS_OLD = CustomerApplicationDocumentDocumentTypeEnum._(r'VOTERS_OLD');
   static const VOTERS_NEW = CustomerApplicationDocumentDocumentTypeEnum._(r'VOTERS_NEW');
   static const OTHER = CustomerApplicationDocumentDocumentTypeEnum._(r'OTHER');
@@ -177,7 +196,8 @@ class CustomerApplicationDocumentDocumentTypeEnum {
   static const values = <CustomerApplicationDocumentDocumentTypeEnum>[
     PASSPORT,
     DRIVERS,
-    HEALTH_INSURANCE,
+    NHIS,
+    NATIONAL_ID,
     VOTERS_OLD,
     VOTERS_NEW,
     OTHER,
@@ -216,7 +236,8 @@ class CustomerApplicationDocumentDocumentTypeEnumTypeTransformer {
       switch (data.toString()) {
         case r'PASSPORT': return CustomerApplicationDocumentDocumentTypeEnum.PASSPORT;
         case r'DRIVERS': return CustomerApplicationDocumentDocumentTypeEnum.DRIVERS;
-        case r'HEALTH_INSURANCE': return CustomerApplicationDocumentDocumentTypeEnum.HEALTH_INSURANCE;
+        case r'NHIS': return CustomerApplicationDocumentDocumentTypeEnum.NHIS;
+        case r'NATIONAL_ID': return CustomerApplicationDocumentDocumentTypeEnum.NATIONAL_ID;
         case r'VOTERS_OLD': return CustomerApplicationDocumentDocumentTypeEnum.VOTERS_OLD;
         case r'VOTERS_NEW': return CustomerApplicationDocumentDocumentTypeEnum.VOTERS_NEW;
         case r'OTHER': return CustomerApplicationDocumentDocumentTypeEnum.OTHER;

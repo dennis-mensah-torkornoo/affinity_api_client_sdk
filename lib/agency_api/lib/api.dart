@@ -52,6 +52,7 @@ part 'model/intermediary_model.dart';
 part 'model/notification_request.dart';
 part 'model/notification_response.dart';
 part 'model/otp_response.dart';
+part 'model/pageable.dart';
 part 'model/setting_model.dart';
 part 'model/statistics_response.dart';
 part 'model/status_response.dart';
@@ -60,6 +61,7 @@ part 'model/task_response.dart';
 part 'model/transaction_detail_response.dart';
 part 'model/transaction_request.dart';
 part 'model/transaction_response.dart';
+part 'model/update_customer_id_request.dart';
 
 
 const _delimiters = {'csv': ',', 'ssv': ' ', 'tsv': '\t', 'pipes': '|'};

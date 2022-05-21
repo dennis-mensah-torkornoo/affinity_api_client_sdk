@@ -51,6 +51,7 @@ Name | Type | Description | Notes
 **city** | **String** |  | [optional] 
 **street** | **String** |  | [optional] 
 **postalAddress** | **String** |  | [optional] 
+**region** | **String** |  | [optional] 
 **tinNumber** | **String** |  | [optional] 
 **acceptedTermsAndConditions** | **bool** |  | [optional] 
 **phoneNumberVerified** | **bool** |  | [optional] 

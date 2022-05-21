@@ -56,6 +56,7 @@ class CustomerApplication {
     this.city,
     this.street,
     this.postalAddress,
+    this.region,
     this.tinNumber,
     this.acceptedTermsAndConditions,
     this.phoneNumberVerified,
@@ -148,6 +149,8 @@ class CustomerApplication {
 
   String postalAddress;
 
+  CustomerApplicationRegionEnum region;
+
   String tinNumber;
 
   bool acceptedTermsAndConditions;
@@ -201,6 +204,7 @@ class CustomerApplication {
      other.city == city &&
      other.street == street &&
      other.postalAddress == postalAddress &&
+     other.region == region &&
      other.tinNumber == tinNumber &&
      other.acceptedTermsAndConditions == acceptedTermsAndConditions &&
      other.phoneNumberVerified == phoneNumberVerified &&
@@ -252,13 +256,14 @@ class CustomerApplication {
     (city == null ? 0 : city.hashCode) +
     (street == null ? 0 : street.hashCode) +
     (postalAddress == null ? 0 : postalAddress.hashCode) +
+    (region == null ? 0 : region.hashCode) +
     (tinNumber == null ? 0 : tinNumber.hashCode) +
     (acceptedTermsAndConditions == null ? 0 : acceptedTermsAndConditions.hashCode) +
     (phoneNumberVerified == null ? 0 : phoneNumberVerified.hashCode) +
     (idDocuments == null ? 0 : idDocuments.hashCode);
 
   @override
-  String toString() => 'CustomerApplication[clientInput=$clientInput, otp=$otp, lastUpdated=$lastUpdated, title=$title, firstName=$firstName, lastName=$lastName, otherNames=$otherNames, gender=$gender, dateOfBirth=$dateOfBirth, countryOfBirth=$countryOfBirth, nationality=$nationality, maritalStatus=$maritalStatus, numberOfDependents=$numberOfDependents, phoneNumbers=$phoneNumbers, email=$email, employmentStatus=$employmentStatus, employmentType=$employmentType, occupation=$occupation, employerName=$employerName, employmentAddress=$employmentAddress, positionHeld=$positionHeld, incomeSource=$incomeSource, appointmentDate=$appointmentDate, spouseTitle=$spouseTitle, spouseFirstName=$spouseFirstName, spouseLastName=$spouseLastName, spouseOtherNames=$spouseOtherNames, spousePhoneNumber=$spousePhoneNumber, spouseOccupation=$spouseOccupation, spouseEmployerName=$spouseEmployerName, spouseEmploymentAddress=$spouseEmploymentAddress, spouseNextOfKin=$spouseNextOfKin, nextOfKinTitle=$nextOfKinTitle, nextOfKinFirstName=$nextOfKinFirstName, nextOfKinLastName=$nextOfKinLastName, nextOfKinOtherNames=$nextOfKinOtherNames, nextOfKinPhoneNumber=$nextOfKinPhoneNumber, nextOfKinRelationship=$nextOfKinRelationship, area=$area, residentialAddress=$residentialAddress, city=$city, street=$street, postalAddress=$postalAddress, tinNumber=$tinNumber, acceptedTermsAndConditions=$acceptedTermsAndConditions, phoneNumberVerified=$phoneNumberVerified, idDocuments=$idDocuments]';
+  String toString() => 'CustomerApplication[clientInput=$clientInput, otp=$otp, lastUpdated=$lastUpdated, title=$title, firstName=$firstName, lastName=$lastName, otherNames=$otherNames, gender=$gender, dateOfBirth=$dateOfBirth, countryOfBirth=$countryOfBirth, nationality=$nationality, maritalStatus=$maritalStatus, numberOfDependents=$numberOfDependents, phoneNumbers=$phoneNumbers, email=$email, employmentStatus=$employmentStatus, employmentType=$employmentType, occupation=$occupation, employerName=$employerName, employmentAddress=$employmentAddress, positionHeld=$positionHeld, incomeSource=$incomeSource, appointmentDate=$appointmentDate, spouseTitle=$spouseTitle, spouseFirstName=$spouseFirstName, spouseLastName=$spouseLastName, spouseOtherNames=$spouseOtherNames, spousePhoneNumber=$spousePhoneNumber, spouseOccupation=$spouseOccupation, spouseEmployerName=$spouseEmployerName, spouseEmploymentAddress=$spouseEmploymentAddress, spouseNextOfKin=$spouseNextOfKin, nextOfKinTitle=$nextOfKinTitle, nextOfKinFirstName=$nextOfKinFirstName, nextOfKinLastName=$nextOfKinLastName, nextOfKinOtherNames=$nextOfKinOtherNames, nextOfKinPhoneNumber=$nextOfKinPhoneNumber, nextOfKinRelationship=$nextOfKinRelationship, area=$area, residentialAddress=$residentialAddress, city=$city, street=$street, postalAddress=$postalAddress, region=$region, tinNumber=$tinNumber, acceptedTermsAndConditions=$acceptedTermsAndConditions, phoneNumberVerified=$phoneNumberVerified, idDocuments=$idDocuments]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -391,6 +396,9 @@ class CustomerApplication {
     if (postalAddress != null) {
       json[r'postalAddress'] = postalAddress;
     }
+    if (region != null) {
+      json[r'region'] = region;
+    }
     if (tinNumber != null) {
       json[r'tinNumber'] = tinNumber;
     }
@@ -462,6 +470,7 @@ class CustomerApplication {
         city: mapValueOfType<String>(json, r'city'),
         street: mapValueOfType<String>(json, r'street'),
         postalAddress: mapValueOfType<String>(json, r'postalAddress'),
+        region: CustomerApplicationRegionEnum.fromJson(json[r'region']),
         tinNumber: mapValueOfType<String>(json, r'tinNumber'),
         acceptedTermsAndConditions: mapValueOfType<bool>(json, r'acceptedTermsAndConditions'),
         phoneNumberVerified: mapValueOfType<bool>(json, r'phoneNumberVerified'),
@@ -872,6 +881,115 @@ class CustomerApplicationPositionHeldEnumTypeTransformer {
 
   /// Singleton [CustomerApplicationPositionHeldEnumTypeTransformer] instance.
   static CustomerApplicationPositionHeldEnumTypeTransformer _instance;
+}
+
+
+
+class CustomerApplicationRegionEnum {
+  /// Instantiate a new enum with the provided [value].
+  const CustomerApplicationRegionEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value ?? '';
+
+  String toJson() => value;
+
+  static const GREATER_ACCRA_REGION = CustomerApplicationRegionEnum._(r'GREATER_ACCRA_REGION');
+  static const ASHANTI_REGION = CustomerApplicationRegionEnum._(r'ASHANTI_REGION');
+  static const EASTERN_REGION = CustomerApplicationRegionEnum._(r'EASTERN_REGION');
+  static const UPPER_EAST_REGION = CustomerApplicationRegionEnum._(r'UPPER_EAST_REGION');
+  static const UPPER_WEST_REGION = CustomerApplicationRegionEnum._(r'UPPER_WEST_REGION');
+  static const CENTRAL_REGION = CustomerApplicationRegionEnum._(r'CENTRAL_REGION');
+  static const NORTHERN_REGION = CustomerApplicationRegionEnum._(r'NORTHERN_REGION');
+  static const BONO_REGION = CustomerApplicationRegionEnum._(r'BONO_REGION');
+  static const VOLTA_REGION = CustomerApplicationRegionEnum._(r'VOLTA_REGION');
+  static const WESTERN_REGION = CustomerApplicationRegionEnum._(r'WESTERN_REGION');
+  static const OTI_REGION = CustomerApplicationRegionEnum._(r'OTI_REGION');
+  static const BONO_EAST_REGION = CustomerApplicationRegionEnum._(r'BONO_EAST_REGION');
+  static const AHAFO_REGION = CustomerApplicationRegionEnum._(r'AHAFO_REGION');
+  static const NORTH_EAST_REGION = CustomerApplicationRegionEnum._(r'NORTH_EAST_REGION');
+  static const SAVANNAH_REGION = CustomerApplicationRegionEnum._(r'SAVANNAH_REGION');
+  static const WESTERN_NORTH_REGION = CustomerApplicationRegionEnum._(r'WESTERN_NORTH_REGION');
+
+  /// List of all possible values in this [enum][CustomerApplicationRegionEnum].
+  static const values = <CustomerApplicationRegionEnum>[
+    GREATER_ACCRA_REGION,
+    ASHANTI_REGION,
+    EASTERN_REGION,
+    UPPER_EAST_REGION,
+    UPPER_WEST_REGION,
+    CENTRAL_REGION,
+    NORTHERN_REGION,
+    BONO_REGION,
+    VOLTA_REGION,
+    WESTERN_REGION,
+    OTI_REGION,
+    BONO_EAST_REGION,
+    AHAFO_REGION,
+    NORTH_EAST_REGION,
+    SAVANNAH_REGION,
+    WESTERN_NORTH_REGION,
+  ];
+
+  static CustomerApplicationRegionEnum fromJson(dynamic value) =>
+    CustomerApplicationRegionEnumTypeTransformer().decode(value);
+
+  static List<CustomerApplicationRegionEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(CustomerApplicationRegionEnum.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <CustomerApplicationRegionEnum>[];
+}
+
+/// Transformation class that can [encode] an instance of [CustomerApplicationRegionEnum] to String,
+/// and [decode] dynamic data back to [CustomerApplicationRegionEnum].
+class CustomerApplicationRegionEnumTypeTransformer {
+  factory CustomerApplicationRegionEnumTypeTransformer() => _instance ??= const CustomerApplicationRegionEnumTypeTransformer._();
+
+  const CustomerApplicationRegionEnumTypeTransformer._();
+
+  String encode(CustomerApplicationRegionEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a CustomerApplicationRegionEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CustomerApplicationRegionEnum decode(dynamic data, {bool allowNull}) {
+    if (data != null) {
+      switch (data.toString()) {
+        case r'GREATER_ACCRA_REGION': return CustomerApplicationRegionEnum.GREATER_ACCRA_REGION;
+        case r'ASHANTI_REGION': return CustomerApplicationRegionEnum.ASHANTI_REGION;
+        case r'EASTERN_REGION': return CustomerApplicationRegionEnum.EASTERN_REGION;
+        case r'UPPER_EAST_REGION': return CustomerApplicationRegionEnum.UPPER_EAST_REGION;
+        case r'UPPER_WEST_REGION': return CustomerApplicationRegionEnum.UPPER_WEST_REGION;
+        case r'CENTRAL_REGION': return CustomerApplicationRegionEnum.CENTRAL_REGION;
+        case r'NORTHERN_REGION': return CustomerApplicationRegionEnum.NORTHERN_REGION;
+        case r'BONO_REGION': return CustomerApplicationRegionEnum.BONO_REGION;
+        case r'VOLTA_REGION': return CustomerApplicationRegionEnum.VOLTA_REGION;
+        case r'WESTERN_REGION': return CustomerApplicationRegionEnum.WESTERN_REGION;
+        case r'OTI_REGION': return CustomerApplicationRegionEnum.OTI_REGION;
+        case r'BONO_EAST_REGION': return CustomerApplicationRegionEnum.BONO_EAST_REGION;
+        case r'AHAFO_REGION': return CustomerApplicationRegionEnum.AHAFO_REGION;
+        case r'NORTH_EAST_REGION': return CustomerApplicationRegionEnum.NORTH_EAST_REGION;
+        case r'SAVANNAH_REGION': return CustomerApplicationRegionEnum.SAVANNAH_REGION;
+        case r'WESTERN_NORTH_REGION': return CustomerApplicationRegionEnum.WESTERN_NORTH_REGION;
+        default:
+          if (allowNull == false) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [CustomerApplicationRegionEnumTypeTransformer] instance.
+  static CustomerApplicationRegionEnumTypeTransformer _instance;
 }
 
 

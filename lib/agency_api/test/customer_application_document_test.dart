@@ -56,6 +56,16 @@ void main() {
       // TODO
     });
 
+    // DateTime dateOfIssue
+    test('to test the property `dateOfIssue`', () async {
+      // TODO
+    });
+
+    // DateTime dateOfExpiry
+    test('to test the property `dateOfExpiry`', () async {
+      // TODO
+    });
+
 
   });
 

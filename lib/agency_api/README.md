@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
 *CustomersApi* | [**postCustomerApplication**](doc//CustomersApi.md#postcustomerapplication) | **POST** /application | 
 *CustomersApi* | [**postCustomerOtp**](doc//CustomersApi.md#postcustomerotp) | **POST** /application/otp | 
 *CustomersApi* | [**postReferrals**](doc//CustomersApi.md#postreferrals) | **POST** /referrals | 
+*CustomersApi* | [**postUpdateWithConsumerAppCustomerId**](doc//CustomersApi.md#postupdatewithconsumerappcustomerid) | **POST** /customers/update | 
 *CustomersApi* | [**putDepositTimesResponse**](doc//CustomersApi.md#putdeposittimesresponse) | **PUT** /customers/{customerId}/times | 
 *DefaultApi* | [**postDevices**](doc//DefaultApi.md#postdevices) | **POST** /devices | 
 *SupervisorApi* | [**getCallover**](doc//SupervisorApi.md#getcallover) | **GET** /supervisor/callover | 
@@ -128,6 +129,7 @@ Class | Method | HTTP request | Description
  - [NotificationRequest](doc//NotificationRequest.md)
  - [NotificationResponse](doc//NotificationResponse.md)
  - [OtpResponse](doc//OtpResponse.md)
+ - [Pageable](doc//Pageable.md)
  - [SettingModel](doc//SettingModel.md)
  - [StatisticsResponse](doc//StatisticsResponse.md)
  - [StatusResponse](doc//StatusResponse.md)
@@ -136,6 +138,7 @@ Class | Method | HTTP request | Description
  - [TransactionDetailResponse](doc//TransactionDetailResponse.md)
  - [TransactionRequest](doc//TransactionRequest.md)
  - [TransactionResponse](doc//TransactionResponse.md)
+ - [UpdateCustomerIdRequest](doc//UpdateCustomerIdRequest.md)
 
 
 ## Documentation For Authorization

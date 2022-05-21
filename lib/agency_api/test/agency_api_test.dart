@@ -75,14 +75,14 @@ void main() {
 
     // Get details/statistics on transactions made so far
     //
-    //Future<TransactionResponse> getTransactions() async
+    //Future<TransactionResponse> getTransactions(Pageable pageable) async
     test('test getTransactions', () async {
       // TODO
     });
 
     // Get all withdrawals endpoint
     //
-    //Future<List<TransactionDetailResponse>> getWithdrawals() async
+    //Future<List<TransactionDetailResponse>> getWithdrawals(Pageable pageable) async
     test('test getWithdrawals', () async {
       // TODO
     });

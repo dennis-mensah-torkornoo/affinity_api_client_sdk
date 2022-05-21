@@ -387,7 +387,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTransactions**
-> TransactionResponse getTransactions()
+> TransactionResponse getTransactions(pageable)
 
 
 
@@ -402,9 +402,10 @@ import 'package:agency_api/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
+final pageable = ; // Pageable | 
 
 try {
-    final result = api_instance.getTransactions();
+    final result = api_instance.getTransactions(pageable);
     print(result);
 } catch (e) {
     print('Exception when calling AgencyApi->getTransactions: $e\n');
@@ -412,7 +413,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageable** | [**Pageable**](.md)|  | 
 
 ### Return type
 
@@ -430,7 +434,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWithdrawals**
-> List<TransactionDetailResponse> getWithdrawals()
+> List<TransactionDetailResponse> getWithdrawals(pageable)
 
 
 
@@ -445,9 +449,10 @@ import 'package:agency_api/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
+final pageable = ; // Pageable | 
 
 try {
-    final result = api_instance.getWithdrawals();
+    final result = api_instance.getWithdrawals(pageable);
     print(result);
 } catch (e) {
     print('Exception when calling AgencyApi->getWithdrawals: $e\n');
@@ -455,7 +460,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageable** | [**Pageable**](.md)|  | 
 
 ### Return type
 

@@ -68,7 +68,7 @@ void main() {
 
     // Deposits endpoint
     //
-    //Future<List<TransactionDetailResponse>> getDeposits() async
+    //Future<List<TransactionDetailResponse>> getDeposits(Pageable pageable) async
     test('test getDeposits', () async {
       // TODO
     });
@@ -98,6 +98,13 @@ void main() {
     //
     //Future<StatusResponse> postReferrals(String p) async
     test('test postReferrals', () async {
+      // TODO
+    });
+
+    // Update with customer external id endpoint
+    //
+    //Future<InfoResponse> postUpdateWithConsumerAppCustomerId(UpdateCustomerIdRequest updateCustomerIdRequest) async
+    test('test postUpdateWithConsumerAppCustomerId', () async {
       // TODO
     });
 

@@ -439,7 +439,16 @@ class AgencyApi {
   /// Get details/statistics on transactions made so far
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> getTransactionsWithHttpInfo() async {
+  ///
+  /// Parameters:
+  ///
+  /// * [Pageable] pageable (required):
+  Future<Response> getTransactionsWithHttpInfo(Pageable pageable,) async {
+    // Verify required params are set.
+    if (pageable == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: pageable');
+    }
+
     // ignore: prefer_const_declarations
     final path = r'/transactions';
 
@@ -449,6 +458,8 @@ class AgencyApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'pageable', pageable));
 
     const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
@@ -467,8 +478,12 @@ class AgencyApi {
   }
 
   /// Get details/statistics on transactions made so far
-  Future<TransactionResponse> getTransactions() async {
-    final response = await getTransactionsWithHttpInfo();
+  ///
+  /// Parameters:
+  ///
+  /// * [Pageable] pageable (required):
+  Future<TransactionResponse> getTransactions(Pageable pageable,) async {
+    final response = await getTransactionsWithHttpInfo(pageable,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -485,7 +500,16 @@ class AgencyApi {
   /// Get all withdrawals endpoint
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> getWithdrawalsWithHttpInfo() async {
+  ///
+  /// Parameters:
+  ///
+  /// * [Pageable] pageable (required):
+  Future<Response> getWithdrawalsWithHttpInfo(Pageable pageable,) async {
+    // Verify required params are set.
+    if (pageable == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: pageable');
+    }
+
     // ignore: prefer_const_declarations
     final path = r'/withdrawals';
 
@@ -495,6 +519,8 @@ class AgencyApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'pageable', pageable));
 
     const authNames = <String>['agent-authorizer'];
     const contentTypes = <String>[];
@@ -513,8 +539,12 @@ class AgencyApi {
   }
 
   /// Get all withdrawals endpoint
-  Future<List<TransactionDetailResponse>> getWithdrawals() async {
-    final response = await getWithdrawalsWithHttpInfo();
+  ///
+  /// Parameters:
+  ///
+  /// * [Pageable] pageable (required):
+  Future<List<TransactionDetailResponse>> getWithdrawals(Pageable pageable,) async {
+    final response = await getWithdrawalsWithHttpInfo(pageable,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

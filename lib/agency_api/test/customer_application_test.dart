@@ -231,6 +231,11 @@ void main() {
       // TODO
     });
 
+    // String region
+    test('to test the property `region`', () async {
+      // TODO
+    });
+
     // String tinNumber
     test('to test the property `tinNumber`', () async {
       // TODO

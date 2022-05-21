@@ -76,6 +76,12 @@ paths:
       - Agency
       description: Get all withdrawals endpoint
       operationId: getWithdrawals
+      parameters:
+      - name: pageable
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Pageable'
       responses:
         "400":
           description: Bad Request
@@ -752,6 +758,12 @@ paths:
         - Customers
       description: "Deposits endpoint"
       operationId: "getDeposits"
+      parameters:
+      - name: pageable
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Pageable'
       responses:
         "400":
           description: "400 response"
@@ -862,6 +874,40 @@ paths:
           default:
             statusCode: "201"
         passthroughBehavior: "when_no_match"
+  /customers/update:
+    post:
+      tags:
+      - Customers
+      description: Update with customer external id endpoint
+      operationId: postUpdateWithConsumerAppCustomerId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomerIdRequest'
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InfoResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/customers/update"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+    
   /application:
     get:
       tags:
@@ -1264,6 +1310,12 @@ paths:
         - Agency
       description: "Get details/statistics on transactions made so far"
       operationId: "getTransactions"
+      parameters:
+      - name: pageable
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Pageable'
       responses:
         "400":
           description: "400 response"
@@ -1867,6 +1919,18 @@ components:
           type: string
         info:
           type: string
+    UpdateCustomerIdRequest:
+      type: object
+      properties:
+        customerId:
+          type: string
+        customerPhoneNumber:
+          type: string
+        mambuCustomerId:
+          type: string
+        dateCreated:
+          type: string
+          format: date-time
     CustomerApplication:
       type: object
       properties:
@@ -1993,6 +2057,25 @@ components:
           type: string
         postalAddress:
           type: string
+        region:
+          type: string
+          enum:
+          - GREATER_ACCRA_REGION
+          - ASHANTI_REGION
+          - EASTERN_REGION
+          - UPPER_EAST_REGION
+          - UPPER_WEST_REGION
+          - CENTRAL_REGION
+          - NORTHERN_REGION
+          - BONO_REGION
+          - VOLTA_REGION
+          - WESTERN_REGION
+          - OTI_REGION
+          - BONO_EAST_REGION
+          - AHAFO_REGION
+          - NORTH_EAST_REGION
+          - SAVANNAH_REGION
+          - WESTERN_NORTH_REGION
         tinNumber:
           type: string
         acceptedTermsAndConditions:
@@ -2024,7 +2107,8 @@ components:
           enum:
           - PASSPORT
           - DRIVERS
-          - HEALTH_INSURANCE
+          - NHIS
+          - NATIONAL_ID
           - VOTERS_OLD
           - VOTERS_NEW
           - OTHER
@@ -2036,6 +2120,12 @@ components:
           type: string
         validated:
           type: boolean
+        dateOfIssue:
+          type: string
+          format: date
+        dateOfExpiry:
+          type: string
+          format: date
     OtpResponse:
       type: object
       properties:
@@ -2065,6 +2155,17 @@ components:
           - OTHER
         value:
           type: string
+    Pageable:
+      type: object
+      properties:
+        sort:
+          type: string
+        page:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
     TransactionResponse:
       type: object
       properties:

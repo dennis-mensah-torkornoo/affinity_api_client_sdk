@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**postCustomerApplication**](CustomersApi.md#postcustomerapplication) | **POST** /application | 
 [**postCustomerOtp**](CustomersApi.md#postcustomerotp) | **POST** /application/otp | 
 [**postReferrals**](CustomersApi.md#postreferrals) | **POST** /referrals | 
+[**postUpdateWithConsumerAppCustomerId**](CustomersApi.md#postupdatewithconsumerappcustomerid) | **POST** /customers/update | 
 [**putDepositTimesResponse**](CustomersApi.md#putdeposittimesresponse) | **PUT** /customers/{customerId}/times | 
 
 
@@ -346,7 +347,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDeposits**
-> List<TransactionDetailResponse> getDeposits()
+> List<TransactionDetailResponse> getDeposits(pageable)
 
 
 
@@ -361,9 +362,10 @@ import 'package:agency_api/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = CustomersApi();
+final pageable = ; // Pageable | 
 
 try {
-    final result = api_instance.getDeposits();
+    final result = api_instance.getDeposits(pageable);
     print(result);
 } catch (e) {
     print('Exception when calling CustomersApi->getDeposits: $e\n');
@@ -371,7 +373,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageable** | [**Pageable**](.md)|  | 
 
 ### Return type
 
@@ -578,6 +583,49 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **postUpdateWithConsumerAppCustomerId**
+> InfoResponse postUpdateWithConsumerAppCustomerId(updateCustomerIdRequest)
+
+
+
+Update with customer external id endpoint
+
+### Example
+```dart
+import 'package:agency_api/api.dart';
+
+final api_instance = CustomersApi();
+final updateCustomerIdRequest = UpdateCustomerIdRequest(); // UpdateCustomerIdRequest | 
+
+try {
+    final result = api_instance.postUpdateWithConsumerAppCustomerId(updateCustomerIdRequest);
+    print(result);
+} catch (e) {
+    print('Exception when calling CustomersApi->postUpdateWithConsumerAppCustomerId: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateCustomerIdRequest** | [**UpdateCustomerIdRequest**](UpdateCustomerIdRequest.md)|  | 
+
+### Return type
+
+[**InfoResponse**](InfoResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
