@@ -41,7 +41,7 @@ class AgencyApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'id', id));
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -91,7 +91,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -137,7 +137,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -169,6 +169,55 @@ class AgencyApi {
     return Future<CashAtHandResponse>.value();
   }
 
+  /// Get Network Providers endpoint
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getNetworkProvidersWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/network-providers';
+
+    // ignore: prefer_final_locals
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const authNames = <String>[];
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Get Network Providers endpoint
+  Future<List<NetworkProvider>> getNetworkProviders() async {
+    final response = await getNetworkProvidersWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<NetworkProvider>') as List)
+        .cast<NetworkProvider>()
+        .toList(growable: false);
+
+    }
+    return Future<List<NetworkProvider>>.value();
+  }
+
   /// Notifications by id endpoint
   ///
   /// Note: This method returns the HTTP [Response].
@@ -193,7 +242,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -243,7 +292,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -292,7 +341,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -351,7 +400,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -401,7 +450,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -461,7 +510,7 @@ class AgencyApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'pageable', pageable));
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -497,6 +546,78 @@ class AgencyApi {
     return Future<TransactionResponse>.value();
   }
 
+  /// Get transactions linked to a single account
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] accountEncodedId (required):
+  ///
+  /// * [Pageable] pageable (required):
+  Future<Response> getTransactions1WithHttpInfo(String accountEncodedId, Pageable pageable,) async {
+    // Verify required params are set.
+    if (accountEncodedId == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: accountEncodedId');
+    }
+    if (pageable == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: pageable');
+    }
+
+    // ignore: prefer_const_declarations
+    final path = r'/transactions/{accountEncodedId}'
+      .replaceAll('{accountEncodedId}', accountEncodedId);
+
+    // ignore: prefer_final_locals
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'pageable', pageable));
+
+    const authNames = <String>[];
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Get transactions linked to a single account
+  ///
+  /// Parameters:
+  ///
+  /// * [String] accountEncodedId (required):
+  ///
+  /// * [Pageable] pageable (required):
+  Future<List<TransactionDetailResponse>> getTransactions1(String accountEncodedId, Pageable pageable,) async {
+    final response = await getTransactions1WithHttpInfo(accountEncodedId, pageable,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<TransactionDetailResponse>') as List)
+        .cast<TransactionDetailResponse>()
+        .toList(growable: false);
+
+    }
+    return Future<List<TransactionDetailResponse>>.value();
+  }
+
   /// Get all withdrawals endpoint
   ///
   /// Note: This method returns the HTTP [Response].
@@ -522,7 +643,7 @@ class AgencyApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'pageable', pageable));
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -584,7 +705,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>['application/json'];
 
 
@@ -651,7 +772,7 @@ class AgencyApi {
       queryParams.addAll(_convertParametersForCollectionFormat('', 'id', id));
       queryParams.addAll(_convertParametersForCollectionFormat('', 'type', type));
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -715,7 +836,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>['application/json'];
 
 
@@ -776,7 +897,7 @@ class AgencyApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'ref', ref));
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -835,7 +956,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>['application/json'];
 
 
@@ -894,7 +1015,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>['application/json'];
 
 
@@ -953,7 +1074,7 @@ class AgencyApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>['application/json'];
 
 
@@ -1020,7 +1141,7 @@ class AgencyApi {
       queryParams.addAll(_convertParametersForCollectionFormat('', 'otp', otp));
       queryParams.addAll(_convertParametersForCollectionFormat('', 'ref', ref));
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -1083,7 +1204,7 @@ class AgencyApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'ref', ref));
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 

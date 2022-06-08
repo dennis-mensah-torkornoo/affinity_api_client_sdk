@@ -22,10 +22,6 @@ Register devices here
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
-// TODO Configure API key authorization: agent-authorizer
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = DefaultApi();
 final deviceRequest = DeviceRequest(); // DeviceRequest | 
@@ -50,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[agent-authorizer](../README.md#agent-authorizer)
+No authorization required
 
 ### HTTP request headers
 

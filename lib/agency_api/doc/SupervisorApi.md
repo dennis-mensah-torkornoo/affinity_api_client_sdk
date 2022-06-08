@@ -27,10 +27,6 @@ GET callover for end of day for all agents
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
-// TODO Configure API key authorization: agent-authorizer
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = SupervisorApi();
 
@@ -51,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[agent-authorizer](../README.md#agent-authorizer)
+No authorization required
 
 ### HTTP request headers
 
@@ -70,10 +66,6 @@ GET end of day transactions for all agents
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
-// TODO Configure API key authorization: agent-authorizer
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = SupervisorApi();
 
@@ -94,7 +86,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[agent-authorizer](../README.md#agent-authorizer)
+No authorization required
 
 ### HTTP request headers
 
@@ -113,10 +105,6 @@ GET end of day transactions for specific agent
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
-// TODO Configure API key authorization: agent-authorizer
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = SupervisorApi();
 final agentId = 789; // int | 
@@ -141,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[agent-authorizer](../README.md#agent-authorizer)
+No authorization required
 
 ### HTTP request headers
 
@@ -160,10 +148,6 @@ Acknowledge all end of day transactions for specific agent
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
-// TODO Configure API key authorization: agent-authorizer
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = SupervisorApi();
 final agentId = 789; // int | 
@@ -188,7 +172,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[agent-authorizer](../README.md#agent-authorizer)
+No authorization required
 
 ### HTTP request headers
 
@@ -207,10 +191,6 @@ Acknowledge an end of day transaction using transaction id
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
-// TODO Configure API key authorization: agent-authorizer
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = SupervisorApi();
 final tid = tid_example; // String | 
@@ -235,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[agent-authorizer](../README.md#agent-authorizer)
+No authorization required
 
 ### HTTP request headers
 
@@ -254,10 +234,6 @@ Mark a suspicious end of day transaction using transaction id
 ### Example
 ```dart
 import 'package:agency_api/api.dart';
-// TODO Configure API key authorization: agent-authorizer
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = SupervisorApi();
 final tid = tid_example; // String | 
@@ -282,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[agent-authorizer](../README.md#agent-authorizer)
+No authorization required
 
 ### HTTP request headers
 

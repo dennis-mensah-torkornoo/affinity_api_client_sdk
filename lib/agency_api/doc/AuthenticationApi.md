@@ -9,8 +9,49 @@ All URIs are relative to *https://api.affinitylabstest.com//agency*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**postKeepAlive**](AuthenticationApi.md#postkeepalive) | **POST** /agency/keep-alive | 
 [**postLinkUserToDevice**](AuthenticationApi.md#postlinkusertodevice) | **POST** /devices/link | 
+[**postLogin**](AuthenticationApi.md#postlogin) | **POST** /agency/login | 
 
+
+# **postKeepAlive**
+> RefreshToken postKeepAlive()
+
+
+
+Extend token lifetime here.
+
+### Example
+```dart
+import 'package:agency_api/api.dart';
+
+final api_instance = AuthenticationApi();
+
+try {
+    final result = api_instance.postKeepAlive();
+    print(result);
+} catch (e) {
+    print('Exception when calling AuthenticationApi->postKeepAlive: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**RefreshToken**](RefreshToken.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postLinkUserToDevice**
 > DeviceResponse postLinkUserToDevice(deviceRequest)
@@ -43,6 +84,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DeviceResponse**](DeviceResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **postLogin**
+> LoginResponse postLogin(agencyLoginRequest)
+
+
+
+Login agents here with email, password
+
+### Example
+```dart
+import 'package:agency_api/api.dart';
+
+final api_instance = AuthenticationApi();
+final agencyLoginRequest = AgencyLoginRequest(); // AgencyLoginRequest | 
+
+try {
+    final result = api_instance.postLogin(agencyLoginRequest);
+    print(result);
+} catch (e) {
+    print('Exception when calling AuthenticationApi->postLogin: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **agencyLoginRequest** | [**AgencyLoginRequest**](AgencyLoginRequest.md)|  | 
+
+### Return type
+
+[**LoginResponse**](LoginResponse.md)
 
 ### Authorization
 

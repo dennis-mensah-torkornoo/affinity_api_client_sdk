@@ -39,7 +39,7 @@ class DefaultApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>['application/json'];
 
 

@@ -41,7 +41,7 @@ class CustomersApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'p', p));
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -102,7 +102,7 @@ class CustomersApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'id', id));
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -155,7 +155,7 @@ class CustomersApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -215,7 +215,7 @@ class CustomersApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'p', p));
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -275,7 +275,7 @@ class CustomersApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -336,7 +336,7 @@ class CustomersApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'p', p));
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -386,7 +386,7 @@ class CustomersApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -446,7 +446,7 @@ class CustomersApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'pageable', pageable));
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -515,7 +515,7 @@ class CustomersApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'p', p));
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>['application/json'];
 
 
@@ -583,7 +583,7 @@ class CustomersApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'p', p));
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>['application/json'];
 
 
@@ -651,7 +651,7 @@ class CustomersApi {
       queryParams.addAll(_convertParametersForCollectionFormat('', 'resend', resend));
     }
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -714,7 +714,7 @@ class CustomersApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'p', p));
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -838,7 +838,7 @@ class CustomersApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>['application/json'];
 
 

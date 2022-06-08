@@ -195,6 +195,8 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'AccountResponse':
           return AccountResponse.fromJson(value);
+        case 'AgencyLoginRequest':
+          return AgencyLoginRequest.fromJson(value);
         case 'ApplicationStatusResponse':
           return ApplicationStatusResponse.fromJson(value);
         case 'CashAtHandResponse':
@@ -223,6 +225,10 @@ class ApiClient {
           return InfoResponse.fromJson(value);
         case 'IntermediaryModel':
           return IntermediaryModel.fromJson(value);
+        case 'LoginResponse':
+          return LoginResponse.fromJson(value);
+        case 'NetworkProvider':
+          return NetworkProvider.fromJson(value);
         case 'NotificationRequest':
           return NotificationRequest.fromJson(value);
         case 'NotificationResponse':
@@ -231,6 +237,8 @@ class ApiClient {
           return OtpResponse.fromJson(value);
         case 'Pageable':
           return Pageable.fromJson(value);
+        case 'RefreshToken':
+          return RefreshToken.fromJson(value);
         case 'SettingModel':
           return SettingModel.fromJson(value);
         case 'StatisticsResponse':
@@ -249,6 +257,8 @@ class ApiClient {
           return TransactionResponse.fromJson(value);
         case 'UpdateCustomerIdRequest':
           return UpdateCustomerIdRequest.fromJson(value);
+        case 'User':
+          return User.fromJson(value);
         default:
           Match match;
           if (value is List && (match = _regList.firstMatch(targetType)) != null) {

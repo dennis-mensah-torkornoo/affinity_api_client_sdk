@@ -54,11 +54,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -97,11 +92,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/TransactionDetailResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -136,11 +126,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StatusResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -175,11 +160,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StatusResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -221,11 +201,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionDetailResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -261,11 +236,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/TaskResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-auth:
         type: "http_proxy"
         
@@ -310,11 +280,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InfoResponse"
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -350,11 +315,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -388,11 +348,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/TransactionResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -426,11 +381,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -470,11 +420,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/TransactionResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -511,11 +456,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -552,11 +492,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -594,11 +529,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/StatusResponse"
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -632,11 +562,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/NotificationResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -671,11 +596,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotificationResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -684,6 +604,69 @@ paths:
         responses:
           default:
             statusCode: "201"
+        passthroughBehavior: "when_no_match"
+  /agency/login:
+    post:
+      tags:
+      - Authentication
+      description: "Login agents here with email, password"
+      operationId: postLogin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgencyLoginRequest'
+        required: true
+      responses:
+        "200":
+          description: Ok response with token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/login"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        
+  /agency/keep-alive:
+    post:
+      tags:
+      - Authentication
+      description: Extend token lifetime here.
+      operationId: postKeepAlive
+      responses:
+        "200":
+          description: Ok response with token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RefreshToken'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "POST"
+        uri: "https://${stageVariables.albUrl}/agency/keep-alive"
+        responses:
+          default:
+            statusCode: "200"
         passthroughBehavior: "when_no_match"
         
   /devices:
@@ -704,11 +687,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DeviceResponse"
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -779,11 +757,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/TransactionDetailResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -818,11 +791,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -858,11 +826,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionDetailResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -933,11 +896,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomerApplication'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -980,11 +938,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StatusResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1021,11 +974,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomerApplication'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1068,11 +1016,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InfoResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1115,11 +1058,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1159,11 +1097,6 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/AccountResponse"
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         httpMethod: "GET"
@@ -1211,11 +1144,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/AccountResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         httpMethod: "POST"
@@ -1248,11 +1176,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SettingModel'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1289,11 +1212,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1329,16 +1247,54 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
         httpMethod: "GET"
         uri: "https://${stageVariables.albUrl}/agency/transactions"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+  /transactions/{accountEncodedId}:
+    get:
+      tags:
+      - Agency
+      description: Get transactions linked to a single account
+      operationId: getTransactions_1
+      parameters:
+      - name: accountEncodedId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: pageable
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Pageable'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionDetailResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
+        
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/transactions/{accountEncodedId}"
+        requestParameters:
+          integration.request.path.accountEncodedId: method.request.path.accountEncodedId
         responses:
           default:
             statusCode: "200"
@@ -1370,11 +1326,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InfoResponse"
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1405,11 +1356,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1445,11 +1391,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1461,7 +1402,37 @@ paths:
           default:
             statusCode: "200"
         passthroughBehavior: "when_no_match"
+                        
+  /network-providers:
+    get:
+      tags:
+      - Agency
+      description: Get Network Providers endpoint
+      operationId: getNetworkProviders
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NetworkProvider'
+      x-amazon-apigateway-integration:
+        type: "http_proxy"
         
+        httpMethod: "GET"
+        uri: "https://${stageVariables.albUrl}/agency/network-providers"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
   /home:
     get:
       tags:
@@ -1481,11 +1452,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HomeResponse"
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1511,11 +1477,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/CustomerResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1550,11 +1511,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomerDetailsResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1591,11 +1547,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomerDetailsResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1626,11 +1577,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CashAtHandResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1661,11 +1607,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ApplicationStatusResponse'
-      security:
-      - agent-authorizer:
-        - "agency/read"
-        - "agency/write"
-        - "openid"
       x-amazon-apigateway-integration:
         type: "http_proxy"
         
@@ -1897,6 +1838,48 @@ components:
           format: date-time
         read:
           type: boolean
+    AgencyLoginRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        deviceId:
+          type: string
+    LoginResponse:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        token:
+          type: string
+        expiresAt:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        emailVerifiedAt:
+          type: string
+        phoneNumber:
+          type: string
+    RefreshToken:
+      type: object
+      properties:
+        expiresAt:
+          type: string
+        message:
+          type: string
     DeviceRequest:
       type: object
       properties:
@@ -2210,6 +2193,15 @@ components:
         ecash:
           type: integer
           format: int64
+    NetworkProvider:
+      type: object
+      properties:
+        provider:
+          type: string
+          enum:
+          - MTN_GH
+          - VODA_GH
+          - AIRTELTIGO_GH
     CustomerResponse:
       type: object
       properties:

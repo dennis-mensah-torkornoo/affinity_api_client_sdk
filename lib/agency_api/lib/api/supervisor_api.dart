@@ -30,7 +30,7 @@ class SupervisorApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -79,7 +79,7 @@ class SupervisorApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -138,7 +138,7 @@ class SupervisorApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -201,7 +201,7 @@ class SupervisorApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -262,7 +262,7 @@ class SupervisorApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'tid', tid));
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -323,7 +323,7 @@ class SupervisorApi {
 
       queryParams.addAll(_convertParametersForCollectionFormat('', 'tid', tid));
 
-    const authNames = <String>['agent-authorizer'];
+    const authNames = <String>[];
     const contentTypes = <String>[];
 
 

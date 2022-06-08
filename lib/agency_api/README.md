@@ -39,10 +39,6 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```dart
 import 'package:agency_api/api.dart';
 
-// TODO Configure API key authorization: agent-authorizer
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('agent-authorizer').apiKeyPrefix = 'Bearer';
 
 final api_instance = AgencyApi();
 final id = id_example; // String | 
@@ -65,12 +61,14 @@ Class | Method | HTTP request | Description
 *AgencyApi* | [**deleteTasks**](doc//AgencyApi.md#deletetasks) | **DELETE** /tasks | 
 *AgencyApi* | [**getAgentHome**](doc//AgencyApi.md#getagenthome) | **GET** /home | 
 *AgencyApi* | [**getCashAtHand**](doc//AgencyApi.md#getcashathand) | **GET** /cash-at-hand | 
+*AgencyApi* | [**getNetworkProviders**](doc//AgencyApi.md#getnetworkproviders) | **GET** /network-providers | 
 *AgencyApi* | [**getNotificationById**](doc//AgencyApi.md#getnotificationbyid) | **GET** /notifications/{id} | 
 *AgencyApi* | [**getNotifications**](doc//AgencyApi.md#getnotifications) | **GET** /notifications | 
 *AgencyApi* | [**getSettings**](doc//AgencyApi.md#getsettings) | **GET** /settings | 
 *AgencyApi* | [**getTaskDetail**](doc//AgencyApi.md#gettaskdetail) | **GET** /tasks/{taskId} | 
 *AgencyApi* | [**getTasks**](doc//AgencyApi.md#gettasks) | **GET** /tasks | 
 *AgencyApi* | [**getTransactions**](doc//AgencyApi.md#gettransactions) | **GET** /transactions | 
+*AgencyApi* | [**getTransactions1**](doc//AgencyApi.md#gettransactions1) | **GET** /transactions/{accountEncodedId} | 
 *AgencyApi* | [**getWithdrawals**](doc//AgencyApi.md#getwithdrawals) | **GET** /withdrawals | 
 *AgencyApi* | [**patchSettings**](doc//AgencyApi.md#patchsettings) | **PATCH** /settings | 
 *AgencyApi* | [**postAccounts**](doc//AgencyApi.md#postaccounts) | **POST** /accounts | 
@@ -81,7 +79,9 @@ Class | Method | HTTP request | Description
 *AgencyApi* | [**postWithdrawals**](doc//AgencyApi.md#postwithdrawals) | **POST** /withdrawals | 
 *AgencyApi* | [**postWithdrawalsConfirm**](doc//AgencyApi.md#postwithdrawalsconfirm) | **POST** /withdrawals/confirm | 
 *AgencyApi* | [**postWithdrawalsOtp**](doc//AgencyApi.md#postwithdrawalsotp) | **POST** /withdrawals/otp | 
+*AuthenticationApi* | [**postKeepAlive**](doc//AuthenticationApi.md#postkeepalive) | **POST** /agency/keep-alive | 
 *AuthenticationApi* | [**postLinkUserToDevice**](doc//AuthenticationApi.md#postlinkusertodevice) | **POST** /devices/link | 
+*AuthenticationApi* | [**postLogin**](doc//AuthenticationApi.md#postlogin) | **POST** /agency/login | 
 *CustomersApi* | [**deleteCustomerApplication**](doc//CustomersApi.md#deletecustomerapplication) | **DELETE** /application | 
 *CustomersApi* | [**getAccounts**](doc//CustomersApi.md#getaccounts) | **GET** /accounts | 
 *CustomersApi* | [**getAppStatus**](doc//CustomersApi.md#getappstatus) | **GET** /appstatus | 
@@ -112,6 +112,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AccountResponse](doc//AccountResponse.md)
+ - [AgencyLoginRequest](doc//AgencyLoginRequest.md)
  - [ApplicationStatusResponse](doc//ApplicationStatusResponse.md)
  - [CashAtHandResponse](doc//CashAtHandResponse.md)
  - [CustomerApplication](doc//CustomerApplication.md)
@@ -126,10 +127,13 @@ Class | Method | HTTP request | Description
  - [HomeResponse](doc//HomeResponse.md)
  - [InfoResponse](doc//InfoResponse.md)
  - [IntermediaryModel](doc//IntermediaryModel.md)
+ - [LoginResponse](doc//LoginResponse.md)
+ - [NetworkProvider](doc//NetworkProvider.md)
  - [NotificationRequest](doc//NotificationRequest.md)
  - [NotificationResponse](doc//NotificationResponse.md)
  - [OtpResponse](doc//OtpResponse.md)
  - [Pageable](doc//Pageable.md)
+ - [RefreshToken](doc//RefreshToken.md)
  - [SettingModel](doc//SettingModel.md)
  - [StatisticsResponse](doc//StatisticsResponse.md)
  - [StatusResponse](doc//StatusResponse.md)
@@ -139,6 +143,7 @@ Class | Method | HTTP request | Description
  - [TransactionRequest](doc//TransactionRequest.md)
  - [TransactionResponse](doc//TransactionResponse.md)
  - [UpdateCustomerIdRequest](doc//UpdateCustomerIdRequest.md)
+ - [User](doc//User.md)
 
 
 ## Documentation For Authorization

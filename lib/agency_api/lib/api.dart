@@ -35,6 +35,7 @@ part 'api/supervisor_api.dart';
 part 'api/tasks_api.dart';
 
 part 'model/account_response.dart';
+part 'model/agency_login_request.dart';
 part 'model/application_status_response.dart';
 part 'model/cash_at_hand_response.dart';
 part 'model/customer_application.dart';
@@ -49,10 +50,13 @@ part 'model/error_response.dart';
 part 'model/home_response.dart';
 part 'model/info_response.dart';
 part 'model/intermediary_model.dart';
+part 'model/login_response.dart';
+part 'model/network_provider.dart';
 part 'model/notification_request.dart';
 part 'model/notification_response.dart';
 part 'model/otp_response.dart';
 part 'model/pageable.dart';
+part 'model/refresh_token.dart';
 part 'model/setting_model.dart';
 part 'model/statistics_response.dart';
 part 'model/status_response.dart';
@@ -62,6 +66,7 @@ part 'model/transaction_detail_response.dart';
 part 'model/transaction_request.dart';
 part 'model/transaction_response.dart';
 part 'model/update_customer_id_request.dart';
+part 'model/user.dart';
 
 
 const _delimiters = {'csv': ',', 'ssv': ' ', 'tsv': '\t', 'pipes': '|'};
