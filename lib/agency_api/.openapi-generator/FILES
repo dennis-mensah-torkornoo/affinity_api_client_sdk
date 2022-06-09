@@ -91,8 +91,3 @@ lib/model/transaction_response.dart
 lib/model/update_customer_id_request.dart
 lib/model/user.dart
 pubspec.yaml
-test/agency_login_request_test.dart
-test/login_response_test.dart
-test/network_provider_test.dart
-test/refresh_token_test.dart
-test/user_test.dart

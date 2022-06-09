@@ -21,7 +21,7 @@ class AuthenticationApi {
   /// Note: This method returns the HTTP [Response].
   Future<Response> postKeepAliveWithHttpInfo() async {
     // ignore: prefer_const_declarations
-    final path = r'/agency/keep-alive';
+    final path = r'/keep-alive';
 
     // ignore: prefer_final_locals
     Object postBody;
@@ -135,7 +135,7 @@ class AuthenticationApi {
     }
 
     // ignore: prefer_const_declarations
-    final path = r'/agency/login';
+    final path = r'/login';
 
     // ignore: prefer_final_locals
     Object postBody = agencyLoginRequest;

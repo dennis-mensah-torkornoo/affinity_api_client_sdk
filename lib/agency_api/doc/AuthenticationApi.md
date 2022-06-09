@@ -9,9 +9,9 @@ All URIs are relative to *https://api.affinitylabstest.com//agency*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**postKeepAlive**](AuthenticationApi.md#postkeepalive) | **POST** /agency/keep-alive | 
+[**postKeepAlive**](AuthenticationApi.md#postkeepalive) | **POST** /keep-alive | 
 [**postLinkUserToDevice**](AuthenticationApi.md#postlinkusertodevice) | **POST** /devices/link | 
-[**postLogin**](AuthenticationApi.md#postlogin) | **POST** /agency/login | 
+[**postLogin**](AuthenticationApi.md#postlogin) | **POST** /login | 
 
 
 # **postKeepAlive**
