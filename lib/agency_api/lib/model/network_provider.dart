@@ -14,26 +14,34 @@ class NetworkProvider {
   /// Returns a new [NetworkProvider] instance.
   NetworkProvider({
     this.provider,
+    this.title,
   });
 
   NetworkProviderProviderEnum provider;
 
+  String title;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is NetworkProvider &&
-     other.provider == provider;
+     other.provider == provider &&
+     other.title == title;
 
   @override
   int get hashCode =>
   // ignore: unnecessary_parenthesis
-    (provider == null ? 0 : provider.hashCode);
+    (provider == null ? 0 : provider.hashCode) +
+    (title == null ? 0 : title.hashCode);
 
   @override
-  String toString() => 'NetworkProvider[provider=$provider]';
+  String toString() => 'NetworkProvider[provider=$provider, title=$title]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     if (provider != null) {
       json[r'provider'] = provider;
+    }
+    if (title != null) {
+      json[r'title'] = title;
     }
     return json;
   }
@@ -46,6 +54,7 @@ class NetworkProvider {
       final json = value.cast<String, dynamic>();
       return NetworkProvider(
         provider: NetworkProviderProviderEnum.fromJson(json[r'provider']),
+        title: mapValueOfType<String>(json, r'title'),
       );
     }
     return null;
