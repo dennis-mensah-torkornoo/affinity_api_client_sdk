@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-
+// @dart=2.0
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -13,16 +13,16 @@ part of openapi.api;
 class DepositScheduleRequest {
   /// Returns a new [DepositScheduleRequest] instance.
   DepositScheduleRequest({
-    required this.customerId,
-    required this.scheduledAmount,
-    required this.scheduledDate,
+    @required this.customerId,
+    @required this.scheduledAmount,
+    @required this.scheduledDate,
   });
 
-  String? customerId;
+  String customerId;
 
-  int? scheduledAmount;
+  int scheduledAmount;
 
-  DateTime? scheduledDate;
+  DateTime scheduledDate;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DepositScheduleRequest &&
@@ -44,14 +44,14 @@ class DepositScheduleRequest {
     final json = <String, dynamic>{};
       json[r'customerId'] = customerId;
       json[r'scheduledAmount'] = scheduledAmount;
-      json[r'scheduledDate'] = scheduledDate!.toUtc().toIso8601String();
+      json[r'scheduledDate'] = scheduledDate.toUtc().toIso8601String();
     return json;
   }
 
   /// Returns a new [DepositScheduleRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static DepositScheduleRequest? fromJson(dynamic value) {
+  static DepositScheduleRequest fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return DepositScheduleRequest(
@@ -63,13 +63,13 @@ class DepositScheduleRequest {
     return null;
   }
 
-  static List<DepositScheduleRequest?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<DepositScheduleRequest> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(DepositScheduleRequest.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <DepositScheduleRequest>[];
 
-  static Map<String, DepositScheduleRequest?> mapFromJson(dynamic json) {
-    final map = <String, DepositScheduleRequest?>{};
+  static Map<String, DepositScheduleRequest> mapFromJson(dynamic json) {
+    final map = <String, DepositScheduleRequest>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -79,8 +79,8 @@ class DepositScheduleRequest {
   }
 
   // maps a json object with a list of DepositScheduleRequest-objects as value to a dart map
-  static Map<String, List<DepositScheduleRequest?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
-    final Map<String, List<DepositScheduleRequest?>?> map = <String, List<DepositScheduleRequest>?>{};
+  static Map<String, List<DepositScheduleRequest>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<DepositScheduleRequest>>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

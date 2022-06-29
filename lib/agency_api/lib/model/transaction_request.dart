@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-
+// @dart=2.0
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -13,34 +13,34 @@ part of openapi.api;
 class TransactionRequest {
   /// Returns a new [TransactionRequest] instance.
   TransactionRequest({
-    required this.accountId,
-    required this.customerPhoneNumber,
+    @required this.accountId,
+    @required this.customerPhoneNumber,
     this.referenceNumber,
-    required this.currency,
-    required this.amount,
+    @required this.currency,
+    @required this.amount,
     this.fee,
     this.note,
     this.idempotencyKey,
     this.intermediary,
   });
 
-  String? accountId;
+  String accountId;
 
-  String? customerPhoneNumber;
+  String customerPhoneNumber;
 
-  String? referenceNumber;
+  String referenceNumber;
 
-  String? currency;
+  String currency;
 
-  num? amount;
+  num amount;
 
-  num? fee;
+  num fee;
 
-  String? note;
+  String note;
 
-  String? idempotencyKey;
+  String idempotencyKey;
 
-  IntermediaryModel? intermediary;
+  IntermediaryModel intermediary;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TransactionRequest &&
@@ -97,7 +97,7 @@ class TransactionRequest {
   /// Returns a new [TransactionRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static TransactionRequest? fromJson(dynamic value) {
+  static TransactionRequest fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return TransactionRequest(
@@ -119,13 +119,13 @@ class TransactionRequest {
     return null;
   }
 
-  static List<TransactionRequest?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<TransactionRequest> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(TransactionRequest.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <TransactionRequest>[];
 
-  static Map<String, TransactionRequest?> mapFromJson(dynamic json) {
-    final map = <String, TransactionRequest?>{};
+  static Map<String, TransactionRequest> mapFromJson(dynamic json) {
+    final map = <String, TransactionRequest>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -135,8 +135,8 @@ class TransactionRequest {
   }
 
   // maps a json object with a list of TransactionRequest-objects as value to a dart map
-  static Map<String, List<TransactionRequest?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
-    final Map<String, List<TransactionRequest?>?> map = <String, List<TransactionRequest>?>{};
+  static Map<String, List<TransactionRequest>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<TransactionRequest>>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

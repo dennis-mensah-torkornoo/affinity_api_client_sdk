@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-
+// @dart=2.0
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -23,21 +23,21 @@ class TransactionDetailResponse {
     this.created,
   });
 
-  String? id;
+  String id;
 
-  String? name;
+  String name;
 
-  String? accountNumber;
+  String accountNumber;
 
-  String? profileUrl;
+  String profileUrl;
 
-  TransactionDetailResponseTransactionTypeEnum? transactionType;
+  TransactionDetailResponseTransactionTypeEnum transactionType;
 
-  bool? assigned;
+  bool assigned;
 
-  int? amount;
+  int amount;
 
-  DateTime? created;
+  DateTime created;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TransactionDetailResponse &&
@@ -89,7 +89,7 @@ class TransactionDetailResponse {
       json[r'amount'] = amount;
     }
     if (created != null) {
-      json[r'created'] = created!.toUtc().toIso8601String();
+      json[r'created'] = created.toUtc().toIso8601String();
     }
     return json;
   }
@@ -97,7 +97,7 @@ class TransactionDetailResponse {
   /// Returns a new [TransactionDetailResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static TransactionDetailResponse? fromJson(dynamic value) {
+  static TransactionDetailResponse fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return TransactionDetailResponse(
@@ -114,13 +114,13 @@ class TransactionDetailResponse {
     return null;
   }
 
-  static List<TransactionDetailResponse?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<TransactionDetailResponse> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(TransactionDetailResponse.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <TransactionDetailResponse>[];
 
-  static Map<String, TransactionDetailResponse?> mapFromJson(dynamic json) {
-    final map = <String, TransactionDetailResponse?>{};
+  static Map<String, TransactionDetailResponse> mapFromJson(dynamic json) {
+    final map = <String, TransactionDetailResponse>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -130,8 +130,8 @@ class TransactionDetailResponse {
   }
 
   // maps a json object with a list of TransactionDetailResponse-objects as value to a dart map
-  static Map<String, List<TransactionDetailResponse?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
-    final Map<String, List<TransactionDetailResponse?>?> map = <String, List<TransactionDetailResponse>?>{};
+  static Map<String, List<TransactionDetailResponse>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<TransactionDetailResponse>>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -171,10 +171,10 @@ class TransactionDetailResponseTransactionTypeEnum {
     PENDING_DEPOSIT,
   ];
 
-  static TransactionDetailResponseTransactionTypeEnum? fromJson(dynamic value) =>
+  static TransactionDetailResponseTransactionTypeEnum fromJson(dynamic value) =>
     TransactionDetailResponseTransactionTypeEnumTypeTransformer().decode(value);
 
-  static List<TransactionDetailResponseTransactionTypeEnum?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<TransactionDetailResponseTransactionTypeEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(TransactionDetailResponseTransactionTypeEnum.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <TransactionDetailResponseTransactionTypeEnum>[];
@@ -197,7 +197,7 @@ class TransactionDetailResponseTransactionTypeEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  TransactionDetailResponseTransactionTypeEnum? decode(dynamic data, {bool? allowNull}) {
+  TransactionDetailResponseTransactionTypeEnum decode(dynamic data, {bool allowNull}) {
     if (data != null) {
       switch (data.toString()) {
         case r'DEPOSIT': return TransactionDetailResponseTransactionTypeEnum.DEPOSIT;
@@ -213,7 +213,7 @@ class TransactionDetailResponseTransactionTypeEnumTypeTransformer {
   }
 
   /// Singleton [TransactionDetailResponseTransactionTypeEnumTypeTransformer] instance.
-  static TransactionDetailResponseTransactionTypeEnumTypeTransformer? _instance;
+  static TransactionDetailResponseTransactionTypeEnumTypeTransformer _instance;
 }
 
 
