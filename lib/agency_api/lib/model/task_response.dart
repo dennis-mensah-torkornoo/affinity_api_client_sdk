@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -20,15 +20,15 @@ class TaskResponse {
     this.endDate,
   });
 
-  int id;
+  int? id;
 
-  String customerId;
+  String? customerId;
 
-  String description;
+  String? description;
 
-  DateTime startDate;
+  DateTime? startDate;
 
-  DateTime endDate;
+  DateTime? endDate;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TaskResponse &&
@@ -62,10 +62,10 @@ class TaskResponse {
       json[r'description'] = description;
     }
     if (startDate != null) {
-      json[r'startDate'] = _dateFormatter.format(startDate.toUtc());
+      json[r'startDate'] = _dateFormatter.format(startDate!.toUtc());
     }
     if (endDate != null) {
-      json[r'endDate'] = _dateFormatter.format(endDate.toUtc());
+      json[r'endDate'] = _dateFormatter.format(endDate!.toUtc());
     }
     return json;
   }
@@ -73,7 +73,7 @@ class TaskResponse {
   /// Returns a new [TaskResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static TaskResponse fromJson(dynamic value) {
+  static TaskResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return TaskResponse(
@@ -87,13 +87,13 @@ class TaskResponse {
     return null;
   }
 
-  static List<TaskResponse> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<TaskResponse?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(TaskResponse.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <TaskResponse>[];
 
-  static Map<String, TaskResponse> mapFromJson(dynamic json) {
-    final map = <String, TaskResponse>{};
+  static Map<String, TaskResponse?> mapFromJson(dynamic json) {
+    final map = <String, TaskResponse?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -103,8 +103,8 @@ class TaskResponse {
   }
 
   // maps a json object with a list of TaskResponse-objects as value to a dart map
-  static Map<String, List<TaskResponse>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<TaskResponse>>{};
+  static Map<String, List<TaskResponse?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<TaskResponse?>?> map = <String, List<TaskResponse>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

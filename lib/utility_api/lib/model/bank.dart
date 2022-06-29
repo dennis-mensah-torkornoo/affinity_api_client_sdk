@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -14,7 +14,7 @@ class Bank {
   /// Returns a new [Bank] instance.
   Bank({
     this.id,
-    @required this.name,
+    required this.name,
     this.imageId,
     this.address,
     this.email,
@@ -26,27 +26,27 @@ class Bank {
     this.image,
   });
 
-  String id;
+  String? id;
 
-  String name;
+  String? name;
 
-  String imageId;
+  String? imageId;
 
-  String address;
+  String? address;
 
-  String email;
+  String? email;
 
-  String website;
+  String? website;
 
-  String phoneNumber;
+  String? phoneNumber;
 
-  String serviceCode;
+  String? serviceCode;
 
-  bool active;
+  bool? active;
 
-  String sortCode;
+  String? sortCode;
 
-  BankImage image;
+  BankImage? image;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Bank &&
@@ -119,7 +119,7 @@ class Bank {
   /// Returns a new [Bank] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static Bank fromJson(dynamic value) {
+  static Bank? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return Bank(
@@ -139,13 +139,13 @@ class Bank {
     return null;
   }
 
-  static List<Bank> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<Bank?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(Bank.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <Bank>[];
 
-  static Map<String, Bank> mapFromJson(dynamic json) {
-    final map = <String, Bank>{};
+  static Map<String, Bank?> mapFromJson(dynamic json) {
+    final map = <String, Bank?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -155,8 +155,8 @@ class Bank {
   }
 
   // maps a json object with a list of Bank-objects as value to a dart map
-  static Map<String, List<Bank>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<Bank>>{};
+  static Map<String, List<Bank?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<Bank?>?> map = <String, List<Bank>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

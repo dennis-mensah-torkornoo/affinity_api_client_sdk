@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -14,30 +14,30 @@ class Hub {
   /// Returns a new [Hub] instance.
   Hub({
     this.id,
-    @required this.name,
-    @required this.phoneNumber,
-    @required this.longitude,
-    @required this.latitude,
+    required this.name,
+    required this.phoneNumber,
+    required this.longitude,
+    required this.latitude,
     this.location,
     this.code,
-    @required this.ghPostGps,
+    required this.ghPostGps,
   });
 
-  String id;
+  String? id;
 
-  String name;
+  String? name;
 
-  String phoneNumber;
+  String? phoneNumber;
 
-  String longitude;
+  String? longitude;
 
-  String latitude;
+  String? latitude;
 
-  String location;
+  String? location;
 
-  String code;
+  String? code;
 
-  String ghPostGps;
+  String? ghPostGps;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Hub &&
@@ -87,7 +87,7 @@ class Hub {
   /// Returns a new [Hub] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static Hub fromJson(dynamic value) {
+  static Hub? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return Hub(
@@ -104,13 +104,13 @@ class Hub {
     return null;
   }
 
-  static List<Hub> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<Hub?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(Hub.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <Hub>[];
 
-  static Map<String, Hub> mapFromJson(dynamic json) {
-    final map = <String, Hub>{};
+  static Map<String, Hub?> mapFromJson(dynamic json) {
+    final map = <String, Hub?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -120,8 +120,8 @@ class Hub {
   }
 
   // maps a json object with a list of Hub-objects as value to a dart map
-  static Map<String, List<Hub>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<Hub>>{};
+  static Map<String, List<Hub?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<Hub?>?> map = <String, List<Hub>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

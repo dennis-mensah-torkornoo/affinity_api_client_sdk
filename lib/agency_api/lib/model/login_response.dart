@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -18,11 +18,11 @@ class LoginResponse {
     this.expiresAt,
   });
 
-  User user;
+  User? user;
 
-  String token;
+  String? token;
 
-  String expiresAt;
+  String? expiresAt;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is LoginResponse &&
@@ -57,7 +57,7 @@ class LoginResponse {
   /// Returns a new [LoginResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static LoginResponse fromJson(dynamic value) {
+  static LoginResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return LoginResponse(
@@ -69,13 +69,13 @@ class LoginResponse {
     return null;
   }
 
-  static List<LoginResponse> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<LoginResponse?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(LoginResponse.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <LoginResponse>[];
 
-  static Map<String, LoginResponse> mapFromJson(dynamic json) {
-    final map = <String, LoginResponse>{};
+  static Map<String, LoginResponse?> mapFromJson(dynamic json) {
+    final map = <String, LoginResponse?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -85,8 +85,8 @@ class LoginResponse {
   }
 
   // maps a json object with a list of LoginResponse-objects as value to a dart map
-  static Map<String, List<LoginResponse>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<LoginResponse>>{};
+  static Map<String, List<LoginResponse?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<LoginResponse?>?> map = <String, List<LoginResponse>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

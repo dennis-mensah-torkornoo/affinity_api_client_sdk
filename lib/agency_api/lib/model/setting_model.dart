@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -17,9 +17,9 @@ class SettingModel {
     this.value,
   });
 
-  SettingModelKeyEnum key;
+  SettingModelKeyEnum? key;
 
-  String value;
+  String? value;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is SettingModel &&
@@ -49,7 +49,7 @@ class SettingModel {
   /// Returns a new [SettingModel] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static SettingModel fromJson(dynamic value) {
+  static SettingModel? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return SettingModel(
@@ -60,13 +60,13 @@ class SettingModel {
     return null;
   }
 
-  static List<SettingModel> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<SettingModel?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(SettingModel.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <SettingModel>[];
 
-  static Map<String, SettingModel> mapFromJson(dynamic json) {
-    final map = <String, SettingModel>{};
+  static Map<String, SettingModel?> mapFromJson(dynamic json) {
+    final map = <String, SettingModel?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -76,8 +76,8 @@ class SettingModel {
   }
 
   // maps a json object with a list of SettingModel-objects as value to a dart map
-  static Map<String, List<SettingModel>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<SettingModel>>{};
+  static Map<String, List<SettingModel?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<SettingModel?>?> map = <String, List<SettingModel>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -117,10 +117,10 @@ class SettingModelKeyEnum {
     OTHER,
   ];
 
-  static SettingModelKeyEnum fromJson(dynamic value) =>
+  static SettingModelKeyEnum? fromJson(dynamic value) =>
     SettingModelKeyEnumTypeTransformer().decode(value);
 
-  static List<SettingModelKeyEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<SettingModelKeyEnum?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(SettingModelKeyEnum.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <SettingModelKeyEnum>[];
@@ -143,7 +143,7 @@ class SettingModelKeyEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  SettingModelKeyEnum decode(dynamic data, {bool allowNull}) {
+  SettingModelKeyEnum? decode(dynamic data, {bool? allowNull}) {
     if (data != null) {
       switch (data.toString()) {
         case r'SMS_NOTIFICATION': return SettingModelKeyEnum.SMS_NOTIFICATION;
@@ -159,7 +159,7 @@ class SettingModelKeyEnumTypeTransformer {
   }
 
   /// Singleton [SettingModelKeyEnumTypeTransformer] instance.
-  static SettingModelKeyEnumTypeTransformer _instance;
+  static SettingModelKeyEnumTypeTransformer? _instance;
 }
 
 

@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -18,11 +18,11 @@ class Pageable {
     this.size,
   });
 
-  String sort;
+  String? sort;
 
-  int page;
+  int? page;
 
-  int size;
+  int? size;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Pageable &&
@@ -57,7 +57,7 @@ class Pageable {
   /// Returns a new [Pageable] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static Pageable fromJson(dynamic value) {
+  static Pageable? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return Pageable(
@@ -69,13 +69,13 @@ class Pageable {
     return null;
   }
 
-  static List<Pageable> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<Pageable?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(Pageable.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <Pageable>[];
 
-  static Map<String, Pageable> mapFromJson(dynamic json) {
-    final map = <String, Pageable>{};
+  static Map<String, Pageable?> mapFromJson(dynamic json) {
+    final map = <String, Pageable?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -85,8 +85,8 @@ class Pageable {
   }
 
   // maps a json object with a list of Pageable-objects as value to a dart map
-  static Map<String, List<Pageable>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<Pageable>>{};
+  static Map<String, List<Pageable?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<Pageable?>?> map = <String, List<Pageable>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
