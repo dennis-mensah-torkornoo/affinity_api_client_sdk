@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -20,15 +20,15 @@ class ErrorResponse {
     this.invalidParams = const {},
   });
 
-  int status;
+  int? status;
 
-  String title;
+  String? title;
 
-  String detail;
+  String? detail;
 
-  DateTime time;
+  DateTime? time;
 
-  Map<String, String> invalidParams;
+  Map<String, String>? invalidParams;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ErrorResponse &&
@@ -62,7 +62,7 @@ class ErrorResponse {
       json[r'detail'] = detail;
     }
     if (time != null) {
-      json[r'time'] = time.toUtc().toIso8601String();
+      json[r'time'] = time!.toUtc().toIso8601String();
     }
     if (invalidParams != null) {
       json[r'invalidParams'] = invalidParams;
@@ -73,7 +73,7 @@ class ErrorResponse {
   /// Returns a new [ErrorResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ErrorResponse fromJson(dynamic value) {
+  static ErrorResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return ErrorResponse(
@@ -87,13 +87,13 @@ class ErrorResponse {
     return null;
   }
 
-  static List<ErrorResponse> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<ErrorResponse?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(ErrorResponse.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <ErrorResponse>[];
 
-  static Map<String, ErrorResponse> mapFromJson(dynamic json) {
-    final map = <String, ErrorResponse>{};
+  static Map<String, ErrorResponse?> mapFromJson(dynamic json) {
+    final map = <String, ErrorResponse?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -103,8 +103,8 @@ class ErrorResponse {
   }
 
   // maps a json object with a list of ErrorResponse-objects as value to a dart map
-  static Map<String, List<ErrorResponse>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<ErrorResponse>>{};
+  static Map<String, List<ErrorResponse?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<ErrorResponse?>?> map = <String, List<ErrorResponse>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

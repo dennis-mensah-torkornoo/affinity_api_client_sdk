@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -13,22 +13,22 @@ part of openapi.api;
 class NotificationRequest {
   /// Returns a new [NotificationRequest] instance.
   NotificationRequest({
-    @required this.subject,
-    @required this.message,
-    @required this.deviceId,
-    @required this.channelId,
+    required this.subject,
+    required this.message,
+    required this.deviceId,
+    required this.channelId,
     this.additionalInfo = const {},
   });
 
-  String subject;
+  String? subject;
 
-  String message;
+  String? message;
 
-  String deviceId;
+  String? deviceId;
 
-  NotificationRequestChannelIdEnum channelId;
+  NotificationRequestChannelIdEnum? channelId;
 
-  Map<String, String> additionalInfo;
+  Map<String, String>? additionalInfo;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is NotificationRequest &&
@@ -65,7 +65,7 @@ class NotificationRequest {
   /// Returns a new [NotificationRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static NotificationRequest fromJson(dynamic value) {
+  static NotificationRequest? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return NotificationRequest(
@@ -79,13 +79,13 @@ class NotificationRequest {
     return null;
   }
 
-  static List<NotificationRequest> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<NotificationRequest?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(NotificationRequest.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <NotificationRequest>[];
 
-  static Map<String, NotificationRequest> mapFromJson(dynamic json) {
-    final map = <String, NotificationRequest>{};
+  static Map<String, NotificationRequest?> mapFromJson(dynamic json) {
+    final map = <String, NotificationRequest?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -95,8 +95,8 @@ class NotificationRequest {
   }
 
   // maps a json object with a list of NotificationRequest-objects as value to a dart map
-  static Map<String, List<NotificationRequest>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<NotificationRequest>>{};
+  static Map<String, List<NotificationRequest?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<NotificationRequest?>?> map = <String, List<NotificationRequest>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -140,10 +140,10 @@ class NotificationRequestChannelIdEnum {
     UPDATE,
   ];
 
-  static NotificationRequestChannelIdEnum fromJson(dynamic value) =>
+  static NotificationRequestChannelIdEnum? fromJson(dynamic value) =>
     NotificationRequestChannelIdEnumTypeTransformer().decode(value);
 
-  static List<NotificationRequestChannelIdEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<NotificationRequestChannelIdEnum?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(NotificationRequestChannelIdEnum.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <NotificationRequestChannelIdEnum>[];
@@ -166,7 +166,7 @@ class NotificationRequestChannelIdEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  NotificationRequestChannelIdEnum decode(dynamic data, {bool allowNull}) {
+  NotificationRequestChannelIdEnum? decode(dynamic data, {bool? allowNull}) {
     if (data != null) {
       switch (data.toString()) {
         case r'com.affinitylabs.agency.PUSH': return NotificationRequestChannelIdEnum.PUSH;
@@ -184,7 +184,7 @@ class NotificationRequestChannelIdEnumTypeTransformer {
   }
 
   /// Singleton [NotificationRequestChannelIdEnumTypeTransformer] instance.
-  static NotificationRequestChannelIdEnumTypeTransformer _instance;
+  static NotificationRequestChannelIdEnumTypeTransformer? _instance;
 }
 
 

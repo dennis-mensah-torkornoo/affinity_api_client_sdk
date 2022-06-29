@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -17,9 +17,9 @@ class RefreshToken {
     this.message,
   });
 
-  String expiresAt;
+  String? expiresAt;
 
-  String message;
+  String? message;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is RefreshToken &&
@@ -49,7 +49,7 @@ class RefreshToken {
   /// Returns a new [RefreshToken] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static RefreshToken fromJson(dynamic value) {
+  static RefreshToken? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return RefreshToken(
@@ -60,13 +60,13 @@ class RefreshToken {
     return null;
   }
 
-  static List<RefreshToken> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<RefreshToken?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(RefreshToken.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <RefreshToken>[];
 
-  static Map<String, RefreshToken> mapFromJson(dynamic json) {
-    final map = <String, RefreshToken>{};
+  static Map<String, RefreshToken?> mapFromJson(dynamic json) {
+    final map = <String, RefreshToken?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -76,8 +76,8 @@ class RefreshToken {
   }
 
   // maps a json object with a list of RefreshToken-objects as value to a dart map
-  static Map<String, List<RefreshToken>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<RefreshToken>>{};
+  static Map<String, List<RefreshToken?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<RefreshToken?>?> map = <String, List<RefreshToken>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

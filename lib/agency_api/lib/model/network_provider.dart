@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -17,9 +17,9 @@ class NetworkProvider {
     this.title,
   });
 
-  NetworkProviderProviderEnum provider;
+  NetworkProviderProviderEnum? provider;
 
-  String title;
+  String? title;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is NetworkProvider &&
@@ -49,7 +49,7 @@ class NetworkProvider {
   /// Returns a new [NetworkProvider] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static NetworkProvider fromJson(dynamic value) {
+  static NetworkProvider? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return NetworkProvider(
@@ -60,13 +60,13 @@ class NetworkProvider {
     return null;
   }
 
-  static List<NetworkProvider> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<NetworkProvider?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(NetworkProvider.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <NetworkProvider>[];
 
-  static Map<String, NetworkProvider> mapFromJson(dynamic json) {
-    final map = <String, NetworkProvider>{};
+  static Map<String, NetworkProvider?> mapFromJson(dynamic json) {
+    final map = <String, NetworkProvider?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -76,8 +76,8 @@ class NetworkProvider {
   }
 
   // maps a json object with a list of NetworkProvider-objects as value to a dart map
-  static Map<String, List<NetworkProvider>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<NetworkProvider>>{};
+  static Map<String, List<NetworkProvider?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<NetworkProvider?>?> map = <String, List<NetworkProvider>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -117,10 +117,10 @@ class NetworkProviderProviderEnum {
     AIRTELTIGO_GH,
   ];
 
-  static NetworkProviderProviderEnum fromJson(dynamic value) =>
+  static NetworkProviderProviderEnum? fromJson(dynamic value) =>
     NetworkProviderProviderEnumTypeTransformer().decode(value);
 
-  static List<NetworkProviderProviderEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<NetworkProviderProviderEnum?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(NetworkProviderProviderEnum.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <NetworkProviderProviderEnum>[];
@@ -143,7 +143,7 @@ class NetworkProviderProviderEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  NetworkProviderProviderEnum decode(dynamic data, {bool allowNull}) {
+  NetworkProviderProviderEnum? decode(dynamic data, {bool? allowNull}) {
     if (data != null) {
       switch (data.toString()) {
         case r'MTN_GH': return NetworkProviderProviderEnum.MTN_GH;
@@ -159,7 +159,7 @@ class NetworkProviderProviderEnumTypeTransformer {
   }
 
   /// Singleton [NetworkProviderProviderEnumTypeTransformer] instance.
-  static NetworkProviderProviderEnumTypeTransformer _instance;
+  static NetworkProviderProviderEnumTypeTransformer? _instance;
 }
 
 

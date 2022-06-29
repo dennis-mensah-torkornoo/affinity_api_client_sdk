@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -12,7 +12,7 @@ part of openapi.api;
 
 
 class CustomersApi {
-  CustomersApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  CustomersApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -33,7 +33,7 @@ class CustomersApi {
     final path = r'/application';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -62,7 +62,7 @@ class CustomersApi {
   /// Parameters:
   ///
   /// * [String] p (required):
-  Future<CustomerApplication> deleteCustomerApplication(String p,) async {
+  Future<CustomerApplication?> deleteCustomerApplication(String p,) async {
     final response = await deleteCustomerApplicationWithHttpInfo(p,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -71,7 +71,7 @@ class CustomersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CustomerApplication',) as CustomerApplication;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CustomerApplication',) as CustomerApplication?;
     
     }
     return Future<CustomerApplication>.value();
@@ -94,7 +94,7 @@ class CustomersApi {
     final path = r'/accounts';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -149,7 +149,7 @@ class CustomersApi {
     final path = r'/appstatus';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -207,7 +207,7 @@ class CustomersApi {
     final path = r'/application';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -236,7 +236,7 @@ class CustomersApi {
   /// Parameters:
   ///
   /// * [String] p (required):
-  Future<CustomerApplication> getCustomerApplication(String p,) async {
+  Future<CustomerApplication?> getCustomerApplication(String p,) async {
     final response = await getCustomerApplicationWithHttpInfo(p,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -245,7 +245,7 @@ class CustomersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CustomerApplication',) as CustomerApplication;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CustomerApplication',) as CustomerApplication?;
     
     }
     return Future<CustomerApplication>.value();
@@ -269,7 +269,7 @@ class CustomersApi {
       .replaceAll('{customerId}', customerId);
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -296,7 +296,7 @@ class CustomersApi {
   /// Parameters:
   ///
   /// * [String] customerId (required):
-  Future<CustomerDetailsResponse> getCustomerDetails(String customerId,) async {
+  Future<CustomerDetailsResponse?> getCustomerDetails(String customerId,) async {
     final response = await getCustomerDetailsWithHttpInfo(customerId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -305,7 +305,7 @@ class CustomersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CustomerDetailsResponse',) as CustomerDetailsResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CustomerDetailsResponse',) as CustomerDetailsResponse?;
     
     }
     return Future<CustomerDetailsResponse>.value();
@@ -328,7 +328,7 @@ class CustomersApi {
     final path = r'/customers/search';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -357,7 +357,7 @@ class CustomersApi {
   /// Parameters:
   ///
   /// * [String] p (required):
-  Future<CustomerDetailsResponse> getCustomerDetailsSearch(String p,) async {
+  Future<CustomerDetailsResponse?> getCustomerDetailsSearch(String p,) async {
     final response = await getCustomerDetailsSearchWithHttpInfo(p,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -366,7 +366,7 @@ class CustomersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CustomerDetailsResponse',) as CustomerDetailsResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CustomerDetailsResponse',) as CustomerDetailsResponse?;
     
     }
     return Future<CustomerDetailsResponse>.value();
@@ -380,7 +380,7 @@ class CustomersApi {
     final path = r'/customers';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -438,7 +438,7 @@ class CustomersApi {
     final path = r'/deposits';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -538,7 +538,7 @@ class CustomersApi {
   /// * [String] p (required):
   ///
   /// * [CustomerApplication] customerApplication (required):
-  Future<InfoResponse> patchCustomerApplication(String p, CustomerApplication customerApplication,) async {
+  Future<InfoResponse?> patchCustomerApplication(String p, CustomerApplication customerApplication,) async {
     final response = await patchCustomerApplicationWithHttpInfo(p, customerApplication,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -547,7 +547,7 @@ class CustomersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InfoResponse',) as InfoResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InfoResponse',) as InfoResponse?;
     
     }
     return Future<InfoResponse>.value();
@@ -606,7 +606,7 @@ class CustomersApi {
   /// * [String] p (required):
   ///
   /// * [CustomerApplication] customerApplication (required):
-  Future<StatusResponse> postCustomerApplication(String p, CustomerApplication customerApplication,) async {
+  Future<StatusResponse?> postCustomerApplication(String p, CustomerApplication customerApplication,) async {
     final response = await postCustomerApplicationWithHttpInfo(p, customerApplication,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -615,7 +615,7 @@ class CustomersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StatusResponse',) as StatusResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StatusResponse',) as StatusResponse?;
     
     }
     return Future<StatusResponse>.value();
@@ -630,7 +630,7 @@ class CustomersApi {
   /// * [String] p (required):
   ///
   /// * [String] resend:
-  Future<Response> postCustomerOtpWithHttpInfo(String p, { String resend, }) async {
+  Future<Response> postCustomerOtpWithHttpInfo(String p, { String? resend, }) async {
     // Verify required params are set.
     if (p == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: p');
@@ -640,7 +640,7 @@ class CustomersApi {
     final path = r'/application/otp';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -674,7 +674,7 @@ class CustomersApi {
   /// * [String] p (required):
   ///
   /// * [String] resend:
-  Future<OtpResponse> postCustomerOtp(String p, { String resend, }) async {
+  Future<OtpResponse?> postCustomerOtp(String p, { String? resend, }) async {
     final response = await postCustomerOtpWithHttpInfo(p,  resend: resend, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -683,7 +683,7 @@ class CustomersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OtpResponse',) as OtpResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OtpResponse',) as OtpResponse?;
     
     }
     return Future<OtpResponse>.value();
@@ -706,7 +706,7 @@ class CustomersApi {
     final path = r'/referrals';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -735,7 +735,7 @@ class CustomersApi {
   /// Parameters:
   ///
   /// * [String] p (required):
-  Future<StatusResponse> postReferrals(String p,) async {
+  Future<StatusResponse?> postReferrals(String p,) async {
     final response = await postReferralsWithHttpInfo(p,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -744,7 +744,7 @@ class CustomersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StatusResponse',) as StatusResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StatusResponse',) as StatusResponse?;
     
     }
     return Future<StatusResponse>.value();
@@ -794,7 +794,7 @@ class CustomersApi {
   /// Parameters:
   ///
   /// * [UpdateCustomerIdRequest] updateCustomerIdRequest (required):
-  Future<InfoResponse> postUpdateWithConsumerAppCustomerId(UpdateCustomerIdRequest updateCustomerIdRequest,) async {
+  Future<InfoResponse?> postUpdateWithConsumerAppCustomerId(UpdateCustomerIdRequest updateCustomerIdRequest,) async {
     final response = await postUpdateWithConsumerAppCustomerIdWithHttpInfo(updateCustomerIdRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -803,7 +803,7 @@ class CustomersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InfoResponse',) as InfoResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InfoResponse',) as InfoResponse?;
     
     }
     return Future<InfoResponse>.value();

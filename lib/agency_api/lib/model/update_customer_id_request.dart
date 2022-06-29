@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -19,13 +19,13 @@ class UpdateCustomerIdRequest {
     this.dateCreated,
   });
 
-  String customerId;
+  String? customerId;
 
-  String customerPhoneNumber;
+  String? customerPhoneNumber;
 
-  String mambuCustomerId;
+  String? mambuCustomerId;
 
-  DateTime dateCreated;
+  DateTime? dateCreated;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateCustomerIdRequest &&
@@ -57,7 +57,7 @@ class UpdateCustomerIdRequest {
       json[r'mambuCustomerId'] = mambuCustomerId;
     }
     if (dateCreated != null) {
-      json[r'dateCreated'] = dateCreated.toUtc().toIso8601String();
+      json[r'dateCreated'] = dateCreated!.toUtc().toIso8601String();
     }
     return json;
   }
@@ -65,7 +65,7 @@ class UpdateCustomerIdRequest {
   /// Returns a new [UpdateCustomerIdRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static UpdateCustomerIdRequest fromJson(dynamic value) {
+  static UpdateCustomerIdRequest? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return UpdateCustomerIdRequest(
@@ -78,13 +78,13 @@ class UpdateCustomerIdRequest {
     return null;
   }
 
-  static List<UpdateCustomerIdRequest> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<UpdateCustomerIdRequest?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(UpdateCustomerIdRequest.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <UpdateCustomerIdRequest>[];
 
-  static Map<String, UpdateCustomerIdRequest> mapFromJson(dynamic json) {
-    final map = <String, UpdateCustomerIdRequest>{};
+  static Map<String, UpdateCustomerIdRequest?> mapFromJson(dynamic json) {
+    final map = <String, UpdateCustomerIdRequest?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -94,8 +94,8 @@ class UpdateCustomerIdRequest {
   }
 
   // maps a json object with a list of UpdateCustomerIdRequest-objects as value to a dart map
-  static Map<String, List<UpdateCustomerIdRequest>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<UpdateCustomerIdRequest>>{};
+  static Map<String, List<UpdateCustomerIdRequest?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<UpdateCustomerIdRequest?>?> map = <String, List<UpdateCustomerIdRequest>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

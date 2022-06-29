@@ -68,7 +68,7 @@ String parameterToString(dynamic value) {
 Future<String> _decodeBodyBytes(Response response) async {
   final contentType = response.headers['content-type'];
   return contentType != null && contentType.toLowerCase().startsWith('application/json')
-    ? response.bodyBytes == null ? '' : utf8.decode(response.bodyBytes)
+    ?  utf8.decode(response.bodyBytes)
     : response.body;
 }
 

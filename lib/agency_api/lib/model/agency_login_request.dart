@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -18,11 +18,11 @@ class AgencyLoginRequest {
     this.deviceId,
   });
 
-  String email;
+  String? email;
 
-  String password;
+  String? password;
 
-  String deviceId;
+  String? deviceId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AgencyLoginRequest &&
@@ -57,7 +57,7 @@ class AgencyLoginRequest {
   /// Returns a new [AgencyLoginRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static AgencyLoginRequest fromJson(dynamic value) {
+  static AgencyLoginRequest? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return AgencyLoginRequest(
@@ -69,13 +69,13 @@ class AgencyLoginRequest {
     return null;
   }
 
-  static List<AgencyLoginRequest> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<AgencyLoginRequest?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(AgencyLoginRequest.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <AgencyLoginRequest>[];
 
-  static Map<String, AgencyLoginRequest> mapFromJson(dynamic json) {
-    final map = <String, AgencyLoginRequest>{};
+  static Map<String, AgencyLoginRequest?> mapFromJson(dynamic json) {
+    final map = <String, AgencyLoginRequest?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -85,8 +85,8 @@ class AgencyLoginRequest {
   }
 
   // maps a json object with a list of AgencyLoginRequest-objects as value to a dart map
-  static Map<String, List<AgencyLoginRequest>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<AgencyLoginRequest>>{};
+  static Map<String, List<AgencyLoginRequest?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<AgencyLoginRequest?>?> map = <String, List<AgencyLoginRequest>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
