@@ -19,7 +19,26 @@ class SupervisorApi {
   /// GET callover for end of day for all agents
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> getCalloverWithHttpInfo() async {
+  ///
+  /// Parameters:
+  ///
+  /// * [DateTime] start (required):
+  ///
+  /// * [DateTime] end (required):
+  ///
+  /// * [Pageable] pageable (required):
+  Future<Response> getCalloverWithHttpInfo(DateTime start, DateTime end, Pageable pageable,) async {
+    // Verify required params are set.
+    if (start == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: start');
+    }
+    if (end == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: end');
+    }
+    if (pageable == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: pageable');
+    }
+
     // ignore: prefer_const_declarations
     final path = r'/supervisor/callover';
 
@@ -29,6 +48,10 @@ class SupervisorApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'start', start));
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'end', end));
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'pageable', pageable));
 
     const authNames = <String>[];
     const contentTypes = <String>[];
@@ -47,8 +70,16 @@ class SupervisorApi {
   }
 
   /// GET callover for end of day for all agents
-  Future<List<TransactionResponse>> getCallover() async {
-    final response = await getCalloverWithHttpInfo();
+  ///
+  /// Parameters:
+  ///
+  /// * [DateTime] start (required):
+  ///
+  /// * [DateTime] end (required):
+  ///
+  /// * [Pageable] pageable (required):
+  Future<List<TransactionResponse>> getCallover(DateTime start, DateTime end, Pageable pageable,) async {
+    final response = await getCalloverWithHttpInfo(start, end, pageable,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

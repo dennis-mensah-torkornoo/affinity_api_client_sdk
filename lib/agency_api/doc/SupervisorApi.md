@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **getCallover**
-> List<TransactionResponse> getCallover()
+> List<TransactionResponse> getCallover(start, end, pageable)
 
 
 
@@ -29,9 +29,12 @@ GET callover for end of day for all agents
 import 'package:agency_api/api.dart';
 
 final api_instance = SupervisorApi();
+final start = 2013-10-20T19:20:30+01:00; // DateTime | 
+final end = 2013-10-20T19:20:30+01:00; // DateTime | 
+final pageable = ; // Pageable | 
 
 try {
-    final result = api_instance.getCallover();
+    final result = api_instance.getCallover(start, end, pageable);
     print(result);
 } catch (e) {
     print('Exception when calling SupervisorApi->getCallover: $e\n');
@@ -39,7 +42,12 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **start** | **DateTime**|  | 
+ **end** | **DateTime**|  | 
+ **pageable** | [**Pageable**](.md)|  | 
 
 ### Return type
 

@@ -1341,6 +1341,24 @@ paths:
       - Supervisor
       description: GET callover for end of day for all agents
       operationId: getCallover
+      parameters:
+      - name: start
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: end
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: pageable
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Pageable'
       responses:
         "200":
           description: OK
