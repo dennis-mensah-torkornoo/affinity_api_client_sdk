@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -16,7 +16,7 @@ class InlineResponse2005 {
     this.time,
   });
 
-  String time;
+  String? time;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is InlineResponse2005 &&
@@ -41,7 +41,7 @@ class InlineResponse2005 {
   /// Returns a new [InlineResponse2005] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static InlineResponse2005 fromJson(dynamic value) {
+  static InlineResponse2005? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return InlineResponse2005(
@@ -51,13 +51,13 @@ class InlineResponse2005 {
     return null;
   }
 
-  static List<InlineResponse2005> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<InlineResponse2005?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(InlineResponse2005.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <InlineResponse2005>[];
 
-  static Map<String, InlineResponse2005> mapFromJson(dynamic json) {
-    final map = <String, InlineResponse2005>{};
+  static Map<String, InlineResponse2005?> mapFromJson(dynamic json) {
+    final map = <String, InlineResponse2005?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -67,8 +67,8 @@ class InlineResponse2005 {
   }
 
   // maps a json object with a list of InlineResponse2005-objects as value to a dart map
-  static Map<String, List<InlineResponse2005>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<InlineResponse2005>>{};
+  static Map<String, List<InlineResponse2005?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<InlineResponse2005?>?> map = <String, List<InlineResponse2005>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -19,13 +19,13 @@ class IntermediaryModel {
     this.fullName,
   });
 
-  String idNumber;
+  String? idNumber;
 
-  IntermediaryModelIdTypeEnum idType;
+  IntermediaryModelIdTypeEnum? idType;
 
-  String phoneNumber;
+  String? phoneNumber;
 
-  String fullName;
+  String? fullName;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is IntermediaryModel &&
@@ -65,7 +65,7 @@ class IntermediaryModel {
   /// Returns a new [IntermediaryModel] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static IntermediaryModel fromJson(dynamic value) {
+  static IntermediaryModel? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return IntermediaryModel(
@@ -78,13 +78,13 @@ class IntermediaryModel {
     return null;
   }
 
-  static List<IntermediaryModel> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<IntermediaryModel?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(IntermediaryModel.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <IntermediaryModel>[];
 
-  static Map<String, IntermediaryModel> mapFromJson(dynamic json) {
-    final map = <String, IntermediaryModel>{};
+  static Map<String, IntermediaryModel?> mapFromJson(dynamic json) {
+    final map = <String, IntermediaryModel?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -94,8 +94,8 @@ class IntermediaryModel {
   }
 
   // maps a json object with a list of IntermediaryModel-objects as value to a dart map
-  static Map<String, List<IntermediaryModel>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<IntermediaryModel>>{};
+  static Map<String, List<IntermediaryModel?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<IntermediaryModel?>?> map = <String, List<IntermediaryModel>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -153,10 +153,10 @@ class IntermediaryModelIdTypeEnum {
     votersOld,
   ];
 
-  static IntermediaryModelIdTypeEnum fromJson(dynamic value) =>
+  static IntermediaryModelIdTypeEnum? fromJson(dynamic value) =>
     IntermediaryModelIdTypeEnumTypeTransformer().decode(value);
 
-  static List<IntermediaryModelIdTypeEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<IntermediaryModelIdTypeEnum?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(IntermediaryModelIdTypeEnum.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <IntermediaryModelIdTypeEnum>[];
@@ -179,7 +179,7 @@ class IntermediaryModelIdTypeEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  IntermediaryModelIdTypeEnum decode(dynamic data, {bool allowNull}) {
+  IntermediaryModelIdTypeEnum? decode(dynamic data, {bool? allowNull}) {
     if (data != null) {
       switch (data.toString()) {
         case r'voters': return IntermediaryModelIdTypeEnum.voters;
@@ -204,7 +204,7 @@ class IntermediaryModelIdTypeEnumTypeTransformer {
   }
 
   /// Singleton [IntermediaryModelIdTypeEnumTypeTransformer] instance.
-  static IntermediaryModelIdTypeEnumTypeTransformer _instance;
+  static IntermediaryModelIdTypeEnumTypeTransformer? _instance;
 }
 
 

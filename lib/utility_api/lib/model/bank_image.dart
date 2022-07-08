@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -18,11 +18,11 @@ class BankImage {
     this.key,
   });
 
-  String id;
+  String? id;
 
-  String url;
+  String? url;
 
-  String key;
+  String? key;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is BankImage &&
@@ -57,7 +57,7 @@ class BankImage {
   /// Returns a new [BankImage] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static BankImage fromJson(dynamic value) {
+  static BankImage? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return BankImage(
@@ -69,13 +69,13 @@ class BankImage {
     return null;
   }
 
-  static List<BankImage> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<BankImage?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(BankImage.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <BankImage>[];
 
-  static Map<String, BankImage> mapFromJson(dynamic json) {
-    final map = <String, BankImage>{};
+  static Map<String, BankImage?> mapFromJson(dynamic json) {
+    final map = <String, BankImage?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -85,8 +85,8 @@ class BankImage {
   }
 
   // maps a json object with a list of BankImage-objects as value to a dart map
-  static Map<String, List<BankImage>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<BankImage>>{};
+  static Map<String, List<BankImage?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<BankImage?>?> map = <String, List<BankImage>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

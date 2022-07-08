@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -19,13 +19,13 @@ class DeviceResponse {
     this.info,
   });
 
-  String fcmToken;
+  String? fcmToken;
 
-  String deviceFingerprint;
+  String? deviceFingerprint;
 
-  String imei;
+  String? imei;
 
-  String info;
+  String? info;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DeviceResponse &&
@@ -65,7 +65,7 @@ class DeviceResponse {
   /// Returns a new [DeviceResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static DeviceResponse fromJson(dynamic value) {
+  static DeviceResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return DeviceResponse(
@@ -78,13 +78,13 @@ class DeviceResponse {
     return null;
   }
 
-  static List<DeviceResponse> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<DeviceResponse?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(DeviceResponse.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <DeviceResponse>[];
 
-  static Map<String, DeviceResponse> mapFromJson(dynamic json) {
-    final map = <String, DeviceResponse>{};
+  static Map<String, DeviceResponse?> mapFromJson(dynamic json) {
+    final map = <String, DeviceResponse?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -94,8 +94,8 @@ class DeviceResponse {
   }
 
   // maps a json object with a list of DeviceResponse-objects as value to a dart map
-  static Map<String, List<DeviceResponse>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<DeviceResponse>>{};
+  static Map<String, List<DeviceResponse?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<DeviceResponse?>?> map = <String, List<DeviceResponse>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

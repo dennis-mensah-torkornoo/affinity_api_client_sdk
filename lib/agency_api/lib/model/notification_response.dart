@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -22,19 +22,19 @@ class NotificationResponse {
     this.read,
   });
 
-  int id;
+  int? id;
 
-  String title;
+  String? title;
 
-  String description;
+  String? description;
 
-  String channel;
+  String? channel;
 
-  Map<String, String> additionalInfo;
+  Map<String, String>? additionalInfo;
 
-  DateTime created;
+  DateTime? created;
 
-  bool read;
+  bool? read;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is NotificationResponse &&
@@ -78,7 +78,7 @@ class NotificationResponse {
       json[r'additionalInfo'] = additionalInfo;
     }
     if (created != null) {
-      json[r'created'] = created.toUtc().toIso8601String();
+      json[r'created'] = created!.toUtc().toIso8601String();
     }
     if (read != null) {
       json[r'read'] = read;
@@ -89,7 +89,7 @@ class NotificationResponse {
   /// Returns a new [NotificationResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static NotificationResponse fromJson(dynamic value) {
+  static NotificationResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return NotificationResponse(
@@ -105,13 +105,13 @@ class NotificationResponse {
     return null;
   }
 
-  static List<NotificationResponse> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<NotificationResponse?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(NotificationResponse.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <NotificationResponse>[];
 
-  static Map<String, NotificationResponse> mapFromJson(dynamic json) {
-    final map = <String, NotificationResponse>{};
+  static Map<String, NotificationResponse?> mapFromJson(dynamic json) {
+    final map = <String, NotificationResponse?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -121,8 +121,8 @@ class NotificationResponse {
   }
 
   // maps a json object with a list of NotificationResponse-objects as value to a dart map
-  static Map<String, List<NotificationResponse>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<NotificationResponse>>{};
+  static Map<String, List<NotificationResponse?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<NotificationResponse?>?> map = <String, List<NotificationResponse>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
