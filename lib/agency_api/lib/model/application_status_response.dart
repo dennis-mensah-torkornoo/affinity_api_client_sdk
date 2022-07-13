@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-
+// @dart=2.0
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -19,13 +19,13 @@ class ApplicationStatusResponse {
     this.application,
   });
 
-  String? key;
+  String key;
 
-  String? url;
+  String url;
 
-  Map<String, String>? invalidParams;
+  Map<String, String> invalidParams;
 
-  CustomerApplication? application;
+  CustomerApplication application;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ApplicationStatusResponse &&
@@ -65,7 +65,7 @@ class ApplicationStatusResponse {
   /// Returns a new [ApplicationStatusResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ApplicationStatusResponse? fromJson(dynamic value) {
+  static ApplicationStatusResponse fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return ApplicationStatusResponse(
@@ -78,13 +78,13 @@ class ApplicationStatusResponse {
     return null;
   }
 
-  static List<ApplicationStatusResponse?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<ApplicationStatusResponse> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(ApplicationStatusResponse.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <ApplicationStatusResponse>[];
 
-  static Map<String, ApplicationStatusResponse?> mapFromJson(dynamic json) {
-    final map = <String, ApplicationStatusResponse?>{};
+  static Map<String, ApplicationStatusResponse> mapFromJson(dynamic json) {
+    final map = <String, ApplicationStatusResponse>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -94,8 +94,8 @@ class ApplicationStatusResponse {
   }
 
   // maps a json object with a list of ApplicationStatusResponse-objects as value to a dart map
-  static Map<String, List<ApplicationStatusResponse?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
-    final Map<String, List<ApplicationStatusResponse?>?> map = <String, List<ApplicationStatusResponse>?>{};
+  static Map<String, List<ApplicationStatusResponse>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<ApplicationStatusResponse>>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

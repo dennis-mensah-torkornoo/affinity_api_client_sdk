@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-
+// @dart=2.0
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -22,19 +22,19 @@ class HomeResponse {
     this.transactions = const [],
   });
 
-  String? avatar;
+  String avatar;
 
-  int? cashAtHand;
+  int cashAtHand;
 
-  int? ecash;
+  int ecash;
 
-  int? depositTotal;
+  int depositTotal;
 
-  List<NotificationResponse?>? notifications;
+  List<NotificationResponse> notifications;
 
-  List<CustomerResponse?>? customers;
+  List<CustomerResponse> customers;
 
-  List<TransactionDetailResponse?>? transactions;
+  List<TransactionDetailResponse> transactions;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is HomeResponse &&
@@ -89,7 +89,7 @@ class HomeResponse {
   /// Returns a new [HomeResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static HomeResponse? fromJson(dynamic value) {
+  static HomeResponse fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return HomeResponse(
@@ -105,13 +105,13 @@ class HomeResponse {
     return null;
   }
 
-  static List<HomeResponse?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<HomeResponse> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(HomeResponse.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <HomeResponse>[];
 
-  static Map<String, HomeResponse?> mapFromJson(dynamic json) {
-    final map = <String, HomeResponse?>{};
+  static Map<String, HomeResponse> mapFromJson(dynamic json) {
+    final map = <String, HomeResponse>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -121,8 +121,8 @@ class HomeResponse {
   }
 
   // maps a json object with a list of HomeResponse-objects as value to a dart map
-  static Map<String, List<HomeResponse?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
-    final Map<String, List<HomeResponse?>?> map = <String, List<HomeResponse>?>{};
+  static Map<String, List<HomeResponse>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<HomeResponse>>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

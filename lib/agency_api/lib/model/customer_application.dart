@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-
+// @dart=2.0
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -63,101 +63,101 @@ class CustomerApplication {
     this.idDocuments = const [],
   });
 
-  String? clientInput;
+  String clientInput;
 
-  String? otp;
+  String otp;
 
-  DateTime? lastUpdated;
+  DateTime lastUpdated;
 
-  String? title;
+  String title;
 
-  String? firstName;
+  String firstName;
 
-  String? lastName;
+  String lastName;
 
-  String? otherNames;
+  String otherNames;
 
-  CustomerApplicationGenderEnum? gender;
+  CustomerApplicationGenderEnum gender;
 
-  DateTime? dateOfBirth;
+  DateTime dateOfBirth;
 
-  String? countryOfBirth;
+  String countryOfBirth;
 
-  String? nationality;
+  String nationality;
 
-  CustomerApplicationMaritalStatusEnum? maritalStatus;
+  CustomerApplicationMaritalStatusEnum maritalStatus;
 
-  int? numberOfDependents;
+  int numberOfDependents;
 
-  List<String>? phoneNumbers;
+  List<String> phoneNumbers;
 
-  String? email;
+  String email;
 
-  CustomerApplicationEmploymentStatusEnum? employmentStatus;
+  CustomerApplicationEmploymentStatusEnum employmentStatus;
 
-  CustomerApplicationEmploymentTypeEnum? employmentType;
+  CustomerApplicationEmploymentTypeEnum employmentType;
 
-  String? occupation;
+  String occupation;
 
-  String? employerName;
+  String employerName;
 
-  String? employmentAddress;
+  String employmentAddress;
 
-  CustomerApplicationPositionHeldEnum? positionHeld;
+  CustomerApplicationPositionHeldEnum positionHeld;
 
-  String? incomeSource;
+  String incomeSource;
 
-  DateTime? appointmentDate;
+  DateTime appointmentDate;
 
-  String? spouseTitle;
+  String spouseTitle;
 
-  String? spouseFirstName;
+  String spouseFirstName;
 
-  String? spouseLastName;
+  String spouseLastName;
 
-  String? spouseOtherNames;
+  String spouseOtherNames;
 
-  List<String>? spousePhoneNumber;
+  List<String> spousePhoneNumber;
 
-  String? spouseOccupation;
+  String spouseOccupation;
 
-  String? spouseEmployerName;
+  String spouseEmployerName;
 
-  String? spouseEmploymentAddress;
+  String spouseEmploymentAddress;
 
-  bool? spouseNextOfKin;
+  bool spouseNextOfKin;
 
-  String? nextOfKinTitle;
+  String nextOfKinTitle;
 
-  String? nextOfKinFirstName;
+  String nextOfKinFirstName;
 
-  String? nextOfKinLastName;
+  String nextOfKinLastName;
 
-  String? nextOfKinOtherNames;
+  String nextOfKinOtherNames;
 
-  List<String>? nextOfKinPhoneNumber;
+  List<String> nextOfKinPhoneNumber;
 
-  String? nextOfKinRelationship;
+  String nextOfKinRelationship;
 
-  String? area;
+  String area;
 
-  String? residentialAddress;
+  String residentialAddress;
 
-  String? city;
+  String city;
 
-  String? street;
+  String street;
 
-  String? postalAddress;
+  String postalAddress;
 
-  CustomerApplicationRegionEnum? region;
+  CustomerApplicationRegionEnum region;
 
-  String? tinNumber;
+  String tinNumber;
 
-  bool? acceptedTermsAndConditions;
+  bool acceptedTermsAndConditions;
 
-  bool? phoneNumberVerified;
+  bool phoneNumberVerified;
 
-  List<CustomerApplicationDocument?>? idDocuments;
+  List<CustomerApplicationDocument> idDocuments;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CustomerApplication &&
@@ -274,7 +274,7 @@ class CustomerApplication {
       json[r'otp'] = otp;
     }
     if (lastUpdated != null) {
-      json[r'lastUpdated'] = lastUpdated!.toUtc().toIso8601String();
+      json[r'lastUpdated'] = lastUpdated.toUtc().toIso8601String();
     }
     if (title != null) {
       json[r'title'] = title;
@@ -292,7 +292,7 @@ class CustomerApplication {
       json[r'gender'] = gender;
     }
     if (dateOfBirth != null) {
-      json[r'dateOfBirth'] = _dateFormatter.format(dateOfBirth!.toUtc());
+      json[r'dateOfBirth'] = _dateFormatter.format(dateOfBirth.toUtc());
     }
     if (countryOfBirth != null) {
       json[r'countryOfBirth'] = countryOfBirth;
@@ -334,7 +334,7 @@ class CustomerApplication {
       json[r'incomeSource'] = incomeSource;
     }
     if (appointmentDate != null) {
-      json[r'appointmentDate'] = _dateFormatter.format(appointmentDate!.toUtc());
+      json[r'appointmentDate'] = _dateFormatter.format(appointmentDate.toUtc());
     }
     if (spouseTitle != null) {
       json[r'spouseTitle'] = spouseTitle;
@@ -417,7 +417,7 @@ class CustomerApplication {
   /// Returns a new [CustomerApplication] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static CustomerApplication? fromJson(dynamic value) {
+  static CustomerApplication fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return CustomerApplication(
@@ -480,13 +480,13 @@ class CustomerApplication {
     return null;
   }
 
-  static List<CustomerApplication?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<CustomerApplication> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(CustomerApplication.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <CustomerApplication>[];
 
-  static Map<String, CustomerApplication?> mapFromJson(dynamic json) {
-    final map = <String, CustomerApplication?>{};
+  static Map<String, CustomerApplication> mapFromJson(dynamic json) {
+    final map = <String, CustomerApplication>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -496,8 +496,8 @@ class CustomerApplication {
   }
 
   // maps a json object with a list of CustomerApplication-objects as value to a dart map
-  static Map<String, List<CustomerApplication?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
-    final Map<String, List<CustomerApplication?>?> map = <String, List<CustomerApplication>?>{};
+  static Map<String, List<CustomerApplication>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<CustomerApplication>>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -535,10 +535,10 @@ class CustomerApplicationGenderEnum {
     F,
   ];
 
-  static CustomerApplicationGenderEnum? fromJson(dynamic value) =>
+  static CustomerApplicationGenderEnum fromJson(dynamic value) =>
     CustomerApplicationGenderEnumTypeTransformer().decode(value);
 
-  static List<CustomerApplicationGenderEnum?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<CustomerApplicationGenderEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(CustomerApplicationGenderEnum.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <CustomerApplicationGenderEnum>[];
@@ -561,7 +561,7 @@ class CustomerApplicationGenderEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  CustomerApplicationGenderEnum? decode(dynamic data, {bool? allowNull}) {
+  CustomerApplicationGenderEnum decode(dynamic data, {bool allowNull}) {
     if (data != null) {
       switch (data.toString()) {
         case r'M': return CustomerApplicationGenderEnum.M;
@@ -576,7 +576,7 @@ class CustomerApplicationGenderEnumTypeTransformer {
   }
 
   /// Singleton [CustomerApplicationGenderEnumTypeTransformer] instance.
-  static CustomerApplicationGenderEnumTypeTransformer? _instance;
+  static CustomerApplicationGenderEnumTypeTransformer _instance;
 }
 
 
@@ -606,10 +606,10 @@ class CustomerApplicationMaritalStatusEnum {
     WIDOWED,
   ];
 
-  static CustomerApplicationMaritalStatusEnum? fromJson(dynamic value) =>
+  static CustomerApplicationMaritalStatusEnum fromJson(dynamic value) =>
     CustomerApplicationMaritalStatusEnumTypeTransformer().decode(value);
 
-  static List<CustomerApplicationMaritalStatusEnum?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<CustomerApplicationMaritalStatusEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(CustomerApplicationMaritalStatusEnum.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <CustomerApplicationMaritalStatusEnum>[];
@@ -632,7 +632,7 @@ class CustomerApplicationMaritalStatusEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  CustomerApplicationMaritalStatusEnum? decode(dynamic data, {bool? allowNull}) {
+  CustomerApplicationMaritalStatusEnum decode(dynamic data, {bool allowNull}) {
     if (data != null) {
       switch (data.toString()) {
         case r'SINGLE': return CustomerApplicationMaritalStatusEnum.SINGLE;
@@ -649,7 +649,7 @@ class CustomerApplicationMaritalStatusEnumTypeTransformer {
   }
 
   /// Singleton [CustomerApplicationMaritalStatusEnumTypeTransformer] instance.
-  static CustomerApplicationMaritalStatusEnumTypeTransformer? _instance;
+  static CustomerApplicationMaritalStatusEnumTypeTransformer _instance;
 }
 
 
@@ -685,10 +685,10 @@ class CustomerApplicationEmploymentStatusEnum {
     HOMEMAKER,
   ];
 
-  static CustomerApplicationEmploymentStatusEnum? fromJson(dynamic value) =>
+  static CustomerApplicationEmploymentStatusEnum fromJson(dynamic value) =>
     CustomerApplicationEmploymentStatusEnumTypeTransformer().decode(value);
 
-  static List<CustomerApplicationEmploymentStatusEnum?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<CustomerApplicationEmploymentStatusEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(CustomerApplicationEmploymentStatusEnum.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <CustomerApplicationEmploymentStatusEnum>[];
@@ -711,7 +711,7 @@ class CustomerApplicationEmploymentStatusEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  CustomerApplicationEmploymentStatusEnum? decode(dynamic data, {bool? allowNull}) {
+  CustomerApplicationEmploymentStatusEnum decode(dynamic data, {bool allowNull}) {
     if (data != null) {
       switch (data.toString()) {
         case r'EMPLOYED_FULL_TIME': return CustomerApplicationEmploymentStatusEnum.EMPLOYED_FULL_TIME;
@@ -731,7 +731,7 @@ class CustomerApplicationEmploymentStatusEnumTypeTransformer {
   }
 
   /// Singleton [CustomerApplicationEmploymentStatusEnumTypeTransformer] instance.
-  static CustomerApplicationEmploymentStatusEnumTypeTransformer? _instance;
+  static CustomerApplicationEmploymentStatusEnumTypeTransformer _instance;
 }
 
 
@@ -763,10 +763,10 @@ class CustomerApplicationEmploymentTypeEnum {
     CHARITY_NGO,
   ];
 
-  static CustomerApplicationEmploymentTypeEnum? fromJson(dynamic value) =>
+  static CustomerApplicationEmploymentTypeEnum fromJson(dynamic value) =>
     CustomerApplicationEmploymentTypeEnumTypeTransformer().decode(value);
 
-  static List<CustomerApplicationEmploymentTypeEnum?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<CustomerApplicationEmploymentTypeEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(CustomerApplicationEmploymentTypeEnum.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <CustomerApplicationEmploymentTypeEnum>[];
@@ -789,7 +789,7 @@ class CustomerApplicationEmploymentTypeEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  CustomerApplicationEmploymentTypeEnum? decode(dynamic data, {bool? allowNull}) {
+  CustomerApplicationEmploymentTypeEnum decode(dynamic data, {bool allowNull}) {
     if (data != null) {
       switch (data.toString()) {
         case r'GOVERNMENT_EMPLOYEE': return CustomerApplicationEmploymentTypeEnum.GOVERNMENT_EMPLOYEE;
@@ -807,7 +807,7 @@ class CustomerApplicationEmploymentTypeEnumTypeTransformer {
   }
 
   /// Singleton [CustomerApplicationEmploymentTypeEnumTypeTransformer] instance.
-  static CustomerApplicationEmploymentTypeEnumTypeTransformer? _instance;
+  static CustomerApplicationEmploymentTypeEnumTypeTransformer _instance;
 }
 
 
@@ -837,10 +837,10 @@ class CustomerApplicationPositionHeldEnum {
     BOARD_TRUSTEE,
   ];
 
-  static CustomerApplicationPositionHeldEnum? fromJson(dynamic value) =>
+  static CustomerApplicationPositionHeldEnum fromJson(dynamic value) =>
     CustomerApplicationPositionHeldEnumTypeTransformer().decode(value);
 
-  static List<CustomerApplicationPositionHeldEnum?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<CustomerApplicationPositionHeldEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(CustomerApplicationPositionHeldEnum.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <CustomerApplicationPositionHeldEnum>[];
@@ -863,7 +863,7 @@ class CustomerApplicationPositionHeldEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  CustomerApplicationPositionHeldEnum? decode(dynamic data, {bool? allowNull}) {
+  CustomerApplicationPositionHeldEnum decode(dynamic data, {bool allowNull}) {
     if (data != null) {
       switch (data.toString()) {
         case r'OWNER': return CustomerApplicationPositionHeldEnum.OWNER;
@@ -880,7 +880,7 @@ class CustomerApplicationPositionHeldEnumTypeTransformer {
   }
 
   /// Singleton [CustomerApplicationPositionHeldEnumTypeTransformer] instance.
-  static CustomerApplicationPositionHeldEnumTypeTransformer? _instance;
+  static CustomerApplicationPositionHeldEnumTypeTransformer _instance;
 }
 
 
@@ -934,10 +934,10 @@ class CustomerApplicationRegionEnum {
     WESTERN_NORTH_REGION,
   ];
 
-  static CustomerApplicationRegionEnum? fromJson(dynamic value) =>
+  static CustomerApplicationRegionEnum fromJson(dynamic value) =>
     CustomerApplicationRegionEnumTypeTransformer().decode(value);
 
-  static List<CustomerApplicationRegionEnum?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<CustomerApplicationRegionEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(CustomerApplicationRegionEnum.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <CustomerApplicationRegionEnum>[];
@@ -960,7 +960,7 @@ class CustomerApplicationRegionEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  CustomerApplicationRegionEnum? decode(dynamic data, {bool? allowNull}) {
+  CustomerApplicationRegionEnum decode(dynamic data, {bool allowNull}) {
     if (data != null) {
       switch (data.toString()) {
         case r'GREATER_ACCRA_REGION': return CustomerApplicationRegionEnum.GREATER_ACCRA_REGION;
@@ -989,7 +989,7 @@ class CustomerApplicationRegionEnumTypeTransformer {
   }
 
   /// Singleton [CustomerApplicationRegionEnumTypeTransformer] instance.
-  static CustomerApplicationRegionEnumTypeTransformer? _instance;
+  static CustomerApplicationRegionEnumTypeTransformer _instance;
 }
 
 

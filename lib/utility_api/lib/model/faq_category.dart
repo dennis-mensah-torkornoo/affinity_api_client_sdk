@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-
+// @dart=2.0
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -14,18 +14,18 @@ class FaqCategory {
   /// Returns a new [FaqCategory] instance.
   FaqCategory({
     this.id,
-    required this.name,
+    @required this.name,
     this.description,
     this.icon,
   });
 
-  num? id;
+  num id;
 
-  String? name;
+  String name;
 
-  String? description;
+  String description;
 
-  String? icon;
+  String icon;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is FaqCategory &&
@@ -63,7 +63,7 @@ class FaqCategory {
   /// Returns a new [FaqCategory] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static FaqCategory? fromJson(dynamic value) {
+  static FaqCategory fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return FaqCategory(
@@ -78,13 +78,13 @@ class FaqCategory {
     return null;
   }
 
-  static List<FaqCategory?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<FaqCategory> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(FaqCategory.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <FaqCategory>[];
 
-  static Map<String, FaqCategory?> mapFromJson(dynamic json) {
-    final map = <String, FaqCategory?>{};
+  static Map<String, FaqCategory> mapFromJson(dynamic json) {
+    final map = <String, FaqCategory>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -94,8 +94,8 @@ class FaqCategory {
   }
 
   // maps a json object with a list of FaqCategory-objects as value to a dart map
-  static Map<String, List<FaqCategory?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
-    final Map<String, List<FaqCategory?>?> map = <String, List<FaqCategory>?>{};
+  static Map<String, List<FaqCategory>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<FaqCategory>>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

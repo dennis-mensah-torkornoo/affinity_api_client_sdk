@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-
+// @dart=2.0
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -12,7 +12,7 @@ part of openapi.api;
 
 
 class DefaultApi {
-  DefaultApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  DefaultApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -25,14 +25,14 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [InlineObject1] inlineObject1:
-  Future<Response> addOccupationWithHttpInfo({ InlineObject1? inlineObject1, }) async {
+  Future<Response> addOccupationWithHttpInfo({ InlineObject1 inlineObject1, }) async {
     // Verify required params are set.
 
     // ignore: prefer_const_declarations
     final path = r'/client/occupations';
 
     // ignore: prefer_final_locals
-    Object? postBody = inlineObject1;
+    Object postBody = inlineObject1;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -61,7 +61,7 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [InlineObject1] inlineObject1:
-  Future<void> addOccupation({ InlineObject1? inlineObject1, }) async {
+  Future<void> addOccupation({ InlineObject1 inlineObject1, }) async {
     final response = await addOccupationWithHttpInfo( inlineObject1: inlineObject1, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -83,7 +83,7 @@ class DefaultApi {
       .replaceAll('{bankId}', bankId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -121,7 +121,7 @@ class DefaultApi {
     final path = r'/client/banks';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -156,7 +156,7 @@ class DefaultApi {
     final path = r'/client/faq-categories';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -200,7 +200,7 @@ class DefaultApi {
       .replaceAll('{faqId}', faqId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -238,7 +238,7 @@ class DefaultApi {
     final path = r'/client/faqs';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -274,14 +274,14 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [InlineObject3] inlineObject3:
-  Future<Response> clientGetFIleUrlWithHttpInfo({ InlineObject3? inlineObject3, }) async {
+  Future<Response> clientGetFIleUrlWithHttpInfo({ InlineObject3 inlineObject3, }) async {
     // Verify required params are set.
 
     // ignore: prefer_const_declarations
     final path = r'/client/get-file-url';
 
     // ignore: prefer_final_locals
-    Object? postBody = inlineObject3;
+    Object postBody = inlineObject3;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -308,7 +308,7 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [InlineObject3] inlineObject3:
-  Future<UploadResponse?> clientGetFIleUrl({ InlineObject3? inlineObject3, }) async {
+  Future<UploadResponse> clientGetFIleUrl({ InlineObject3 inlineObject3, }) async {
     final response = await clientGetFIleUrlWithHttpInfo( inlineObject3: inlineObject3, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -317,7 +317,7 @@ class DefaultApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UploadResponse',) as UploadResponse?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UploadResponse',) as UploadResponse;
     
     }
     return Future<UploadResponse>.value();
@@ -343,7 +343,7 @@ class DefaultApi {
       .replaceAll('{documentId}', documentId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -397,7 +397,7 @@ class DefaultApi {
       .replaceAll('{paymentMethodId}', paymentMethodId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -441,7 +441,7 @@ class DefaultApi {
     final path = r'/client/hubs';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -504,7 +504,7 @@ class DefaultApi {
       .replaceAll('{bankId}', bankId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -533,7 +533,7 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [String] bankId (required):
-  Future<Bank?> getBank(String bankId,) async {
+  Future<Bank> getBank(String bankId,) async {
     final response = await getBankWithHttpInfo(bankId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -542,7 +542,7 @@ class DefaultApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Bank',) as Bank?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Bank',) as Bank;
     
     }
     return Future<Bank>.value();
@@ -556,7 +556,7 @@ class DefaultApi {
     final path = r'/client/faq-categories';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -615,7 +615,7 @@ class DefaultApi {
       .replaceAll('{faqId}', faqId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -642,7 +642,7 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [String] faqId (required):
-  Future<Faq?> getFaqbyId(String faqId,) async {
+  Future<Faq> getFaqbyId(String faqId,) async {
     final response = await getFaqbyIdWithHttpInfo(faqId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -651,7 +651,7 @@ class DefaultApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Faq',) as Faq?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Faq',) as Faq;
     
     }
     return Future<Faq>.value();
@@ -664,14 +664,14 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [String] search:
-  Future<Response> getFaqsWithHttpInfo({ String? search, }) async {
+  Future<Response> getFaqsWithHttpInfo({ String search, }) async {
     // Verify required params are set.
 
     // ignore: prefer_const_declarations
     final path = r'/client/faqs';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -702,7 +702,7 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [String] search:
-  Future<List<Faq>> getFaqs({ String? search, }) async {
+  Future<List<Faq>> getFaqs({ String search, }) async {
     final response = await getFaqsWithHttpInfo( search: search, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -740,7 +740,7 @@ class DefaultApi {
       .replaceAll('{hubId}', hubId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -769,7 +769,7 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [String] hubId (required):
-  Future<Hub?> getHub(String hubId,) async {
+  Future<Hub> getHub(String hubId,) async {
     final response = await getHubWithHttpInfo(hubId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -778,7 +778,7 @@ class DefaultApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Hub',) as Hub?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Hub',) as Hub;
     
     }
     return Future<Hub>.value();
@@ -794,7 +794,7 @@ class DefaultApi {
     final path = r'/client/payment-methods';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -847,7 +847,7 @@ class DefaultApi {
     final path = r'/client/transaction-categories';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -910,7 +910,7 @@ class DefaultApi {
       .replaceAll('{categoryId}', categoryId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -939,7 +939,7 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [String] categoryId (required):
-  Future<TransactionCategory?> getTransactionCategory(String categoryId,) async {
+  Future<TransactionCategory> getTransactionCategory(String categoryId,) async {
     final response = await getTransactionCategoryWithHttpInfo(categoryId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -948,7 +948,7 @@ class DefaultApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionCategory',) as TransactionCategory?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionCategory',) as TransactionCategory;
     
     }
     return Future<TransactionCategory>.value();
@@ -974,7 +974,7 @@ class DefaultApi {
       .replaceAll('{documentId}', documentId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -1020,7 +1020,7 @@ class DefaultApi {
     final path = r'/time';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -1045,7 +1045,7 @@ class DefaultApi {
   /// Your GET endpoint
   ///
   /// Get current UTC time
-  Future<InlineResponse2005?> getUtcTime() async {
+  Future<InlineResponse2005> getUtcTime() async {
     final response = await getUtcTimeWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1054,7 +1054,7 @@ class DefaultApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InlineResponse2005',) as InlineResponse2005?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InlineResponse2005',) as InlineResponse2005;
     
     }
     return Future<InlineResponse2005>.value();
@@ -1070,7 +1070,7 @@ class DefaultApi {
     final path = r'/client/banks';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -1123,7 +1123,7 @@ class DefaultApi {
     final path = r'/client/list-id-documents';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -1176,7 +1176,7 @@ class DefaultApi {
     final path = r'/client/list-occupations';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -1226,14 +1226,14 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [InlineObject2] inlineObject2:
-  Future<Response> postGenerateJwtWithHttpInfo({ InlineObject2? inlineObject2, }) async {
+  Future<Response> postGenerateJwtWithHttpInfo({ InlineObject2 inlineObject2, }) async {
     // Verify required params are set.
 
     // ignore: prefer_const_declarations
     final path = r'/client/generate-jwt';
 
     // ignore: prefer_final_locals
-    Object? postBody = inlineObject2;
+    Object postBody = inlineObject2;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -1260,7 +1260,7 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [InlineObject2] inlineObject2:
-  Future<InlineResponse2004?> postGenerateJwt({ InlineObject2? inlineObject2, }) async {
+  Future<InlineResponse2004> postGenerateJwt({ InlineObject2 inlineObject2, }) async {
     final response = await postGenerateJwtWithHttpInfo( inlineObject2: inlineObject2, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1269,7 +1269,7 @@ class DefaultApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InlineResponse2004',) as InlineResponse2004?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InlineResponse2004',) as InlineResponse2004;
     
     }
     return Future<InlineResponse2004>.value();
@@ -1299,7 +1299,7 @@ class DefaultApi {
     final path = r'/client/uploads';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -1344,7 +1344,7 @@ class DefaultApi {
   /// * [String] documentType (required):
   ///
   /// * [MultipartFile] file (required):
-  Future<UploadResponse?> uploadDocuments(String documentType, MultipartFile file,) async {
+  Future<UploadResponse> uploadDocuments(String documentType, MultipartFile file,) async {
     final response = await uploadDocumentsWithHttpInfo(documentType, file,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1353,7 +1353,7 @@ class DefaultApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UploadResponse',) as UploadResponse?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UploadResponse',) as UploadResponse;
     
     }
     return Future<UploadResponse>.value();
