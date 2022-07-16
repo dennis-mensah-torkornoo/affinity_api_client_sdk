@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -14,24 +14,24 @@ class Faq {
   /// Returns a new [Faq] instance.
   Faq({
     this.id,
-    @required this.question,
-    @required this.answer,
-    @required this.categoryId,
+    required this.question,
+    required this.answer,
+    required this.categoryId,
     this.dateCreated,
     this.lastUpdated,
   });
 
-  num id;
+  num? id;
 
-  String question;
+  String? question;
 
-  String answer;
+  String? answer;
 
-  num categoryId;
+  num? categoryId;
 
-  String dateCreated;
+  String? dateCreated;
 
-  String lastUpdated;
+  String? lastUpdated;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Faq &&
@@ -75,7 +75,7 @@ class Faq {
   /// Returns a new [Faq] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static Faq fromJson(dynamic value) {
+  static Faq? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return Faq(
@@ -94,13 +94,13 @@ class Faq {
     return null;
   }
 
-  static List<Faq> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<Faq?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(Faq.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <Faq>[];
 
-  static Map<String, Faq> mapFromJson(dynamic json) {
-    final map = <String, Faq>{};
+  static Map<String, Faq?> mapFromJson(dynamic json) {
+    final map = <String, Faq?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -110,8 +110,8 @@ class Faq {
   }
 
   // maps a json object with a list of Faq-objects as value to a dart map
-  static Map<String, List<Faq>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<Faq>>{};
+  static Map<String, List<Faq?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
+    final Map<String, List<Faq?>?> map = <String, List<Faq>?>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

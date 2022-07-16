@@ -1,17 +1,17 @@
-openapi: "3.0.1"
+openapi: 3.0.1
 info:
-  title: "Agency API"
-  description: "Affinity labs api for Agency microservice"
-  version: "v2"
+  title: Agency API
+  description: Affinity labs api for Agency microservice
+  version: v2
   termsOfService: 'https://affinityafrica.com/legal/'
   contact:
-    name: "Ayeba Amihere"
-    email: "ayeba.amihere@affinitylabs.com"
+    name: Ayeba Amihere
+    email: ayeba.amihere@affinitylabs.com
 servers:
-- url: "https://api.affinitylabstest.com/{basePath}"
-  variables:
-    basePath:
-      default: "/agency"
+  - url: 'https://api.affinitylabstest.com/{basePath}'
+    variables:
+      basePath:
+        default: agency
 tags:
   - name: Agency
   - name: Authentication
@@ -19,18 +19,18 @@ tags:
   - name: Tasks
   - name: Statistics
 paths:
-  /customers/{customerId}/times:
+  '/customers/{customerId}/times':
     put:
       tags:
-      - Customers
+        - Customers
       description: Customer Deposit Schedule PUT endpoint
       operationId: putDepositTimesResponse
       parameters:
-      - name: customerId
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -40,7 +40,7 @@ paths:
                 $ref: '#/components/schemas/DepositScheduleRequest'
         required: true
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -48,43 +48,36 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/CustomerDepositSchedule'
-        "400":
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "PUT"
-        uri: "https://${stageVariables.albUrl}/agency/customers/{customerId}/times"
+        type: http_proxy
+        httpMethod: PUT
+        uri: 'https://${stageVariables.albUrl}/agency/customers/{customerId}/times'
         requestParameters:
           integration.request.path.customerId: method.request.path.customerId
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
+            statusCode: '200'
+        passthroughBehavior: when_no_match
   /withdrawals:
     get:
       tags:
-      - Agency
+        - Agency
       description: Get all withdrawals endpoint
       operationId: getWithdrawals
       parameters:
-      - name: pageable
-        in: query
-        required: true
-        schema:
-          $ref: '#/components/schemas/Pageable'
+        - name: pageable
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/Pageable'
       responses:
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -92,20 +85,24 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/TransactionDetailResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/withdrawals"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/withdrawals'
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-        
+            statusCode: '200'
+        passthroughBehavior: when_no_match
     post:
       tags:
-      - Agency
-      description: "Initiate withdrawal endpoint"
+        - Agency
+      description: Initiate withdrawal endpoint
       operationId: postWithdrawals
       requestBody:
         content:
@@ -114,121 +111,111 @@ paths:
               $ref: '#/components/schemas/TransactionRequest'
         required: true
       responses:
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        "201":
+        '201':
           description: Created
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/StatusResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/withdrawals"
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/withdrawals'
         responses:
           default:
-            statusCode: "201"
-        passthroughBehavior: "when_no_match"
+            statusCode: '201'
+        passthroughBehavior: when_no_match
   /withdrawals/otp:
     post:
       tags:
-      - Agency
+        - Agency
       description: Get withdrawal otp generation endpoint
       operationId: postWithdrawalsOtp
       parameters:
-      - name: ref
-        in: query
-        required: true
-        schema:
-          type: string
+        - name: ref
+          in: query
+          required: true
+          schema:
+            type: string
       responses:
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        "201":
+        '201':
           description: Created
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/StatusResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/withdrawals/otp"
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/withdrawals/otp'
         requestParameters:
           integration.request.path.ref: method.request.path.ref
         responses:
           default:
-            statusCode: "201"
-        passthroughBehavior: "when_no_match"
+            statusCode: '201'
+        passthroughBehavior: when_no_match
   /withdrawals/confirm:
     post:
       tags:
-      - Agency
-      description: "Confirm Withdrawal endpoint"
-      operationId: "postWithdrawalsConfirm"
+        - Agency
+      description: Confirm Withdrawal endpoint
+      operationId: postWithdrawalsConfirm
       parameters:
-      - name: otp
-        in: query
-        required: true
-        schema:
-          type: string
-      - name: ref
-        in: query
-        required: true
-        schema:
-          type: "string"
+        - name: otp
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: ref
+          in: query
+          required: true
+          schema:
+            type: string
       responses:
-        "400":
-          description: "Bad Request"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        "201":
-          description: "Created"
+        '201':
+          description: Created
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionDetailResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/withdrawals/confirm"
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/withdrawals/confirm'
         requestParameters:
           integration.request.path.otp: method.request.path.otp
           integration.request.path.ref: method.request.path.ref
         responses:
           default:
-            statusCode: "201"
-        passthroughBehavior: "when_no_match"
-        
+            statusCode: '201'
+        passthroughBehavior: when_no_match
   /tasks:
     get:
       tags:
         - Agency
         - Tasks
-      description: "Get tasks endpoint"
-      operationId: "getTasks"
+      description: Get tasks endpoint
+      operationId: getTasks
       responses:
-        "400":
-          description: "400 response"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -236,31 +223,34 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/TaskResponse'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-auth:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/tasks"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/tasks'
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
+            statusCode: '200'
+        passthroughBehavior: when_no_match
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/tasks"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/tasks'
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-        
+            statusCode: '200'
+        passthroughBehavior: when_no_match
     post:
       tags:
         - Agency
         - Tasks
-      description: "Create task endpoint"
-      operationId: "postTasks"
+      description: Create task endpoint
+      operationId: postTasks
       requestBody:
         content:
           application/json:
@@ -268,79 +258,87 @@ paths:
               $ref: '#/components/schemas/TaskRequest'
         required: true
       responses:
-        "400":
-          description: "400 response"
+        '201':
+          description: 201 response
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "201":
-          description: "201 response"
+                $ref: '#/components/schemas/InfoResponse'
+        '400':
+          description: 400 response
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InfoResponse"
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/tasks"
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/tasks'
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-        
+            statusCode: '200'
+        passthroughBehavior: when_no_match
     delete:
       tags:
-      - Agency
-      - Tasks
-      description: "Delete task endpoint"
-      operationId: "deleteTasks"
+        - Agency
+        - Tasks
+      description: Delete task endpoint
+      operationId: deleteTasks
       parameters:
-      - name: id
-        in: query
-        required: true
-        schema:
-          type: string
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InfoResponse'
-        "400":
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "DELETE"
-        uri: "https://${stageVariables.albUrl}/agency/tasks"
+        type: http_proxy
+        httpMethod: DELETE
+        uri: 'https://${stageVariables.albUrl}/agency/tasks'
         requestParameters:
           integration.request.path.id: method.request.path.id
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-        
-  /supervisor/end-of-day:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+  /supervisors/end-of-day:
     get:
       tags:
-      - Supervisor
+        - Supervisor
       description: GET end of day transactions for all agents
       operationId: getEndOfDay
+      parameters:
+        - name: start
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: end
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: pageable
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/Pageable'
       responses:
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -348,71 +346,140 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/TransactionResponse'
-      x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/supervisor/end-of-day"
-        responses:
-          default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-    post:
-      tags:
-      - Supervisor
-      description: Acknowledge an end of day transaction using transaction id
-      operationId: postEndOfDayWithTransactionId
-      parameters:
-      - name: tid
-        in: query
-        required: true
-        schema:
-          type: string
-      responses:
-        "400":
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-        "200":
+      x-amazon-apigateway-integration:
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/supervisors/end-of-day'
+        requestParameters:
+          integration.request.path.start: method.request.path.start
+          integration.request.path.end: method.request.path.end
+          integration.request.path.pageable: method.request.path.pageable
+        responses:
+          default:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+    post:
+      tags:
+        - Supervisor
+      description: Acknowledge an end of day transaction using transaction id
+      operationId: postEndOfDayWithTransactionId
+      parameters:
+        - name: tid
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/supervisor/end-of-day"
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/supervisors/end-of-day'
         requestParameters:
           integration.request.path.tid: method.request.path.tid
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-  /supervisor/end-of-day/{agentId}:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+    options:
+      parameters:
+        - name: tid
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: start
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: end
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: pageable
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/Pageable'
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+          content: {}
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: '200'
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: '''GET,POST,OPTIONS'''
+              method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'''
+              method.response.header.Access-Control-Allow-Origin: '''*'''
+        requestTemplates:
+          application/json: '{"statusCode": 200}'
+        passthroughBehavior: when_no_match
+        type: mock
+  '/supervisors/end-of-day/{id}':
     get:
       tags:
-      - Supervisor
+        - Supervisor
       description: GET end of day transactions for specific agent
       operationId: getEndOfDayWithAgent
       parameters:
-      - name: agentId
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: start
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: end
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: pageable
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/Pageable'
       responses:
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -420,141 +487,297 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/TransactionResponse'
-      x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/supervisor/end-of-day/{agentId}"
-        requestParameters:
-          integration.request.path.agentId: method.request.path.agentId
-        responses:
-          default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-    post:
-      tags:
-      - Supervisor
-      description: Acknowledge all end of day transactions for specific agent
-      operationId: postEndOfDayWithAgent
-      parameters:
-      - name: agentId
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "400":
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-        "200":
+      x-amazon-apigateway-integration:
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/supervisors/end-of-day/{id}'
+        requestParameters:
+          integration.request.path.id: method.request.path.id
+          integration.request.path.start: method.request.path.start
+          integration.request.path.end: method.request.path.end
+          integration.request.path.pageable: method.request.path.pageable
+        responses:
+          default:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+    post:
+      tags:
+        - Supervisor
+      description: Acknowledge all end of day transactions for specific agent
+      operationId: postEndOfDayWithAgent
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/supervisor/end-of-day/{agentId}"
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/supervisors/end-of-day/{id}'
         requestParameters:
-          integration.request.path.agentId: method.request.path.agentId
+          integration.request.path.id: method.request.path.id
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-  /supervisor/end-of-day/flag:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+    options:
+      parameters:
+        - name: id
+          in: path
+          required: false
+          schema:
+            type: string
+        - name: start
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: end
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: pageable
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/Pageable'
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+          content: {}
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: '200'
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: '''GET,POST,OPTIONS'''
+              method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'''
+              method.response.header.Access-Control-Allow-Origin: '''*'''
+        requestTemplates:
+          application/json: '{"statusCode": 200}'
+        passthroughBehavior: when_no_match
+        type: mock
+  /supervisors/end-of-day/flag:
     post:
       tags:
-      - Supervisor
+        - Supervisor
       description: Mark a suspicious end of day transaction using transaction id
-      operationId: postMarkEndOfDayWithTransactionId
+      operationId: postFlagTransactionWithTransactionId
       parameters:
-      - name: tid
-        in: query
-        required: true
-        schema:
-          type: string
+        - name: tid
+          in: query
+          required: true
+          schema:
+            type: string
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InfoResponse'
-        "400":
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/supervisor/end-of-day/flag"
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/supervisors/end-of-day/flag'
         requestParameters:
           integration.request.path.tid: method.request.path.tid
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-        
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+    options:
+      parameters:
+        - name: tid
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+          content: {}
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: '200'
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: '''POST,OPTIONS'''
+              method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'''
+              method.response.header.Access-Control-Allow-Origin: '''*'''
+        requestTemplates:
+          application/json: '{"statusCode": 200}'
+        passthroughBehavior: when_no_match
+        type: mock
+  '/supervisors/agents/{id}/signoff':
+    post:
+      tags:
+        - Supervisor
+      description: GET all agents in your branch
+      operationId: postSignOff
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignOffRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionDetailResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-amazon-apigateway-integration:
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/supervisors/agents/{id}/signoff'
+        requestParameters:
+          integration.request.path.id: method.request.path.id
+        responses:
+          default:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+    options:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+          content: {}
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: '200'
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: '''GET,POST,OPTIONS'''
+              method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'''
+              method.response.header.Access-Control-Allow-Origin: '''*'''
+        requestTemplates:
+          application/json: '{"statusCode": 200}'
+        passthroughBehavior: when_no_match
+        type: mock
   /referrals:
     post:
       tags:
         - Customers
-      description: "Referrals endpoint"
-      operationId: "postReferrals"
+      description: Referrals endpoint
+      operationId: postReferrals
       parameters:
-      - name: p
-        in: query
-        required: true
-        schema:
-          type: string
+        - name: p
+          in: query
+          required: true
+          schema:
+            type: string
       responses:
-        "400":
-          description: "Bad Request"
+        '201':
+          description: Created
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "201":
-          description: "Created"
+                $ref: '#/components/schemas/StatusResponse'
+        '400':
+          description: Bad Request
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/StatusResponse"
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/referrals"
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/referrals'
         responses:
           default:
-            statusCode: "201"
+            statusCode: '201'
         requestParameters:
           integration.request.path.p: method.request.path.p
-        passthroughBehavior: "when_no_match"
-        
+        passthroughBehavior: when_no_match
   /notifications:
     get:
       tags:
         - Agency
-      description: "Notifications endpoint"
-      operationId: "getNotifications"
+      description: Notifications endpoint
+      operationId: getNotifications
       responses:
-        "400":
-          description: "400 response"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -562,20 +785,24 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/NotificationResponse'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/notifications"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/notifications'
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-        
+            statusCode: '200'
+        passthroughBehavior: when_no_match
     post:
       tags:
-      - Agency
-      description: "Create a notification assigned to an agent"
+        - Agency
+      description: Create a notification assigned to an agent
       operationId: postNotification
       requestBody:
         content:
@@ -584,32 +811,31 @@ paths:
               $ref: '#/components/schemas/NotificationRequest'
         required: true
       responses:
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        "201":
+        '201':
           description: Created
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotificationResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/notifications"
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/notifications'
         responses:
           default:
-            statusCode: "201"
-        passthroughBehavior: "when_no_match"
+            statusCode: '201'
+        passthroughBehavior: when_no_match
   /login:
     post:
       tags:
-      - Authentication
-      description: "Login agents here with email, password"
+        - Authentication
+      description: 'Login agents here with email, password'
       operationId: postLogin
       requestBody:
         content:
@@ -618,88 +844,83 @@ paths:
               $ref: '#/components/schemas/AgencyLoginRequest'
         required: true
       responses:
-        "200":
+        '200':
           description: Ok response with token
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/LoginResponse'
-        "400":
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/login"
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/login'
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-        
+            statusCode: '200'
+        passthroughBehavior: when_no_match
   /keep-alive:
     post:
       tags:
-      - Authentication
+        - Authentication
       description: Extend token lifetime here.
       operationId: postKeepAlive
       responses:
-        "200":
+        '200':
           description: Ok response with token
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/RefreshToken'
-        "400":
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/keep-alive"
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/keep-alive'
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-        
+            statusCode: '200'
+        passthroughBehavior: when_no_match
   /devices:
     post:
       summary: ''
-      description: "Register devices here"
-      operationId: "postDevices"
+      description: Register devices here
+      operationId: postDevices
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/DeviceRequest"
+              $ref: '#/components/schemas/DeviceRequest'
         required: true
       responses:
-        "201":
-          description: "201 response"
+        '201':
+          description: 201 response
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DeviceResponse"
+                $ref: '#/components/schemas/DeviceResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/devices"
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/devices'
         responses:
           default:
-            statusCode: "201"
-        passthroughBehavior: "when_no_match"
+            statusCode: '201'
+        passthroughBehavior: when_no_match
   /devices/link:
     post:
       tags:
-      - Authentication
+        - Authentication
       description: Link your device to an agent here
       operationId: postLinkUserToDevice
       requestBody:
@@ -709,67 +930,64 @@ paths:
               $ref: '#/components/schemas/DeviceRequest'
         required: true
       responses:
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        "200":
+        '200':
           description: Ok
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeviceResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/devices/link"
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/devices/link'
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
+            statusCode: '200'
+        passthroughBehavior: when_no_match
   /deposits:
     get:
       tags:
         - Customers
-      description: "Deposits endpoint"
-      operationId: "getDeposits"
+      description: Deposits endpoint
+      operationId: getDeposits
       parameters:
-      - name: pageable
-        in: query
-        required: true
-        schema:
-          $ref: '#/components/schemas/Pageable'
+        - name: pageable
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/Pageable'
       responses:
-        "400":
-          description: "400 response"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "200":
-          description: "200 response"
+        '200':
+          description: 200 response
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/TransactionDetailResponse'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/deposits"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/deposits'
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-        
+            statusCode: '200'
+        passthroughBehavior: when_no_match
     post:
       tags:
-      - Agency
+        - Agency
       description: Create new deposit endpoint
       operationId: postDeposits
       requestBody:
@@ -779,68 +997,65 @@ paths:
               $ref: '#/components/schemas/TransactionRequest'
         required: true
       responses:
-        "201":
+        '201':
           description: Created
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/StatusResponse'
-        "400":
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/deposits"
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/deposits'
         responses:
           default:
-            statusCode: "201"
-        passthroughBehavior: "when_no_match"
-        
+            statusCode: '201'
+        passthroughBehavior: when_no_match
   /deposits/confirm:
     post:
       tags:
-      - Agency
-      description: "Confirm Deposit endpoint"
-      operationId: "postDepositsConfirm"
+        - Agency
+      description: Confirm Deposit endpoint
+      operationId: postDepositsConfirm
       parameters:
-      - name: ref
-        in: query
-        required: true
-        schema:
-          type: string
+        - name: ref
+          in: query
+          required: true
+          schema:
+            type: string
       responses:
-        "400":
-          description: "Bad Request"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        "201":
+        '201':
           description: Created
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionDetailResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/deposits/confirm"
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/deposits/confirm'
         requestParameters:
           integration.request.path.ref: method.request.path.ref
         responses:
           default:
-            statusCode: "201"
-        passthroughBehavior: "when_no_match"
+            statusCode: '201'
+        passthroughBehavior: when_no_match
   /customers/update:
     post:
       tags:
-      - Customers
+        - Customers
       description: Update with customer external id endpoint
       operationId: postUpdateWithConsumerAppCustomerId
       requestBody:
@@ -850,75 +1065,72 @@ paths:
               $ref: '#/components/schemas/UpdateCustomerIdRequest'
         required: true
       responses:
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InfoResponse'
-      x-amazon-apigateway-integration:
-        type: "http_proxy"
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/customers/update"
-        responses:
-          default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-    
-  /application:
-    get:
-      tags:
-      - Customers
-      description: "Retrieve the up-to-date customer application from cache."
-      operationId: getCustomerApplication
-      parameters:
-      - name: p
-        in: query
-        required: true
-        schema:
-          type: string
-      responses:
-        "400":
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-        "200":
+      x-amazon-apigateway-integration:
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/customers/update'
+        responses:
+          default:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+  /application:
+    get:
+      tags:
+        - Customers
+      description: Retrieve the up-to-date customer application from cache.
+      operationId: getCustomerApplication
+      parameters:
+        - name: p
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomerApplication'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/application"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/application'
         responses:
           default:
-            statusCode: "200"
+            statusCode: '200'
         requestParameters:
           integration.request.path.p: method.request.path.p
-        passthroughBehavior: "when_no_match"
-        
+        passthroughBehavior: when_no_match
     post:
       tags:
-      - Customers
-      description: "Upload full customer application for onboarding."
+        - Customers
+      description: Upload full customer application for onboarding.
       operationId: postCustomerApplication
       parameters:
-      - name: p
-        in: query
-        required: true
-        schema:
-          type: string
+        - name: p
+          in: query
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -926,77 +1138,73 @@ paths:
               $ref: '#/components/schemas/CustomerApplication'
         required: true
       responses:
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        "201":
+        '201':
           description: Created
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/StatusResponse'
-      x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/application"
-        requestParameters:
-          integration.request.path.p: method.request.path.p
-        responses:
-          default:
-            statusCode: "201"
-        passthroughBehavior: "when_no_match"
-        
-    delete:
-      tags:
-      - Customers
-      description: "Remove a customer application from cache."
-      operationId: "deleteCustomerApplication"
-      parameters:
-      - name: p
-        in: query
-        required: true
-        schema:
-          type: string
-      responses:
-        "400":
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-        "200":
+      x-amazon-apigateway-integration:
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/application'
+        requestParameters:
+          integration.request.path.p: method.request.path.p
+        responses:
+          default:
+            statusCode: '201'
+        passthroughBehavior: when_no_match
+    delete:
+      tags:
+        - Customers
+      description: Remove a customer application from cache.
+      operationId: deleteCustomerApplication
+      parameters:
+        - name: p
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomerApplication'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "DELETE"
-        uri: "https://${stageVariables.albUrl}/agency/application"
+        type: http_proxy
+        httpMethod: DELETE
+        uri: 'https://${stageVariables.albUrl}/agency/application'
         responses:
           default:
-            statusCode: "200"
+            statusCode: '200'
         requestParameters:
           integration.request.path.p: method.request.path.p
-        passthroughBehavior: "when_no_match"
-        
+        passthroughBehavior: when_no_match
     patch:
       tags:
-      - Customers
-      description: "Save for later functionality,for customer applications."
+        - Customers
+      description: 'Save for later functionality,for customer applications.'
       operationId: patchCustomerApplication
       parameters:
-      - name: p
-        in: query
-        required: true
-        schema:
-          type: string
+        - name: p
+          in: query
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -1004,139 +1212,130 @@ paths:
               $ref: '#/components/schemas/CustomerApplication'
         required: true
       responses:
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InfoResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "PATCH"
-        uri: "https://${stageVariables.albUrl}/agency/application"
+        type: http_proxy
+        httpMethod: PATCH
+        uri: 'https://${stageVariables.albUrl}/agency/application'
         responses:
           default:
-            statusCode: "200"
+            statusCode: '200'
         requestParameters:
           integration.request.path.p: method.request.path.p
-        passthroughBehavior: "when_no_match"
-        
+        passthroughBehavior: when_no_match
   /application/otp:
     post:
       tags:
-      - Customers
-      description: "Send/Resend otp to new customer for onboarding"
+        - Customers
+      description: Send/Resend otp to new customer for onboarding
       operationId: postCustomerOtp
       parameters:
-      - name: p
-        in: query
-        required: true
-        schema:
-          type: "string"
-      - name: resend
-        in: query
-        required: false
-        schema:
-          type: "string"
+        - name: p
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: resend
+          in: query
+          required: false
+          schema:
+            type: string
       responses:
-        "201":
+        '201':
           description: Created
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/OtpResponse'
-        "400":
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/application/otp"
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/application/otp'
         responses:
           default:
-            statusCode: "201"
+            statusCode: '201'
         requestParameters:
           integration.request.path.p: method.request.path.p
           integration.request.path.resend: method.request.path.resend
-        passthroughBehavior: "when_no_match"
+        passthroughBehavior: when_no_match
   /accounts:
     get:
       tags:
         - Customers
-      description: "Account activity log endpoint"
-      operationId: "getAccounts"
+      description: Account activity log endpoint
+      operationId: getAccounts
       parameters:
-      - name: id
-        in: query
-        required: true
-        schema:
-          type: "string"
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
       responses:
-        "400":
-          description: "Bad Request"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "200":
-          description: "OK"
+        '200':
+          description: OK
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/AccountResponse"
-      x-amazon-apigateway-integration:
-        type: "http_proxy"
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/accounts"
-        requestParameters:
-          integration.request.path.id: method.request.path.id
-        responses:
-          default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-    post:
-      tags:
-      - Agency
-      description: Create account for customer endpoint
-      operationId: postAccounts
-      parameters:
-      - name: id
-        in: query
-        required: true
-        schema:
-          type: string
-      - name: type
-        in: query
-        required: true
-        schema:
-          type: string
-          enum:
-          - GROWTH
-          - MOBI
-          - STAFF
-          - FUTURE
-          - DAILY
-      responses:
-        "400":
+                  $ref: '#/components/schemas/AccountResponse'
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-        "201":
+      x-amazon-apigateway-integration:
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/accounts'
+        requestParameters:
+          integration.request.path.id: method.request.path.id
+        responses:
+          default:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+    post:
+      tags:
+        - Agency
+      description: Create account for customer endpoint
+      operationId: postAccounts
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: type
+          in: query
+          required: true
+          schema:
+            type: string
+            enum:
+              - GROWTH
+              - MOBI
+              - STAFF
+              - FUTURE
+              - DAILY
+      responses:
+        '201':
           description: Created
           content:
             application/json:
@@ -1144,31 +1343,31 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/AccountResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        httpMethod: "POST"
-        uri: "https://${stageVariables.albUrl}/agency/accounts"
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/accounts'
         requestParameters:
           integration.request.path.id: method.request.path.id
           integration.request.path.type: method.request.path.type
         responses:
           default:
-            statusCode: "201"
-        passthroughBehavior: "when_no_match"
+            statusCode: '201'
+        passthroughBehavior: when_no_match
   /settings:
     get:
       tags:
         - Agency
-      description: "Get Settings endpoint"
-      operationId: "getSettings"
+      description: Get Settings endpoint
+      operationId: getSettings
       responses:
-        "400":
-          description: "400 response"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -1176,19 +1375,23 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SettingModel'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/settings"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/settings'
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-        
+            statusCode: '200'
+        passthroughBehavior: when_no_match
     patch:
       tags:
-      - Agency
+        - Agency
       description: Patch Settings endpoint
       operationId: patchSettings
       requestBody:
@@ -1200,81 +1403,78 @@ paths:
                 $ref: '#/components/schemas/SettingModel'
         required: true
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InfoResponse'
-        "400":
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "PATCH"
-        uri: "https://${stageVariables.albUrl}/agency/settings"
+        type: http_proxy
+        httpMethod: PATCH
+        uri: 'https://${stageVariables.albUrl}/agency/settings'
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-        
+            statusCode: '200'
+        passthroughBehavior: when_no_match
   /transactions:
     get:
       tags:
         - Agency
-      description: "Get details/statistics on transactions made so far"
-      operationId: "getTransactions"
+      description: Get details/statistics on transactions made so far
+      operationId: getTransactions
       parameters:
-      - name: pageable
-        in: query
-        required: true
-        schema:
-          $ref: '#/components/schemas/Pageable'
+        - name: pageable
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/Pageable'
       responses:
-        "400":
-          description: "400 response"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/transactions"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/transactions'
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-  /transactions/{accountEncodedId}:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+  '/transactions/{accountEncodedId}':
     get:
       tags:
-      - Agency
+        - Agency
       description: Get transactions linked to a single account
       operationId: getTransactions_1
       parameters:
-      - name: accountEncodedId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: pageable
-        in: query
-        required: true
-        schema:
-          $ref: '#/components/schemas/Pageable'
+        - name: accountEncodedId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pageable
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/Pageable'
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -1282,85 +1482,88 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/TransactionDetailResponse'
-        "400":
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/transactions/{accountEncodedId}"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/transactions/{accountEncodedId}'
         requestParameters:
           integration.request.path.accountEncodedId: method.request.path.accountEncodedId
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-        
-  /tasks/{taskId}:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+  '/tasks/{taskId}':
     get:
       tags:
         - Agency
         - Tasks
-      description: "Task detail endpoint"
-      operationId: "getTaskDetail"
+      description: Task detail endpoint
+      operationId: getTaskDetail
       parameters:
-      - name: "taskId"
-        in: "path"
-        required: true
-        schema:
-          type: "string"
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
-        "400":
-          description: "Bad Request"
+        '200':
+          description: 'A task detail (Name, Start date and End date)'
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "200":
-          description: "A task detail (Name, Start date and End date)"
+                $ref: '#/components/schemas/InfoResponse'
+        '400':
+          description: Bad Request
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InfoResponse"
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/tasks/{taskId}"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/tasks/{taskId}'
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-  /supervisor/callover:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+  '/supervisors/callovers/{id}':
     get:
       tags:
-      - Supervisor
+        - Supervisor
       description: GET callover for end of day for all agents
       operationId: getCallover
       parameters:
-      - name: start
-        in: query
-        required: true
-        schema:
-          type: string
-          format: date-time
-      - name: end
-        in: query
-        required: true
-        schema:
-          type: string
-          format: date-time
-      - name: pageable
-        in: query
-        required: true
-        schema:
-          $ref: '#/components/schemas/Pageable'
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: start
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: end
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: pageable
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/Pageable'
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -1368,41 +1571,330 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/TransactionResponse'
-        "400":
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/supervisor/callover"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/supervisors/callovers/{id}'
+        requestParameters:
+          integration.request.path.id: method.request.path.id
+          integration.request.path.start: method.request.path.start
+          integration.request.path.end: method.request.path.end
+          integration.request.path.pageable: method.request.path.pageable
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-        
-  /notifications/{id}:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+    options:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: start
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: end
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: pageable
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/Pageable'
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+          content: {}
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: '200'
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: '''GET,OPTIONS'''
+              method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'''
+              method.response.header.Access-Control-Allow-Origin: '''*'''
+        requestTemplates:
+          application/json: '{"statusCode": 200}'
+        passthroughBehavior: when_no_match
+        type: mock
+  /supervisors/agents:
     get:
       tags:
-      - Agency
-      description: "Notifications by id endpoint"
-      operationId: "getNotificationById"
+        - Supervisor
+      description: GET all agents filtered by branch
+      operationId: getAgents
+      parameters:
+        - name: b
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: pageable
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/Pageable'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AgentResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-amazon-apigateway-integration:
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/supervisors/agents'
+        requestParameters:
+          integration.request.path.b: method.request.path.b
+          integration.request.path.pageable: method.request.path.pageable
+        responses:
+          default:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+    options:
+      parameters:
+        - name: b
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: pageable
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/Pageable'
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+          content: {}
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: '200'
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: '''GET,OPTIONS'''
+              method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'''
+              method.response.header.Access-Control-Allow-Origin: '''*'''
+        requestTemplates:
+          application/json: '{"statusCode": 200}'
+        passthroughBehavior: when_no_match
+        type: mock
+  '/supervisors/agents/{id}':
+    get:
+      tags:
+        - Supervisor
+      description: GET specific agent with id
+      operationId: getAgentsWithId
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-amazon-apigateway-integration:
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/supervisors/agents/{id}'
+        requestParameters:
+          integration.request.path.id: method.request.path.id
+        responses:
+          default:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+    options:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+          content: {}
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: '200'
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: '''GET,OPTIONS'''
+              method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'''
+              method.response.header.Access-Control-Allow-Origin: '''*'''
+        requestTemplates:
+          application/json: '{"statusCode": 200}'
+        passthroughBehavior: when_no_match
+        type: mock
+  '/supervisors/agents/{id}/transactions':
+    get:
+      tags:
+        - Supervisor
+      description: GET all agents in your branch
+      operationId: getAgentTransactionsWithId
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: pageable
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/Pageable'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionDetailResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-amazon-apigateway-integration:
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/supervisors/agents/{id}/transactions'
+        requestParameters:
+          integration.request.path.id: method.request.path.id
+          integration.request.path.pageable: method.request.path.pageable
+        responses:
+          default:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+    options:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: pageable
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/Pageable'
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+          content: {}
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: '200'
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: '''GET,OPTIONS'''
+              method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'''
+              method.response.header.Access-Control-Allow-Origin: '''*'''
+        requestTemplates:
+          application/json: '{"statusCode": 200}'
+        passthroughBehavior: when_no_match
+        type: mock
+  /supervisors/agents/{id}/details:
+    get:
+      tags:
+      - Supervisor
+      description: GET agent details
+      operationId: getAgentDetails
       parameters:
       - name: id
         in: path
         required: true
         schema:
-          type: string
+          type: integer
+          format: int64
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotificationResponse'
+                $ref: '#/components/schemas/AgentDetailResponse'
         "400":
           description: Bad Request
           content:
@@ -1410,30 +1902,63 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/notifications/{id}"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/supervisors/agents/{id}/details'
         requestParameters:
           integration.request.path.id: method.request.path.id
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-                        
-  /network-providers:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+    options:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+          content: {}
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: '200'
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: '''GET,OPTIONS'''
+              method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'''
+              method.response.header.Access-Control-Allow-Origin: '''*'''
+        requestTemplates:
+          application/json: '{"statusCode": 200}'
+        passthroughBehavior: when_no_match
+        type: mock
+  /supervisors/agents/{id}/customers:
     get:
       tags:
-      - Agency
-      description: Get Network Providers endpoint
-      operationId: getNetworkProviders
+      - Supervisor
+      description: GET all customers attached to an agent
+      operationId: getAgentCustomers
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
       responses:
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
         "200":
           description: OK
           content:
@@ -1441,53 +1966,191 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NetworkProvider'
+                  $ref: '#/components/schemas/SupervisorCustomerResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/network-providers"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/supervisors/agents/{id}/customers'
+        requestParameters:
+          integration.request.path.id: method.request.path.id
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+    options:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+          content: {}
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: '200'
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: '''GET,OPTIONS'''
+              method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'''
+              method.response.header.Access-Control-Allow-Origin: '''*'''
+        requestTemplates:
+          application/json: '{"statusCode": 200}'
+        passthroughBehavior: when_no_match
+        type: mock
+  '/notifications/{id}':
+    get:
+      tags:
+        - Agency
+      description: Notifications by id endpoint
+      operationId: getNotificationById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-amazon-apigateway-integration:
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/notifications/{id}'
+        requestParameters:
+          integration.request.path.id: method.request.path.id
+        responses:
+          default:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+  /network-providers:
+    get:
+      tags:
+        - Agency
+      description: Get Network Providers endpoint
+      operationId: getNetworkProviders
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NetworkProvider'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-amazon-apigateway-integration:
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/network-providers'
+        responses:
+          default:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
   /home:
     get:
       tags:
         - Agency
-      description: "Statistics, and other agent-related information"
-      operationId: "getAgentHome"
+      description: 'Statistics, and other agent-related information'
+      operationId: getAgentHome
       responses:
-        "400":
-          description: "400 response"
+        '200':
+          description: 200 response
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "200":
-          description: "200 response"
+                $ref: '#/components/schemas/HomeResponse'
+        '400':
+          description: 400 response
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/HomeResponse"
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/home"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/home'
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-        
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+  /denominations:
+    post:
+      tags:
+        - Agency
+      description: Post denominations used for a transaction
+      operationId: postDenominations
+      parameters:
+        - name: denomination
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/DenominationObject'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InfoResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-amazon-apigateway-integration:
+        type: http_proxy
+        httpMethod: POST
+        uri: 'https://${stageVariables.albUrl}/agency/denominations'
+        responses:
+          default:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
   /customers:
     get:
       tags:
         - Customers
-      description: "Customers endpoint"
-      operationId: "getCustomers"
+      description: Customers endpoint
+      operationId: getCustomers
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -1496,128 +2159,118 @@ paths:
                 items:
                   $ref: '#/components/schemas/CustomerResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/customers"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/customers'
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-  /customers/{customerId}:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+  '/customers/{customerId}':
     get:
       tags:
-      - Customers
+        - Customers
       description: Customer Details endpoint
       operationId: getCustomerDetails
       parameters:
-      - name: customerId
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomerDetailsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/customers/{customerId}"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/customers/{customerId}'
         requestParameters:
           integration.request.path.customerId: method.request.path.customerId
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
+            statusCode: '200'
+        passthroughBehavior: when_no_match
   /customers/search:
     get:
       tags:
-      - Customers
+        - Customers
       description: Customer Details Search endpoint
       operationId: getCustomerDetailsSearch
       parameters:
-      - name: p
-        in: query
-        required: true
-        schema:
-          type: string
+        - name: p
+          in: query
+          required: true
+          schema:
+            type: string
       responses:
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomerDetailsResponse'
-      x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/customers/search"
-        requestParameters:
-          integration.request.path.p: method.request.path.p
-        responses:
-          default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
-  /cash-at-hand:
-    get:
-      tags:
-      - Agency
-      description: Cash at hand breakdown and other stats
-      operationId: getCashAtHand
-      responses:
-        "400":
+        '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-        "200":
+      x-amazon-apigateway-integration:
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/customers/search'
+        requestParameters:
+          integration.request.path.p: method.request.path.p
+        responses:
+          default:
+            statusCode: '200'
+        passthroughBehavior: when_no_match
+  /cash-at-hand:
+    get:
+      tags:
+        - Agency
+      description: Cash at hand breakdown and other stats
+      operationId: getCashAtHand
+      responses:
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/CashAtHandResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/cash-at-hand"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/cash-at-hand'
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
+            statusCode: '200'
+        passthroughBehavior: when_no_match
   /appstatus:
     get:
       tags:
         - Customers
-      description: "Application status for all pending applications"
-      operationId: "getAppStatus"
+      description: Application status for all pending applications
+      operationId: getAppStatus
       responses:
-        "400":
-          description: "400 response"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -1625,22 +2278,27 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ApplicationStatusResponse'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-amazon-apigateway-integration:
-        type: "http_proxy"
-        
-        httpMethod: "GET"
-        uri: "https://${stageVariables.albUrl}/agency/appstatus"
+        type: http_proxy
+        httpMethod: GET
+        uri: 'https://${stageVariables.albUrl}/agency/appstatus'
         responses:
           default:
-            statusCode: "200"
-        passthroughBehavior: "when_no_match"
+            statusCode: '200'
+        passthroughBehavior: when_no_match
 components:
   schemas:
     DepositScheduleRequest:
       required:
-      - customerId
-      - scheduledAmount
-      - scheduledDate
+        - customerId
+        - scheduledAmount
+        - scheduledDate
       type: object
       properties:
         customerId:
@@ -1653,9 +2311,9 @@ components:
           format: date-time
     CustomerDepositSchedule:
       required:
-      - agentId
-      - customerId
-      - dateCreated
+        - agentId
+        - customerId
+        - dateCreated
       type: object
       properties:
         id:
@@ -1700,28 +2358,28 @@ components:
         idType:
           type: string
           enum:
-          - voters
-          - voter
-          - passport
-          - driver_license
-          - driver_licence
-          - national_id
-          - nhis
-          - ssnit
-          - tin
-          - other
-          - drivers
-          - voters_old
+            - voters
+            - voter
+            - passport
+            - driver_license
+            - driver_licence
+            - national_id
+            - nhis
+            - ssnit
+            - tin
+            - other
+            - drivers
+            - voters_old
         phoneNumber:
           type: string
         fullName:
           type: string
     TransactionRequest:
       required:
-      - accountId
-      - amount
-      - currency
-      - customerPhoneNumber
+        - accountId
+        - amount
+        - currency
+        - customerPhoneNumber
       type: object
       properties:
         accountId:
@@ -1748,10 +2406,10 @@ components:
         status:
           type: string
           enum:
-          - CREATED
-          - PROCESSING
-          - FAILED
-          - CREATED_WITH_ERRORS
+            - CREATED
+            - PROCESSING
+            - FAILED
+            - CREATED_WITH_ERRORS
         uri:
           type: string
           format: uri
@@ -1767,7 +2425,11 @@ components:
           type: string
         name:
           type: string
+        branch:
+          type: string
         accountNumber:
+          type: string
+        phoneNumber:
           type: string
         profileUrl:
           type: string
@@ -1775,9 +2437,9 @@ components:
         transactionType:
           type: string
           enum:
-          - DEPOSIT
-          - WITHDRAWAL
-          - PENDING_DEPOSIT
+            - DEPOSIT
+            - WITHDRAWAL
+            - PENDING_DEPOSIT
         assigned:
           type: boolean
         amount:
@@ -1809,12 +2471,21 @@ components:
           format: uri
         detailMessage:
           type: string
+    SignOffRequest:
+      type: object
+      properties:
+        credentials:
+          type: string
+        agentId:
+          type: string
+        transactionHash:
+          type: string
     NotificationRequest:
       required:
-      - channelId
-      - deviceId
-      - message
-      - subject
+        - channelId
+        - deviceId
+        - message
+        - subject
       type: object
       properties:
         subject:
@@ -1826,11 +2497,11 @@ components:
         channelId:
           type: string
           enum:
-          - com.affinitylabs.agency.PUSH
-          - com.affinitylabs.agency.LOGOUT
-          - com.affinitylabs.agency.HOME
-          - com.affinitylabs.agency.MESSAGE
-          - com.affinitylabs.agency.UPDATE
+            - com.affinitylabs.agency.PUSH
+            - com.affinitylabs.agency.LOGOUT
+            - com.affinitylabs.agency.HOME
+            - com.affinitylabs.agency.MESSAGE
+            - com.affinitylabs.agency.UPDATE
         additionalInfo:
           type: object
           additionalProperties:
@@ -1953,8 +2624,8 @@ components:
         gender:
           type: string
           enum:
-          - M
-          - F
+            - M
+            - F
         dateOfBirth:
           type: string
           format: date
@@ -1965,10 +2636,10 @@ components:
         maritalStatus:
           type: string
           enum:
-          - SINGLE
-          - MARRIED
-          - DIVORCED
-          - WIDOWED
+            - SINGLE
+            - MARRIED
+            - DIVORCED
+            - WIDOWED
         numberOfDependents:
           type: integer
           format: int32
@@ -1981,21 +2652,21 @@ components:
         employmentStatus:
           type: string
           enum:
-          - EMPLOYED_FULL_TIME
-          - EMPLOYED_PART_TIME
-          - SELF_EMPLOYED
-          - STUDENT
-          - RETIRED
-          - UNEMPLOYED
-          - HOMEMAKER
+            - EMPLOYED_FULL_TIME
+            - EMPLOYED_PART_TIME
+            - SELF_EMPLOYED
+            - STUDENT
+            - RETIRED
+            - UNEMPLOYED
+            - HOMEMAKER
         employmentType:
           type: string
           enum:
-          - GOVERNMENT_EMPLOYEE
-          - INFORMAL_WORKER
-          - PRIVATE_SECTOR_EMPLOYEE
-          - REGISTERED_BUSINESS_OWNER
-          - CHARITY_NGO
+            - GOVERNMENT_EMPLOYEE
+            - INFORMAL_WORKER
+            - PRIVATE_SECTOR_EMPLOYEE
+            - REGISTERED_BUSINESS_OWNER
+            - CHARITY_NGO
         occupation:
           type: string
         employerName:
@@ -2005,10 +2676,10 @@ components:
         positionHeld:
           type: string
           enum:
-          - OWNER
-          - EMPLOYEE
-          - MANAGEMENT
-          - BOARD_TRUSTEE
+            - OWNER
+            - EMPLOYEE
+            - MANAGEMENT
+            - BOARD_TRUSTEE
         incomeSource:
           type: string
         appointmentDate:
@@ -2061,22 +2732,22 @@ components:
         region:
           type: string
           enum:
-          - GREATER_ACCRA_REGION
-          - ASHANTI_REGION
-          - EASTERN_REGION
-          - UPPER_EAST_REGION
-          - UPPER_WEST_REGION
-          - CENTRAL_REGION
-          - NORTHERN_REGION
-          - BONO_REGION
-          - VOLTA_REGION
-          - WESTERN_REGION
-          - OTI_REGION
-          - BONO_EAST_REGION
-          - AHAFO_REGION
-          - NORTH_EAST_REGION
-          - SAVANNAH_REGION
-          - WESTERN_NORTH_REGION
+            - GREATER_ACCRA_REGION
+            - ASHANTI_REGION
+            - EASTERN_REGION
+            - UPPER_EAST_REGION
+            - UPPER_WEST_REGION
+            - CENTRAL_REGION
+            - NORTHERN_REGION
+            - BONO_REGION
+            - VOLTA_REGION
+            - WESTERN_REGION
+            - OTI_REGION
+            - BONO_EAST_REGION
+            - AHAFO_REGION
+            - NORTH_EAST_REGION
+            - SAVANNAH_REGION
+            - WESTERN_NORTH_REGION
         tinNumber:
           type: string
         acceptedTermsAndConditions:
@@ -2106,15 +2777,15 @@ components:
         documentType:
           type: string
           enum:
-          - PASSPORT
-          - DRIVERS
-          - NHIS
-          - NATIONAL_ID
-          - VOTERS_OLD
-          - VOTERS_NEW
-          - OTHER
-          - SELFIE
-          - PROOF_OF_RESIDENCE
+            - PASSPORT
+            - DRIVERS
+            - NHIS
+            - NATIONAL_ID
+            - VOTERS_OLD
+            - VOTERS_NEW
+            - OTHER
+            - SELFIE
+            - PROOF_OF_RESIDENCE
         documentNumber:
           type: string
         extraFieldsJSON:
@@ -2151,9 +2822,9 @@ components:
         key:
           type: string
           enum:
-          - SMS_NOTIFICATION
-          - PHONE_NOTIFICATION
-          - OTHER
+            - SMS_NOTIFICATION
+            - PHONE_NOTIFICATION
+            - OTHER
         value:
           type: string
     Pageable:
@@ -2170,12 +2841,13 @@ components:
     TransactionResponse:
       type: object
       properties:
+        hash:
+          type: string
         depositTotal:
           type: integer
           format: int64
-        agentId:
-          type: integer
-          format: int64
+        agent:
+          $ref: '#/components/schemas/AgentResponse'
         transactions:
           type: array
           items:
@@ -2196,6 +2868,53 @@ components:
         endDate:
           type: string
           format: date
+    AgentDetailResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        locationCoordinates:
+          type: string
+        cashAtHand:
+          type: integer
+          format: int64
+        limit:
+          type: integer
+          format: int64
+    SupervisorCustomerResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        accountNumber:
+          type: string
+        customerId:
+          type: string
+        phoneNumber:
+          type: string
+        branchName:
+          type: string
+        gender:
+          type: string
+        onboardingDate:
+          type: string
+          format: date
+        status:
+          type: string
+          enum:
+          - PENDING_APPROVAL
+          - INACTIVE
+          - ACTIVE
+          - EXITED
+          - BLACKLISTED
+          - REJECTED
+        profileUrl:
+          type: string
+          format: url
+        assigned:
+          type: boolean
     StatisticsResponse:
       type: object
       properties:
@@ -2211,15 +2930,28 @@ components:
         ecash:
           type: integer
           format: int64
+    AgentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        names:
+          type: string
+        url:
+          type: string
+        email:
+          type: string
     NetworkProvider:
       type: object
       properties:
         provider:
           type: string
           enum:
-          - MTN_GH
-          - VODA_GH
-          - AIRTELTIGO_GH
+            - MTN_GH
+            - VODA_GH
+            - AIRTELTIGO_GH
         title:
           type: string
     CustomerResponse:
@@ -2266,6 +2998,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TransactionDetailResponse'
+    DenominationObject:
+      type: object
+      properties:
+        transactionId:
+          type: string
+        denominations:
+          type: array
+          items:
+            type: string
+            enum:
+              - '_1'
+              - '_5'
+              - '_10'
+              - '_20'
+              - '_50'
+              - '_100'
+              - '_200'
+              - _1P
+              - _5P
+              - _10P
+              - _20P
+              - _50P
+        total:
+          type: number
     CustomerDetailsResponse:
       type: object
       properties:
@@ -2355,11 +3111,11 @@ components:
           $ref: '#/components/schemas/CustomerApplication'
   securitySchemes:
     agent-authorizer:
-      type: "apiKey"
-      name: "Authorization"
-      in: "header"
-      x-amazon-apigateway-authtype: "cognito_user_pools"
+      type: apiKey
+      name: Authorization
+      in: header
+      x-amazon-apigateway-authtype: cognito_user_pools
       x-amazon-apigateway-authorizer:
         providerARNs:
-        - "arn:aws:cognito-idp:eu-west-1:591713881265:userpool/eu-west-1_eTclObIoJ"
-        type: "cognito_user_pools"
+          - 'arn:aws:cognito-idp:eu-west-1:591713881265:userpool/eu-west-1_eTclObIoJ'
+        type: cognito_user_pools

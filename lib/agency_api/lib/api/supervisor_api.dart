@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -12,7 +12,7 @@ part of openapi.api;
 
 
 class SupervisorApi {
-  SupervisorApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  SupervisorApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -43,7 +43,7 @@ class SupervisorApi {
     final path = r'/supervisor/callover';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -104,7 +104,7 @@ class SupervisorApi {
     final path = r'/supervisor/end-of-day';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -163,7 +163,7 @@ class SupervisorApi {
       .replaceAll('{agentId}', agentId.toString());
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -226,7 +226,7 @@ class SupervisorApi {
       .replaceAll('{agentId}', agentId.toString());
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -253,7 +253,7 @@ class SupervisorApi {
   /// Parameters:
   ///
   /// * [int] agentId (required):
-  Future<TransactionResponse> postEndOfDayWithAgent(int agentId,) async {
+  Future<TransactionResponse?> postEndOfDayWithAgent(int agentId,) async {
     final response = await postEndOfDayWithAgentWithHttpInfo(agentId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -262,7 +262,7 @@ class SupervisorApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionResponse',) as TransactionResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionResponse',) as TransactionResponse?;
     
     }
     return Future<TransactionResponse>.value();
@@ -285,7 +285,7 @@ class SupervisorApi {
     final path = r'/supervisor/end-of-day';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -314,7 +314,7 @@ class SupervisorApi {
   /// Parameters:
   ///
   /// * [String] tid (required):
-  Future<TransactionResponse> postEndOfDayWithTransactionId(String tid,) async {
+  Future<TransactionResponse?> postEndOfDayWithTransactionId(String tid,) async {
     final response = await postEndOfDayWithTransactionIdWithHttpInfo(tid,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -323,7 +323,7 @@ class SupervisorApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionResponse',) as TransactionResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionResponse',) as TransactionResponse?;
     
     }
     return Future<TransactionResponse>.value();
@@ -346,7 +346,7 @@ class SupervisorApi {
     final path = r'/supervisor/end-of-day/flag';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -375,7 +375,7 @@ class SupervisorApi {
   /// Parameters:
   ///
   /// * [String] tid (required):
-  Future<InfoResponse> postMarkEndOfDayWithTransactionId(String tid,) async {
+  Future<InfoResponse?> postMarkEndOfDayWithTransactionId(String tid,) async {
     final response = await postMarkEndOfDayWithTransactionIdWithHttpInfo(tid,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -384,7 +384,7 @@ class SupervisorApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InfoResponse',) as InfoResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InfoResponse',) as InfoResponse?;
     
     }
     return Future<InfoResponse>.value();

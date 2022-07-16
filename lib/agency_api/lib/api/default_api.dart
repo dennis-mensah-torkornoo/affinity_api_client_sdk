@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -12,7 +12,7 @@ part of openapi.api;
 
 
 class DefaultApi {
-  DefaultApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  DefaultApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -60,7 +60,7 @@ class DefaultApi {
   /// Parameters:
   ///
   /// * [DeviceRequest] deviceRequest (required):
-  Future<DeviceResponse> postDevices(DeviceRequest deviceRequest,) async {
+  Future<DeviceResponse?> postDevices(DeviceRequest deviceRequest,) async {
     final response = await postDevicesWithHttpInfo(deviceRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -69,7 +69,7 @@ class DefaultApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeviceResponse',) as DeviceResponse;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeviceResponse',) as DeviceResponse?;
     
     }
     return Future<DeviceResponse>.value();
