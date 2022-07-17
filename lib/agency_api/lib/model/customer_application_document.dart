@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-
+// @dart=2.0
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -25,25 +25,25 @@ class CustomerApplicationDocument {
     this.dateOfExpiry,
   });
 
-  String? id;
+  String id;
 
-  String? customerId;
+  String customerId;
 
-  List<String>? documentKeys;
+  List<String> documentKeys;
 
-  List<String>? documentUrls;
+  List<String> documentUrls;
 
-  CustomerApplicationDocumentDocumentTypeEnum? documentType;
+  CustomerApplicationDocumentDocumentTypeEnum documentType;
 
-  String? documentNumber;
+  String documentNumber;
 
-  String? extraFieldsJSON;
+  String extraFieldsJSON;
 
-  bool? validated;
+  bool validated;
 
-  DateTime? dateOfIssue;
+  DateTime dateOfIssue;
 
-  DateTime? dateOfExpiry;
+  DateTime dateOfExpiry;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CustomerApplicationDocument &&
@@ -102,10 +102,10 @@ class CustomerApplicationDocument {
       json[r'validated'] = validated;
     }
     if (dateOfIssue != null) {
-      json[r'dateOfIssue'] = _dateFormatter.format(dateOfIssue!.toUtc());
+      json[r'dateOfIssue'] = _dateFormatter.format(dateOfIssue.toUtc());
     }
     if (dateOfExpiry != null) {
-      json[r'dateOfExpiry'] = _dateFormatter.format(dateOfExpiry!.toUtc());
+      json[r'dateOfExpiry'] = _dateFormatter.format(dateOfExpiry.toUtc());
     }
     return json;
   }
@@ -113,7 +113,7 @@ class CustomerApplicationDocument {
   /// Returns a new [CustomerApplicationDocument] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static CustomerApplicationDocument? fromJson(dynamic value) {
+  static CustomerApplicationDocument fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return CustomerApplicationDocument(
@@ -136,13 +136,13 @@ class CustomerApplicationDocument {
     return null;
   }
 
-  static List<CustomerApplicationDocument?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<CustomerApplicationDocument> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(CustomerApplicationDocument.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <CustomerApplicationDocument>[];
 
-  static Map<String, CustomerApplicationDocument?> mapFromJson(dynamic json) {
-    final map = <String, CustomerApplicationDocument?>{};
+  static Map<String, CustomerApplicationDocument> mapFromJson(dynamic json) {
+    final map = <String, CustomerApplicationDocument>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -152,8 +152,8 @@ class CustomerApplicationDocument {
   }
 
   // maps a json object with a list of CustomerApplicationDocument-objects as value to a dart map
-  static Map<String, List<CustomerApplicationDocument?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
-    final Map<String, List<CustomerApplicationDocument?>?> map = <String, List<CustomerApplicationDocument>?>{};
+  static Map<String, List<CustomerApplicationDocument>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<CustomerApplicationDocument>>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -205,10 +205,10 @@ class CustomerApplicationDocumentDocumentTypeEnum {
     PROOF_OF_RESIDENCE,
   ];
 
-  static CustomerApplicationDocumentDocumentTypeEnum? fromJson(dynamic value) =>
+  static CustomerApplicationDocumentDocumentTypeEnum fromJson(dynamic value) =>
     CustomerApplicationDocumentDocumentTypeEnumTypeTransformer().decode(value);
 
-  static List<CustomerApplicationDocumentDocumentTypeEnum?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<CustomerApplicationDocumentDocumentTypeEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(CustomerApplicationDocumentDocumentTypeEnum.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <CustomerApplicationDocumentDocumentTypeEnum>[];
@@ -231,7 +231,7 @@ class CustomerApplicationDocumentDocumentTypeEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  CustomerApplicationDocumentDocumentTypeEnum? decode(dynamic data, {bool? allowNull}) {
+  CustomerApplicationDocumentDocumentTypeEnum decode(dynamic data, {bool allowNull}) {
     if (data != null) {
       switch (data.toString()) {
         case r'PASSPORT': return CustomerApplicationDocumentDocumentTypeEnum.PASSPORT;
@@ -253,7 +253,7 @@ class CustomerApplicationDocumentDocumentTypeEnumTypeTransformer {
   }
 
   /// Singleton [CustomerApplicationDocumentDocumentTypeEnumTypeTransformer] instance.
-  static CustomerApplicationDocumentDocumentTypeEnumTypeTransformer? _instance;
+  static CustomerApplicationDocumentDocumentTypeEnumTypeTransformer _instance;
 }
 
 

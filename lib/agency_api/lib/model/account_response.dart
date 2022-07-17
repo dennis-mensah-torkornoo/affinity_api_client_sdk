@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-
+// @dart=2.0
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -18,11 +18,11 @@ class AccountResponse {
     this.accountType,
   });
 
-  String? accountNumber;
+  String accountNumber;
 
-  String? encodedAccountNumber;
+  String encodedAccountNumber;
 
-  String? accountType;
+  String accountType;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AccountResponse &&
@@ -57,7 +57,7 @@ class AccountResponse {
   /// Returns a new [AccountResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static AccountResponse? fromJson(dynamic value) {
+  static AccountResponse fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return AccountResponse(
@@ -69,13 +69,13 @@ class AccountResponse {
     return null;
   }
 
-  static List<AccountResponse?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<AccountResponse> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(AccountResponse.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <AccountResponse>[];
 
-  static Map<String, AccountResponse?> mapFromJson(dynamic json) {
-    final map = <String, AccountResponse?>{};
+  static Map<String, AccountResponse> mapFromJson(dynamic json) {
+    final map = <String, AccountResponse>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -85,8 +85,8 @@ class AccountResponse {
   }
 
   // maps a json object with a list of AccountResponse-objects as value to a dart map
-  static Map<String, List<AccountResponse?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
-    final Map<String, List<AccountResponse?>?> map = <String, List<AccountResponse>?>{};
+  static Map<String, List<AccountResponse>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<AccountResponse>>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

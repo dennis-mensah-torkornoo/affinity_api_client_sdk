@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-
+// @dart=2.0
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -112,6 +112,13 @@ void main() {
     //
     //Future<List<AccountResponse>> postAccounts(String id, String type) async
     test('test postAccounts', () async {
+      // TODO
+    });
+
+    // Post denominations used for a transaction
+    //
+    //Future<List<InfoResponse>> postDenominations(DenominationObject denomination) async
+    test('test postDenominations', () async {
       // TODO
     });
 

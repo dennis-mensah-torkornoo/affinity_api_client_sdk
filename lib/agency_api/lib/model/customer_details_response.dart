@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-
+// @dart=2.0
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -30,35 +30,35 @@ class CustomerDetailsResponse {
     this.accounts = const [],
   });
 
-  String? id;
+  String id;
 
-  String? name;
+  String name;
 
-  String? accountNumber;
+  String accountNumber;
 
-  String? customerId;
+  String customerId;
 
-  String? phoneNumber;
+  String phoneNumber;
 
-  String? profileUrl;
+  String profileUrl;
 
-  bool? assigned;
+  bool assigned;
 
-  String? residentialAddress;
+  String residentialAddress;
 
-  String? gps;
+  String gps;
 
-  DateTime? accountCreated;
+  DateTime accountCreated;
 
-  DateTime? birthDate;
+  DateTime birthDate;
 
-  int? depositAmount;
+  int depositAmount;
 
   List<DateTime> depositTimes;
 
-  Map<String, Object>? others;
+  Map<String, Object> others;
 
-  List<AccountResponse?>? accounts;
+  List<AccountResponse> accounts;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CustomerDetailsResponse &&
@@ -130,10 +130,10 @@ class CustomerDetailsResponse {
       json[r'gps'] = gps;
     }
     if (accountCreated != null) {
-      json[r'accountCreated'] = _dateFormatter.format(accountCreated!.toUtc());
+      json[r'accountCreated'] = _dateFormatter.format(accountCreated.toUtc());
     }
     if (birthDate != null) {
-      json[r'birthDate'] = _dateFormatter.format(birthDate!.toUtc());
+      json[r'birthDate'] = _dateFormatter.format(birthDate.toUtc());
     }
     if (depositAmount != null) {
       json[r'depositAmount'] = depositAmount;
@@ -153,7 +153,7 @@ class CustomerDetailsResponse {
   /// Returns a new [CustomerDetailsResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static CustomerDetailsResponse? fromJson(dynamic value) {
+  static CustomerDetailsResponse fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return CustomerDetailsResponse(
@@ -177,13 +177,13 @@ class CustomerDetailsResponse {
     return null;
   }
 
-  static List<CustomerDetailsResponse?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<CustomerDetailsResponse> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(CustomerDetailsResponse.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <CustomerDetailsResponse>[];
 
-  static Map<String, CustomerDetailsResponse?> mapFromJson(dynamic json) {
-    final map = <String, CustomerDetailsResponse?>{};
+  static Map<String, CustomerDetailsResponse> mapFromJson(dynamic json) {
+    final map = <String, CustomerDetailsResponse>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -193,8 +193,8 @@ class CustomerDetailsResponse {
   }
 
   // maps a json object with a list of CustomerDetailsResponse-objects as value to a dart map
-  static Map<String, List<CustomerDetailsResponse?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
-    final Map<String, List<CustomerDetailsResponse?>?> map = <String, List<CustomerDetailsResponse>?>{};
+  static Map<String, List<CustomerDetailsResponse>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<CustomerDetailsResponse>>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()

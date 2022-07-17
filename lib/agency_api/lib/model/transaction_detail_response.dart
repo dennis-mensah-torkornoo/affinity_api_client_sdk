@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-
+// @dart=2.0
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -15,7 +15,9 @@ class TransactionDetailResponse {
   TransactionDetailResponse({
     this.id,
     this.name,
+    this.branch,
     this.accountNumber,
+    this.phoneNumber,
     this.profileUrl,
     this.transactionType,
     this.assigned,
@@ -23,27 +25,33 @@ class TransactionDetailResponse {
     this.created,
   });
 
-  String? id;
+  String id;
 
-  String? name;
+  String name;
 
-  String? accountNumber;
+  String branch;
 
-  String? profileUrl;
+  String accountNumber;
 
-  TransactionDetailResponseTransactionTypeEnum? transactionType;
+  String phoneNumber;
 
-  bool? assigned;
+  String profileUrl;
 
-  int? amount;
+  TransactionDetailResponseTransactionTypeEnum transactionType;
 
-  DateTime? created;
+  bool assigned;
+
+  int amount;
+
+  DateTime created;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TransactionDetailResponse &&
      other.id == id &&
      other.name == name &&
+     other.branch == branch &&
      other.accountNumber == accountNumber &&
+     other.phoneNumber == phoneNumber &&
      other.profileUrl == profileUrl &&
      other.transactionType == transactionType &&
      other.assigned == assigned &&
@@ -55,7 +63,9 @@ class TransactionDetailResponse {
   // ignore: unnecessary_parenthesis
     (id == null ? 0 : id.hashCode) +
     (name == null ? 0 : name.hashCode) +
+    (branch == null ? 0 : branch.hashCode) +
     (accountNumber == null ? 0 : accountNumber.hashCode) +
+    (phoneNumber == null ? 0 : phoneNumber.hashCode) +
     (profileUrl == null ? 0 : profileUrl.hashCode) +
     (transactionType == null ? 0 : transactionType.hashCode) +
     (assigned == null ? 0 : assigned.hashCode) +
@@ -63,7 +73,7 @@ class TransactionDetailResponse {
     (created == null ? 0 : created.hashCode);
 
   @override
-  String toString() => 'TransactionDetailResponse[id=$id, name=$name, accountNumber=$accountNumber, profileUrl=$profileUrl, transactionType=$transactionType, assigned=$assigned, amount=$amount, created=$created]';
+  String toString() => 'TransactionDetailResponse[id=$id, name=$name, branch=$branch, accountNumber=$accountNumber, phoneNumber=$phoneNumber, profileUrl=$profileUrl, transactionType=$transactionType, assigned=$assigned, amount=$amount, created=$created]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -73,8 +83,14 @@ class TransactionDetailResponse {
     if (name != null) {
       json[r'name'] = name;
     }
+    if (branch != null) {
+      json[r'branch'] = branch;
+    }
     if (accountNumber != null) {
       json[r'accountNumber'] = accountNumber;
+    }
+    if (phoneNumber != null) {
+      json[r'phoneNumber'] = phoneNumber;
     }
     if (profileUrl != null) {
       json[r'profileUrl'] = profileUrl;
@@ -89,7 +105,7 @@ class TransactionDetailResponse {
       json[r'amount'] = amount;
     }
     if (created != null) {
-      json[r'created'] = created!.toUtc().toIso8601String();
+      json[r'created'] = created.toUtc().toIso8601String();
     }
     return json;
   }
@@ -97,13 +113,15 @@ class TransactionDetailResponse {
   /// Returns a new [TransactionDetailResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static TransactionDetailResponse? fromJson(dynamic value) {
+  static TransactionDetailResponse fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return TransactionDetailResponse(
         id: mapValueOfType<String>(json, r'id'),
         name: mapValueOfType<String>(json, r'name'),
+        branch: mapValueOfType<String>(json, r'branch'),
         accountNumber: mapValueOfType<String>(json, r'accountNumber'),
+        phoneNumber: mapValueOfType<String>(json, r'phoneNumber'),
         profileUrl: mapValueOfType<String>(json, r'profileUrl'),
         transactionType: TransactionDetailResponseTransactionTypeEnum.fromJson(json[r'transactionType']),
         assigned: mapValueOfType<bool>(json, r'assigned'),
@@ -114,13 +132,13 @@ class TransactionDetailResponse {
     return null;
   }
 
-  static List<TransactionDetailResponse?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<TransactionDetailResponse> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(TransactionDetailResponse.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <TransactionDetailResponse>[];
 
-  static Map<String, TransactionDetailResponse?> mapFromJson(dynamic json) {
-    final map = <String, TransactionDetailResponse?>{};
+  static Map<String, TransactionDetailResponse> mapFromJson(dynamic json) {
+    final map = <String, TransactionDetailResponse>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -130,8 +148,8 @@ class TransactionDetailResponse {
   }
 
   // maps a json object with a list of TransactionDetailResponse-objects as value to a dart map
-  static Map<String, List<TransactionDetailResponse?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
-    final Map<String, List<TransactionDetailResponse?>?> map = <String, List<TransactionDetailResponse>?>{};
+  static Map<String, List<TransactionDetailResponse>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<TransactionDetailResponse>>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -171,10 +189,10 @@ class TransactionDetailResponseTransactionTypeEnum {
     PENDING_DEPOSIT,
   ];
 
-  static TransactionDetailResponseTransactionTypeEnum? fromJson(dynamic value) =>
+  static TransactionDetailResponseTransactionTypeEnum fromJson(dynamic value) =>
     TransactionDetailResponseTransactionTypeEnumTypeTransformer().decode(value);
 
-  static List<TransactionDetailResponseTransactionTypeEnum?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<TransactionDetailResponseTransactionTypeEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(TransactionDetailResponseTransactionTypeEnum.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <TransactionDetailResponseTransactionTypeEnum>[];
@@ -197,7 +215,7 @@ class TransactionDetailResponseTransactionTypeEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  TransactionDetailResponseTransactionTypeEnum? decode(dynamic data, {bool? allowNull}) {
+  TransactionDetailResponseTransactionTypeEnum decode(dynamic data, {bool allowNull}) {
     if (data != null) {
       switch (data.toString()) {
         case r'DEPOSIT': return TransactionDetailResponseTransactionTypeEnum.DEPOSIT;
@@ -213,7 +231,7 @@ class TransactionDetailResponseTransactionTypeEnumTypeTransformer {
   }
 
   /// Singleton [TransactionDetailResponseTransactionTypeEnumTypeTransformer] instance.
-  static TransactionDetailResponseTransactionTypeEnumTypeTransformer? _instance;
+  static TransactionDetailResponseTransactionTypeEnumTypeTransformer _instance;
 }
 
 

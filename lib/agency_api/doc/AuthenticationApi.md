@@ -5,7 +5,7 @@
 import 'package:agency_api/api.dart';
 ```
 
-All URIs are relative to *https://api.affinitylabstest.com//agency*
+All URIs are relative to *https://api.affinitylabstest.com/agency*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

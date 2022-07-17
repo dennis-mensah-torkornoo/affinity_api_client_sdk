@@ -5,7 +5,7 @@
 import 'package:agency_api/api.dart';
 ```
 
-All URIs are relative to *https://api.affinitylabstest.com//agency*
+All URIs are relative to *https://api.affinitylabstest.com/agency*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -23,6 +23,7 @@ Method | HTTP request | Description
 [**getWithdrawals**](AgencyApi.md#getwithdrawals) | **GET** /withdrawals | 
 [**patchSettings**](AgencyApi.md#patchsettings) | **PATCH** /settings | 
 [**postAccounts**](AgencyApi.md#postaccounts) | **POST** /accounts | 
+[**postDenominations**](AgencyApi.md#postdenominations) | **POST** /denominations | 
 [**postDeposits**](AgencyApi.md#postdeposits) | **POST** /deposits | 
 [**postDepositsConfirm**](AgencyApi.md#postdepositsconfirm) | **POST** /deposits/confirm | 
 [**postNotification**](AgencyApi.md#postnotification) | **POST** /notifications | 
@@ -602,6 +603,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List<AccountResponse>**](AccountResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **postDenominations**
+> List<InfoResponse> postDenominations(denomination)
+
+
+
+Post denominations used for a transaction
+
+### Example
+```dart
+import 'package:agency_api/api.dart';
+
+final api_instance = AgencyApi();
+final denomination = ; // DenominationObject | 
+
+try {
+    final result = api_instance.postDenominations(denomination);
+    print(result);
+} catch (e) {
+    print('Exception when calling AgencyApi->postDenominations: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **denomination** | [**DenominationObject**](.md)|  | 
+
+### Return type
+
+[**List<InfoResponse>**](InfoResponse.md)
 
 ### Authorization
 

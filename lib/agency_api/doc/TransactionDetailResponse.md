@@ -10,7 +10,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
+**branch** | **String** |  | [optional] 
 **accountNumber** | **String** |  | [optional] 
+**phoneNumber** | **String** |  | [optional] 
 **profileUrl** | **String** |  | [optional] 
 **transactionType** | **String** |  | [optional] 
 **assigned** | **bool** |  | [optional] 

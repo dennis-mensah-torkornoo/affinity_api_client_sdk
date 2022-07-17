@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Agency API
-  description: Affinity labs api for Agency microservice
+  description: Affinity labs api for Agency microservice.
   version: v2
   termsOfService: 'https://affinityafrica.com/legal/'
   contact:
@@ -545,7 +545,7 @@ paths:
       parameters:
         - name: id
           in: path
-          required: false
+          required: true
           schema:
             type: string
         - name: start
@@ -1666,7 +1666,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/AgentResponse'
+                  $ref: '#/components/schemas/AgentsPage'
         '400':
           description: Bad Request
           content:
@@ -1818,7 +1818,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/TransactionDetailResponse'
+                  $ref: '#/components/schemas/TransactionsPage'
         '400':
           description: Bad Request
           content:
@@ -1966,7 +1966,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/SupervisorCustomerResponse'
+                  $ref: '#/components/schemas/SupervisorCustomersPage'
         "400":
           description: Bad Request
           content:
@@ -2838,6 +2838,15 @@ components:
         size:
           type: integer
           format: int32
+    Sort:
+      type: object
+      properties:
+        unsorted:
+          type: boolean
+        sorted:
+          type: boolean
+        empty:
+          type: boolean
     TransactionResponse:
       type: object
       properties:
@@ -3109,6 +3118,102 @@ components:
             type: string
         application:
           $ref: '#/components/schemas/CustomerApplication'
+    SupervisorCustomersPage:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+          format: int32
+        totalElements:
+          type: integer
+          format: int64
+        size:
+          type: integer
+          format: int32
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupervisorCustomerResponse'
+        number:
+          type: integer
+          format: int32
+        sort:
+          $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
+        numberOfElements:
+          type: integer
+          format: int32
+        pageable:
+          $ref: '#/components/schemas/Pageable'
+        empty:
+          type: boolean
+    TransactionsPage:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+          format: int32
+        totalElements:
+          type: integer
+          format: int64
+        size:
+          type: integer
+          format: int32
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionDetailResponse'
+        number:
+          type: integer
+          format: int32
+        sort:
+          $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
+        numberOfElements:
+          type: integer
+          format: int32
+        pageable:
+          $ref: '#/components/schemas/Pageable'
+        empty:
+          type: boolean
+    AgentsPage:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+          format: int32
+        totalElements:
+          type: integer
+          format: int64
+        size:
+          type: integer
+          format: int32
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/AgentResponse'
+        number:
+          type: integer
+          format: int32
+        sort:
+          $ref: '#/components/schemas/Sort'
+        first:
+          type: boolean
+        last:
+          type: boolean
+        numberOfElements:
+          type: integer
+          format: int32
+        pageable:
+          $ref: '#/components/schemas/Pageable'
+        empty:
+          type: boolean
   securitySchemes:
     agent-authorizer:
       type: apiKey
@@ -3119,3 +3224,4 @@ components:
         providerARNs:
           - 'arn:aws:cognito-idp:eu-west-1:591713881265:userpool/eu-west-1_eTclObIoJ'
         type: cognito_user_pools
+

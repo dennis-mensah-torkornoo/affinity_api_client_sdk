@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-
+// @dart=2.0
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -19,13 +19,13 @@ class StatusResponse {
     this.additionalError,
   });
 
-  StatusResponseStatusEnum? status;
+  StatusResponseStatusEnum status;
 
-  String? uri;
+  String uri;
 
-  String? detailMessage;
+  String detailMessage;
 
-  int? additionalError;
+  int additionalError;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is StatusResponse &&
@@ -65,7 +65,7 @@ class StatusResponse {
   /// Returns a new [StatusResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static StatusResponse? fromJson(dynamic value) {
+  static StatusResponse fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return StatusResponse(
@@ -78,13 +78,13 @@ class StatusResponse {
     return null;
   }
 
-  static List<StatusResponse?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<StatusResponse> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(StatusResponse.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <StatusResponse>[];
 
-  static Map<String, StatusResponse?> mapFromJson(dynamic json) {
-    final map = <String, StatusResponse?>{};
+  static Map<String, StatusResponse> mapFromJson(dynamic json) {
+    final map = <String, StatusResponse>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -94,8 +94,8 @@ class StatusResponse {
   }
 
   // maps a json object with a list of StatusResponse-objects as value to a dart map
-  static Map<String, List<StatusResponse?>?> mapListFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) {
-    final Map<String, List<StatusResponse?>?> map = <String, List<StatusResponse>?>{};
+  static Map<String, List<StatusResponse>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<StatusResponse>>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
@@ -137,10 +137,10 @@ class StatusResponseStatusEnum {
     CREATED_WITH_ERRORS,
   ];
 
-  static StatusResponseStatusEnum? fromJson(dynamic value) =>
+  static StatusResponseStatusEnum fromJson(dynamic value) =>
     StatusResponseStatusEnumTypeTransformer().decode(value);
 
-  static List<StatusResponseStatusEnum?>? listFromJson(dynamic json, {bool? emptyIsNull, bool? growable,}) =>
+  static List<StatusResponseStatusEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
       ? json.map(StatusResponseStatusEnum.fromJson).toList(growable: true == growable)
       : true == emptyIsNull ? null : <StatusResponseStatusEnum>[];
@@ -163,7 +163,7 @@ class StatusResponseStatusEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  StatusResponseStatusEnum? decode(dynamic data, {bool? allowNull}) {
+  StatusResponseStatusEnum decode(dynamic data, {bool allowNull}) {
     if (data != null) {
       switch (data.toString()) {
         case r'CREATED': return StatusResponseStatusEnum.CREATED;
@@ -180,7 +180,7 @@ class StatusResponseStatusEnumTypeTransformer {
   }
 
   /// Singleton [StatusResponseStatusEnumTypeTransformer] instance.
-  static StatusResponseStatusEnumTypeTransformer? _instance;
+  static StatusResponseStatusEnumTypeTransformer _instance;
 }
 
 

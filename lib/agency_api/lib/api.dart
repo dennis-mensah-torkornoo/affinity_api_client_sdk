@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-
+// @dart=2.0
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -36,6 +36,9 @@ part 'api/tasks_api.dart';
 
 part 'model/account_response.dart';
 part 'model/agency_login_request.dart';
+part 'model/agent_detail_response.dart';
+part 'model/agent_response.dart';
+part 'model/agents_page.dart';
 part 'model/application_status_response.dart';
 part 'model/cash_at_hand_response.dart';
 part 'model/customer_application.dart';
@@ -43,6 +46,7 @@ part 'model/customer_application_document.dart';
 part 'model/customer_deposit_schedule.dart';
 part 'model/customer_details_response.dart';
 part 'model/customer_response.dart';
+part 'model/denomination_object.dart';
 part 'model/deposit_schedule_request.dart';
 part 'model/device_request.dart';
 part 'model/device_response.dart';
@@ -58,13 +62,18 @@ part 'model/otp_response.dart';
 part 'model/pageable.dart';
 part 'model/refresh_token.dart';
 part 'model/setting_model.dart';
+part 'model/sign_off_request.dart';
+part 'model/sort.dart';
 part 'model/statistics_response.dart';
 part 'model/status_response.dart';
+part 'model/supervisor_customer_response.dart';
+part 'model/supervisor_customers_page.dart';
 part 'model/task_request.dart';
 part 'model/task_response.dart';
 part 'model/transaction_detail_response.dart';
 part 'model/transaction_request.dart';
 part 'model/transaction_response.dart';
+part 'model/transactions_page.dart';
 part 'model/update_customer_id_request.dart';
 part 'model/user.dart';
 

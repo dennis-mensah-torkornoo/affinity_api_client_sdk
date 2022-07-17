@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-
+// @dart=2.0
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -12,7 +12,7 @@ part of openapi.api;
 
 
 class AgencyApi {
-  AgencyApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  AgencyApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -33,7 +33,7 @@ class AgencyApi {
     final path = r'/tasks';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -62,7 +62,7 @@ class AgencyApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  Future<InfoResponse?> deleteTasks(String id,) async {
+  Future<InfoResponse> deleteTasks(String id,) async {
     final response = await deleteTasksWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -71,7 +71,7 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InfoResponse',) as InfoResponse?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InfoResponse',) as InfoResponse;
     
     }
     return Future<InfoResponse>.value();
@@ -85,7 +85,7 @@ class AgencyApi {
     final path = r'/home';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -108,7 +108,7 @@ class AgencyApi {
   }
 
   /// Statistics, and other agent-related information
-  Future<HomeResponse?> getAgentHome() async {
+  Future<HomeResponse> getAgentHome() async {
     final response = await getAgentHomeWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -117,7 +117,7 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'HomeResponse',) as HomeResponse?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'HomeResponse',) as HomeResponse;
     
     }
     return Future<HomeResponse>.value();
@@ -131,7 +131,7 @@ class AgencyApi {
     final path = r'/cash-at-hand';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -154,7 +154,7 @@ class AgencyApi {
   }
 
   /// Cash at hand breakdown and other stats
-  Future<CashAtHandResponse?> getCashAtHand() async {
+  Future<CashAtHandResponse> getCashAtHand() async {
     final response = await getCashAtHandWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -163,7 +163,7 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CashAtHandResponse',) as CashAtHandResponse?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CashAtHandResponse',) as CashAtHandResponse;
     
     }
     return Future<CashAtHandResponse>.value();
@@ -177,7 +177,7 @@ class AgencyApi {
     final path = r'/network-providers';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -236,7 +236,7 @@ class AgencyApi {
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -263,7 +263,7 @@ class AgencyApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  Future<NotificationResponse?> getNotificationById(String id,) async {
+  Future<NotificationResponse> getNotificationById(String id,) async {
     final response = await getNotificationByIdWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -272,7 +272,7 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'NotificationResponse',) as NotificationResponse?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'NotificationResponse',) as NotificationResponse;
     
     }
     return Future<NotificationResponse>.value();
@@ -286,7 +286,7 @@ class AgencyApi {
     final path = r'/notifications';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -335,7 +335,7 @@ class AgencyApi {
     final path = r'/settings';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -394,7 +394,7 @@ class AgencyApi {
       .replaceAll('{taskId}', taskId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -421,7 +421,7 @@ class AgencyApi {
   /// Parameters:
   ///
   /// * [String] taskId (required):
-  Future<InfoResponse?> getTaskDetail(String taskId,) async {
+  Future<InfoResponse> getTaskDetail(String taskId,) async {
     final response = await getTaskDetailWithHttpInfo(taskId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -430,7 +430,7 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InfoResponse',) as InfoResponse?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InfoResponse',) as InfoResponse;
     
     }
     return Future<InfoResponse>.value();
@@ -444,7 +444,7 @@ class AgencyApi {
     final path = r'/tasks';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -502,7 +502,7 @@ class AgencyApi {
     final path = r'/transactions';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -531,7 +531,7 @@ class AgencyApi {
   /// Parameters:
   ///
   /// * [Pageable] pageable (required):
-  Future<TransactionResponse?> getTransactions(Pageable pageable,) async {
+  Future<TransactionResponse> getTransactions(Pageable pageable,) async {
     final response = await getTransactionsWithHttpInfo(pageable,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -540,7 +540,7 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionResponse',) as TransactionResponse?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionResponse',) as TransactionResponse;
     
     }
     return Future<TransactionResponse>.value();
@@ -569,7 +569,7 @@ class AgencyApi {
       .replaceAll('{accountEncodedId}', accountEncodedId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -635,7 +635,7 @@ class AgencyApi {
     final path = r'/withdrawals';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -726,7 +726,7 @@ class AgencyApi {
   /// Parameters:
   ///
   /// * [List<SettingModel>] settingModel (required):
-  Future<InfoResponse?> patchSettings(List<SettingModel> settingModel,) async {
+  Future<InfoResponse> patchSettings(List<SettingModel> settingModel,) async {
     final response = await patchSettingsWithHttpInfo(settingModel,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -735,7 +735,7 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InfoResponse',) as InfoResponse?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InfoResponse',) as InfoResponse;
     
     }
     return Future<InfoResponse>.value();
@@ -763,7 +763,7 @@ class AgencyApi {
     final path = r'/accounts';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -813,6 +813,70 @@ class AgencyApi {
     return Future<List<AccountResponse>>.value();
   }
 
+  /// Post denominations used for a transaction
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [DenominationObject] denomination (required):
+  Future<Response> postDenominationsWithHttpInfo(DenominationObject denomination,) async {
+    // Verify required params are set.
+    if (denomination == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: denomination');
+    }
+
+    // ignore: prefer_const_declarations
+    final path = r'/denominations';
+
+    // ignore: prefer_final_locals
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'denomination', denomination));
+
+    const authNames = <String>[];
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Post denominations used for a transaction
+  ///
+  /// Parameters:
+  ///
+  /// * [DenominationObject] denomination (required):
+  Future<List<InfoResponse>> postDenominations(DenominationObject denomination,) async {
+    final response = await postDenominationsWithHttpInfo(denomination,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<InfoResponse>') as List)
+        .cast<InfoResponse>()
+        .toList(growable: false);
+
+    }
+    return Future<List<InfoResponse>>.value();
+  }
+
   /// Create new deposit endpoint
   ///
   /// Note: This method returns the HTTP [Response].
@@ -857,7 +921,7 @@ class AgencyApi {
   /// Parameters:
   ///
   /// * [TransactionRequest] transactionRequest (required):
-  Future<StatusResponse?> postDeposits(TransactionRequest transactionRequest,) async {
+  Future<StatusResponse> postDeposits(TransactionRequest transactionRequest,) async {
     final response = await postDepositsWithHttpInfo(transactionRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -866,7 +930,7 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StatusResponse',) as StatusResponse?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StatusResponse',) as StatusResponse;
     
     }
     return Future<StatusResponse>.value();
@@ -889,7 +953,7 @@ class AgencyApi {
     final path = r'/deposits/confirm';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -918,7 +982,7 @@ class AgencyApi {
   /// Parameters:
   ///
   /// * [String] ref (required):
-  Future<TransactionDetailResponse?> postDepositsConfirm(String ref,) async {
+  Future<TransactionDetailResponse> postDepositsConfirm(String ref,) async {
     final response = await postDepositsConfirmWithHttpInfo(ref,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -927,7 +991,7 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionDetailResponse',) as TransactionDetailResponse?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionDetailResponse',) as TransactionDetailResponse;
     
     }
     return Future<TransactionDetailResponse>.value();
@@ -977,7 +1041,7 @@ class AgencyApi {
   /// Parameters:
   ///
   /// * [NotificationRequest] notificationRequest (required):
-  Future<NotificationResponse?> postNotification(NotificationRequest notificationRequest,) async {
+  Future<NotificationResponse> postNotification(NotificationRequest notificationRequest,) async {
     final response = await postNotificationWithHttpInfo(notificationRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -986,7 +1050,7 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'NotificationResponse',) as NotificationResponse?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'NotificationResponse',) as NotificationResponse;
     
     }
     return Future<NotificationResponse>.value();
@@ -1036,7 +1100,7 @@ class AgencyApi {
   /// Parameters:
   ///
   /// * [TaskRequest] taskRequest (required):
-  Future<InfoResponse?> postTasks(TaskRequest taskRequest,) async {
+  Future<InfoResponse> postTasks(TaskRequest taskRequest,) async {
     final response = await postTasksWithHttpInfo(taskRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1045,7 +1109,7 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InfoResponse',) as InfoResponse?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InfoResponse',) as InfoResponse;
     
     }
     return Future<InfoResponse>.value();
@@ -1095,7 +1159,7 @@ class AgencyApi {
   /// Parameters:
   ///
   /// * [TransactionRequest] transactionRequest (required):
-  Future<StatusResponse?> postWithdrawals(TransactionRequest transactionRequest,) async {
+  Future<StatusResponse> postWithdrawals(TransactionRequest transactionRequest,) async {
     final response = await postWithdrawalsWithHttpInfo(transactionRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1104,7 +1168,7 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StatusResponse',) as StatusResponse?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StatusResponse',) as StatusResponse;
     
     }
     return Future<StatusResponse>.value();
@@ -1132,7 +1196,7 @@ class AgencyApi {
     final path = r'/withdrawals/confirm';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -1164,7 +1228,7 @@ class AgencyApi {
   /// * [String] otp (required):
   ///
   /// * [String] ref (required):
-  Future<TransactionDetailResponse?> postWithdrawalsConfirm(String otp, String ref,) async {
+  Future<TransactionDetailResponse> postWithdrawalsConfirm(String otp, String ref,) async {
     final response = await postWithdrawalsConfirmWithHttpInfo(otp, ref,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1173,7 +1237,7 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionDetailResponse',) as TransactionDetailResponse?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionDetailResponse',) as TransactionDetailResponse;
     
     }
     return Future<TransactionDetailResponse>.value();
@@ -1196,7 +1260,7 @@ class AgencyApi {
     final path = r'/withdrawals/otp';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -1225,7 +1289,7 @@ class AgencyApi {
   /// Parameters:
   ///
   /// * [String] ref (required):
-  Future<StatusResponse?> postWithdrawalsOtp(String ref,) async {
+  Future<StatusResponse> postWithdrawalsOtp(String ref,) async {
     final response = await postWithdrawalsOtpWithHttpInfo(ref,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1234,7 +1298,7 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StatusResponse',) as StatusResponse?;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StatusResponse',) as StatusResponse;
     
     }
     return Future<StatusResponse>.value();
