@@ -1664,9 +1664,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AgentsPage'
+                $ref: '#/components/schemas/AgentsPage'
         '400':
           description: Bad Request
           content:
@@ -1816,9 +1814,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/TransactionsPage'
+                $ref: '#/components/schemas/TransactionsPage'
         '400':
           description: Bad Request
           content:
@@ -1964,9 +1960,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/SupervisorCustomersPage'
+                $ref: '#/components/schemas/SupervisorCustomersPage'
         "400":
           description: Bad Request
           content:
