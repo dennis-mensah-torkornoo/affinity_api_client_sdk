@@ -859,7 +859,7 @@ class AgencyApi {
   /// Parameters:
   ///
   /// * [DenominationObject] denomination (required):
-  Future<List<InfoResponse>> postDenominations(DenominationObject denomination,) async {
+  Future<InfoResponse> postDenominations(DenominationObject denomination,) async {
     final response = await postDenominationsWithHttpInfo(denomination,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -868,13 +868,10 @@ class AgencyApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<InfoResponse>') as List)
-        .cast<InfoResponse>()
-        .toList(growable: false);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InfoResponse',) as InfoResponse;
+    
     }
-    return Future<List<InfoResponse>>.value();
+    return Future<InfoResponse>.value();
   }
 
   /// Create new deposit endpoint

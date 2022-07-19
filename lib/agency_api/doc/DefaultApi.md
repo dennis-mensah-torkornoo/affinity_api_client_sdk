@@ -17,9 +17,11 @@ Method | HTTP request | Description
 [**supervisorsAgentsIdTransactionsOptions**](DefaultApi.md#supervisorsagentsidtransactionsoptions) | **OPTIONS** /supervisors/agents/{id}/transactions | 
 [**supervisorsAgentsOptions**](DefaultApi.md#supervisorsagentsoptions) | **OPTIONS** /supervisors/agents | 
 [**supervisorsCalloversIdOptions**](DefaultApi.md#supervisorscalloversidoptions) | **OPTIONS** /supervisors/callovers/{id} | 
+[**supervisorsCalloversOptions**](DefaultApi.md#supervisorscalloversoptions) | **OPTIONS** /supervisors/callovers | 
 [**supervisorsEndOfDayFlagOptions**](DefaultApi.md#supervisorsendofdayflagoptions) | **OPTIONS** /supervisors/end-of-day/flag | 
 [**supervisorsEndOfDayIdOptions**](DefaultApi.md#supervisorsendofdayidoptions) | **OPTIONS** /supervisors/end-of-day/{id} | 
 [**supervisorsEndOfDayOptions**](DefaultApi.md#supervisorsendofdayoptions) | **OPTIONS** /supervisors/end-of-day | 
+[**supervisorsShortageIdOptions**](DefaultApi.md#supervisorsshortageidoptions) | **OPTIONS** /supervisors/shortage/{id} | 
 
 
 # **postDevices**
@@ -355,6 +357,48 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **supervisorsCalloversOptions**
+> supervisorsCalloversOptions(start, end)
+
+
+
+### Example
+```dart
+import 'package:agency_api/api.dart';
+
+final api_instance = DefaultApi();
+final start = 2013-10-20T19:20:30+01:00; // DateTime | 
+final end = 2013-10-20T19:20:30+01:00; // DateTime | 
+
+try {
+    api_instance.supervisorsCalloversOptions(start, end);
+} catch (e) {
+    print('Exception when calling DefaultApi->supervisorsCalloversOptions: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **start** | **DateTime**|  | [optional] 
+ **end** | **DateTime**|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **supervisorsEndOfDayFlagOptions**
 > supervisorsEndOfDayFlagOptions(tid)
 
@@ -471,6 +515,46 @@ Name | Type | Description  | Notes
  **start** | **DateTime**|  | [optional] 
  **end** | **DateTime**|  | [optional] 
  **pageable** | [**Pageable**](.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **supervisorsShortageIdOptions**
+> supervisorsShortageIdOptions(id)
+
+
+
+### Example
+```dart
+import 'package:agency_api/api.dart';
+
+final api_instance = DefaultApi();
+final id = id_example; // String | 
+
+try {
+    api_instance.supervisorsShortageIdOptions(id);
+} catch (e) {
+    print('Exception when calling DefaultApi->supervisorsShortageIdOptions: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
 
 ### Return type
 

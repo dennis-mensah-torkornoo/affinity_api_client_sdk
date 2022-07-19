@@ -616,7 +616,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postDenominations**
-> List<InfoResponse> postDenominations(denomination)
+> InfoResponse postDenominations(denomination)
 
 
 
@@ -645,7 +645,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<InfoResponse>**](InfoResponse.md)
+[**InfoResponse**](InfoResponse.md)
 
 ### Authorization
 

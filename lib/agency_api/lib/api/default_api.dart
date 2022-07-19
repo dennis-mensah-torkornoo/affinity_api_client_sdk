@@ -441,6 +441,60 @@ class DefaultApi {
     }
   }
 
+  /// Performs an HTTP 'OPTIONS /supervisors/callovers' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [DateTime] start:
+  ///
+  /// * [DateTime] end:
+  Future<Response> supervisorsCalloversOptionsWithHttpInfo({ DateTime start, DateTime end, }) async {
+    // Verify required params are set.
+
+    // ignore: prefer_const_declarations
+    final path = r'/supervisors/callovers';
+
+    // ignore: prefer_final_locals
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (start != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'start', start));
+    }
+    if (end != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'end', end));
+    }
+
+    const authNames = <String>[];
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'OPTIONS',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [DateTime] start:
+  ///
+  /// * [DateTime] end:
+  Future<void> supervisorsCalloversOptions({ DateTime start, DateTime end, }) async {
+    final response = await supervisorsCalloversOptionsWithHttpInfo( start: start, end: end, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// Performs an HTTP 'OPTIONS /supervisors/end-of-day/flag' operation and returns the [Response].
   /// Parameters:
   ///
@@ -621,6 +675,53 @@ class DefaultApi {
   /// * [Pageable] pageable:
   Future<void> supervisorsEndOfDayOptions({ String tid, DateTime start, DateTime end, Pageable pageable, }) async {
     final response = await supervisorsEndOfDayOptionsWithHttpInfo( tid: tid, start: start, end: end, pageable: pageable, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// Performs an HTTP 'OPTIONS /supervisors/shortage/{id}' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<Response> supervisorsShortageIdOptionsWithHttpInfo(String id,) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    // ignore: prefer_const_declarations
+    final path = r'/supervisors/shortage/{id}'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const authNames = <String>[];
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'OPTIONS',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<void> supervisorsShortageIdOptions(String id,) async {
+    final response = await supervisorsShortageIdOptionsWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

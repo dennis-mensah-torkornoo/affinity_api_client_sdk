@@ -15,16 +15,18 @@ Method | HTTP request | Description
 [**getAgents**](SupervisorApi.md#getagents) | **GET** /supervisors/agents | 
 [**getAgentsWithId**](SupervisorApi.md#getagentswithid) | **GET** /supervisors/agents/{id} | 
 [**getCallover**](SupervisorApi.md#getcallover) | **GET** /supervisors/callovers/{id} | 
+[**getCalloversForAll**](SupervisorApi.md#getcalloversforall) | **GET** /supervisors/callovers | 
 [**getEndOfDay**](SupervisorApi.md#getendofday) | **GET** /supervisors/end-of-day | 
 [**getEndOfDayWithAgent**](SupervisorApi.md#getendofdaywithagent) | **GET** /supervisors/end-of-day/{id} | 
 [**postEndOfDayWithAgent**](SupervisorApi.md#postendofdaywithagent) | **POST** /supervisors/end-of-day/{id} | 
 [**postEndOfDayWithTransactionId**](SupervisorApi.md#postendofdaywithtransactionid) | **POST** /supervisors/end-of-day | 
 [**postFlagTransactionWithTransactionId**](SupervisorApi.md#postflagtransactionwithtransactionid) | **POST** /supervisors/end-of-day/flag | 
+[**postShortage**](SupervisorApi.md#postshortage) | **POST** /supervisors/shortage/{id} | 
 [**postSignOff**](SupervisorApi.md#postsignoff) | **POST** /supervisors/agents/{id}/signoff | 
 
 
 # **getAgentCustomers**
-> List<SupervisorCustomersPage> getAgentCustomers(id)
+> SupervisorCustomersPage getAgentCustomers(id)
 
 
 
@@ -53,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<SupervisorCustomersPage>**](SupervisorCustomersPage.md)
+[**SupervisorCustomersPage**](SupervisorCustomersPage.md)
 
 ### Authorization
 
@@ -110,7 +112,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAgentTransactionsWithId**
-> List<TransactionsPage> getAgentTransactionsWithId(id, pageable)
+> TransactionsPage getAgentTransactionsWithId(id, pageable)
 
 
 
@@ -141,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<TransactionsPage>**](TransactionsPage.md)
+[**TransactionsPage**](TransactionsPage.md)
 
 ### Authorization
 
@@ -155,7 +157,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAgents**
-> List<AgentsPage> getAgents(b, pageable)
+> AgentsPage getAgents(b, pageable)
 
 
 
@@ -186,7 +188,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<AgentsPage>**](AgentsPage.md)
+[**AgentsPage**](AgentsPage.md)
 
 ### Authorization
 
@@ -275,6 +277,51 @@ Name | Type | Description  | Notes
  **start** | **DateTime**|  | [optional] 
  **end** | **DateTime**|  | [optional] 
  **pageable** | [**Pageable**](.md)|  | [optional] 
+
+### Return type
+
+[**List<TransactionResponse>**](TransactionResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCalloversForAll**
+> List<TransactionResponse> getCalloversForAll(start, end)
+
+
+
+GET callover for end of day for a specific agents
+
+### Example
+```dart
+import 'package:agency_api/api.dart';
+
+final api_instance = SupervisorApi();
+final start = 2013-10-20T19:20:30+01:00; // DateTime | 
+final end = 2013-10-20T19:20:30+01:00; // DateTime | 
+
+try {
+    final result = api_instance.getCalloversForAll(start, end);
+    print(result);
+} catch (e) {
+    print('Exception when calling SupervisorApi->getCalloversForAll: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **start** | **DateTime**|  | [optional] 
+ **end** | **DateTime**|  | [optional] 
 
 ### Return type
 
@@ -504,6 +551,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InfoResponse**](InfoResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **postShortage**
+> List<InfoResponse> postShortage(id)
+
+
+
+Post shortage for a particular agent
+
+### Example
+```dart
+import 'package:agency_api/api.dart';
+
+final api_instance = SupervisorApi();
+final id = 789; // int | 
+
+try {
+    final result = api_instance.postShortage(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling SupervisorApi->postShortage: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**List<InfoResponse>**](InfoResponse.md)
 
 ### Authorization
 

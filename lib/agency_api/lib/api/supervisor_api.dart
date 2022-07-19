@@ -61,7 +61,7 @@ class SupervisorApi {
   /// Parameters:
   ///
   /// * [int] id (required):
-  Future<List<SupervisorCustomersPage>> getAgentCustomers(int id,) async {
+  Future<SupervisorCustomersPage> getAgentCustomers(int id,) async {
     final response = await getAgentCustomersWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -70,13 +70,10 @@ class SupervisorApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<SupervisorCustomersPage>') as List)
-        .cast<SupervisorCustomersPage>()
-        .toList(growable: false);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SupervisorCustomersPage',) as SupervisorCustomersPage;
+    
     }
-    return Future<List<SupervisorCustomersPage>>.value();
+    return Future<SupervisorCustomersPage>.value();
   }
 
   /// GET agent details
@@ -192,7 +189,7 @@ class SupervisorApi {
   /// * [int] id (required):
   ///
   /// * [Pageable] pageable:
-  Future<List<TransactionsPage>> getAgentTransactionsWithId(int id, { Pageable pageable, }) async {
+  Future<TransactionsPage> getAgentTransactionsWithId(int id, { Pageable pageable, }) async {
     final response = await getAgentTransactionsWithIdWithHttpInfo(id,  pageable: pageable, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -201,13 +198,10 @@ class SupervisorApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<TransactionsPage>') as List)
-        .cast<TransactionsPage>()
-        .toList(growable: false);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TransactionsPage',) as TransactionsPage;
+    
     }
-    return Future<List<TransactionsPage>>.value();
+    return Future<TransactionsPage>.value();
   }
 
   /// GET all agents filtered by branch
@@ -262,7 +256,7 @@ class SupervisorApi {
   /// * [String] b:
   ///
   /// * [Pageable] pageable:
-  Future<List<AgentsPage>> getAgents({ String b, Pageable pageable, }) async {
+  Future<AgentsPage> getAgents({ String b, Pageable pageable, }) async {
     final response = await getAgentsWithHttpInfo( b: b, pageable: pageable, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -271,13 +265,10 @@ class SupervisorApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<AgentsPage>') as List)
-        .cast<AgentsPage>()
-        .toList(growable: false);
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AgentsPage',) as AgentsPage;
+    
     }
-    return Future<List<AgentsPage>>.value();
+    return Future<AgentsPage>.value();
   }
 
   /// GET specific agent with id
@@ -409,6 +400,76 @@ class SupervisorApi {
   /// * [Pageable] pageable:
   Future<List<TransactionResponse>> getCallover(int id, { DateTime start, DateTime end, Pageable pageable, }) async {
     final response = await getCalloverWithHttpInfo(id,  start: start, end: end, pageable: pageable, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<TransactionResponse>') as List)
+        .cast<TransactionResponse>()
+        .toList(growable: false);
+
+    }
+    return Future<List<TransactionResponse>>.value();
+  }
+
+  /// GET callover for end of day for a specific agents
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [DateTime] start:
+  ///
+  /// * [DateTime] end:
+  Future<Response> getCalloversForAllWithHttpInfo({ DateTime start, DateTime end, }) async {
+    // Verify required params are set.
+
+    // ignore: prefer_const_declarations
+    final path = r'/supervisors/callovers';
+
+    // ignore: prefer_final_locals
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (start != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'start', start));
+    }
+    if (end != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'end', end));
+    }
+
+    const authNames = <String>[];
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// GET callover for end of day for a specific agents
+  ///
+  /// Parameters:
+  ///
+  /// * [DateTime] start:
+  ///
+  /// * [DateTime] end:
+  Future<List<TransactionResponse>> getCalloversForAll({ DateTime start, DateTime end, }) async {
+    final response = await getCalloversForAllWithHttpInfo( start: start, end: end, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -767,6 +828,69 @@ class SupervisorApi {
     
     }
     return Future<InfoResponse>.value();
+  }
+
+  /// Post shortage for a particular agent
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  Future<Response> postShortageWithHttpInfo(int id,) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    // ignore: prefer_const_declarations
+    final path = r'/supervisors/shortage/{id}'
+      .replaceAll('{id}', id.toString());
+
+    // ignore: prefer_final_locals
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const authNames = <String>[];
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Post shortage for a particular agent
+  ///
+  /// Parameters:
+  ///
+  /// * [int] id (required):
+  Future<List<InfoResponse>> postShortage(int id,) async {
+    final response = await postShortageWithHttpInfo(id,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<InfoResponse>') as List)
+        .cast<InfoResponse>()
+        .toList(growable: false);
+
+    }
+    return Future<List<InfoResponse>>.value();
   }
 
   /// GET all agents in your branch
